@@ -1,4 +1,4 @@
-<div class="container">
+<div id="navContainer">
 	<nav>
 		<ul>
 			<li><a href="#">Home</a></li>

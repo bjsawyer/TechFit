@@ -1,12 +1,16 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
-	<? include('navMenu.php'); ?>
+	<?
+		include('navMenu.php');
+		include('sidebarLeft.php');
+		include('sidebarRight.php');
+	?>
 </head>
 
 <body>
     <!-- Begin Page Content -->
-    <div class="container" id="alignCenter">
+    <div class="bodyContainer" id="alignCenter">
 		<div id="container1">
 			<form>
 				<label for="username">Username:</label>
