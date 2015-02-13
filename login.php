@@ -5,12 +5,13 @@
 
 <body>
 	<?
+		include('banner.php');
 		include('navMenu.php');
 		include('sidebarLeft.php');
 		include('sidebarRight.php');
 	?>
     <!-- Begin Page Content -->
-    <div class="bodyContainer" id="alignCenter">
+    <div id="bodyContainer" class="alignCenter">
 		<div id="container1">
 			<form>
 				<label for="username">Username:</label>

@@ -7,7 +7,7 @@ html {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     color: #444;
     -webkit-font-smoothing: antialiased;
-    background: #f0f0f0;
+    background: #ccc;
 }
 body {
 	width: 1372px;
@@ -20,16 +20,25 @@ body {
 div {
 	position: relative;
 }
+#bannerContainer{
+	width: 100%;
+	height: 152px;
+	margin: 0 auto;
+	background: #660000;
+	border-bottom: 4px solid #ff6600;
+	text-align: center;
+	vertical-align: center;
+}
 #navContainer{
 	width: 100%;
-	margin-right: auto;
-	margin-left: auto;
-	border-bottom: 1px solid #ccc;
+	height: 102px;
+	margin: 0 auto;
+	background: #ff6600;
+	border-bottom: 1px solid white;
 }
-.bodyContainer{
+#bodyContainer{
 	width: 66%;
-	margin-right: auto;
-	margin-left: auto;
+	margin: 0 auto;
 	border-bottom: 1px solid #ccc;
 }
 #sidebarLeft {
@@ -38,7 +47,7 @@ div {
 	width: 17%;
 	height: 100%;
 	float: left;
-	background: red;
+	background: #660000;
 }
 #sidebarRight {
 	display: inline-block;
@@ -46,16 +55,16 @@ div {
 	width: 17%;
 	height: 100%;
 	float: right;
-	background: red;
+	background: #660000;
 }
 #footer {
-	background: blue;
+	background: #ff6600;
 	clear: both;
 	height: 180px;
 	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
-	border-top: 1px solid #ccc;
+	border-top: 1px solid white;
 }
 nav {
 	text-align: center;
@@ -203,7 +212,7 @@ input[type=submit]:active {
 }
 
 /* Other Formatting ------------------------------------------------------------------------------------- */
-#alignCenter {
+.alignCenter {
 	text-align: center;
 }
 #container1 {
@@ -249,4 +258,7 @@ p a {
 }
 p a:hover {
     color: #555;
+}
+h1 {
+
 }
