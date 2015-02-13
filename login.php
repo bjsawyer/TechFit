@@ -1,14 +1,14 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
 	<?
 		include('navMenu.php');
 		include('sidebarLeft.php');
 		include('sidebarRight.php');
 	?>
-</head>
-
-<body>
     <!-- Begin Page Content -->
     <div class="bodyContainer" id="alignCenter">
 		<div id="container1">
@@ -46,5 +46,8 @@
 		</div>
     </div><!--/ container-->
     <!-- End Page Content -->
+	<?
+		include('footer.php');
+	?>
 </body>
 </html>
