@@ -13,9 +13,9 @@
 
 	<div class="site-wrapper">
         <div class="site-wrapper-inner">
-            <div class="cover-container">
+            <div class="cover-container" id="cover-container-padding">
             <?
-				include('navMenu.php');
+				include('templates/navMenu.php');
 			?>
 				<div class="inner cover">
 					<div class="panel panel-default">
@@ -105,11 +105,17 @@
 						</div>
 					</div>
 					<?
-						include('footer.php');
+						include('templates/footer.php');
 					?>
 				</div>
 			</div>
 		</div>
     </div>
+    <script>
+        $('.nav nav-pills li').click(function(){
+            $('.nav nav-pills li').removeClass('active');
+            $(this).addClass('active');
+        });
+    </script>
 </body>
 </html>

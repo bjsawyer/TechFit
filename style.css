@@ -22,6 +22,10 @@
 	float:right;
 }
 
+#cover-container-padding {
+  padding-top: 30px;
+}
+  
 /* Links */
 a,
 a:focus,
@@ -49,7 +53,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #410000;
+  background-color: #811212;
 }
 body {
   color: #333;
@@ -73,7 +77,6 @@ body {
 .cover-container {
   margin-right: auto;
   margin-left: auto;
-  padding-top: 30px;
 }
 
 /* Padding for spacing */
@@ -166,8 +169,12 @@ body {
     bottom: 0;
   }
   /* Start the vertical centering */
-  .site-wrapper-inner {
+  .site-wrapper-inner{
     vertical-align: middle;
+  }
+  .site-wrapper-inner-top{
+    vertical-align: top;
+    padding-top: 200px;
   }
   /* Handle the widths */
   .masthead,
