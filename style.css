@@ -18,6 +18,9 @@
     /* inline-block space fix */
     margin-right:-4px;
 }
+#nav-pills-format {
+	float:right;
+}
 
 /* Links */
 a,
@@ -29,13 +32,13 @@ a:hover {
 /* Custom default button */
 .btn-default,
 .btn-default:focus {
-  color: #333;
+  color: #fff;
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
+  background-color: #ff6600;
   border: 1px solid #fff;
 }
 .btn-default:hover {
-  background-color: #ff6600;
+  background-color: #ff8939;
   color: #fff;
 }
 
@@ -49,9 +52,9 @@ body {
   background-color: #410000;
 }
 body {
-  color: #fff;
+  color: #333;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+  /* text-shadow: 0 1px 3px rgba(0,0,0,.5); */
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -70,6 +73,7 @@ body {
 .cover-container {
   margin-right: auto;
   margin-left: auto;
+  padding-top: 30px;
 }
 
 /* Padding for spacing */
@@ -82,7 +86,7 @@ body {
  * Header
  */
 .masthead-brand {
-  margin-top: 10px;
+  margin-top: 1px;
   margin-bottom: 10px;
 }
 
