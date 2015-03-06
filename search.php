@@ -18,7 +18,7 @@
 			?>
 				<div class="inner cover">
 					<div>
-						<form class="navbar-form" role="search">
+						<form class="navbar-form" id="search-bar" role="search">
                             <div class="form-group">
                                 <input type="text" class="form-control input-lg" placeholder="Search">
                             </div>

@@ -18,12 +18,17 @@
     /* inline-block space fix */
     margin-right:-4px;
 }
+.well-listings-text {
+	text-align: left;
+}
+.well-listings-icons {
+	float: right;
+}
 #nav-pills-format {
 	float:right;
 }
-
-#cover-container-padding {
-  padding-top: 30px;
+#search-bar {
+	padding-top: 80px;
 }
   
 /* Links */
@@ -137,6 +142,7 @@ body {
 
 .cover {
   padding: 0 20px;
+  min-height: 600px;
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -161,11 +167,10 @@ body {
 @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
-    position: fixed;
     top: 0;
+    padding-bottom: 20px;
   }
   .mastfoot {
-    position: fixed;
     bottom: 0;
   }
   /* Start the vertical centering */
@@ -174,7 +179,9 @@ body {
   }
   .site-wrapper-inner-top{
     vertical-align: top;
-    padding-top: 200px;
+  }
+  .site-wrapper-inner-listings{
+    vertical-align: top;
   }
   /* Handle the widths */
   .masthead,

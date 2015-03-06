@@ -6,7 +6,7 @@
         <nav>
             <ul class="nav nav-pills" id="nav-pills-format">
                 <li <?=echoActiveClassIfRequestMatches("login")?>><a href="login.php" name="Home"><span class="glyphicon glyphicon-home"></span></a></li>
-		        <li><a href="#"><span name="Listings" class="glyphicon glyphicon-th-list"></span></a></li>
+		        <li <?=echoActiveClassIfRequestMatches("listings")?>><a href="listings.php"><span name="Listings" class="glyphicon glyphicon-th-list"></span></a></li>
 		        <li <?=echoActiveClassIfRequestMatches("search")?>><a href="search.php"><span name="Search" class="glyphicon glyphicon-search"></span></a></li>
             </ul>
         </nav>
