@@ -14,9 +14,9 @@
 	<div class="site-wrapper">
         <div class="site-wrapper-inner">
             <div class="cover-container">
-            <?
+            <!-- <?
 				include('templates/navMenu.php');
-			?>
+			?> -->
 				<div class="inner cover">
 					<div class="panel panel-default">
 						<div class="panel-heading">
