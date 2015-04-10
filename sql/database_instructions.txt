@@ -1,0 +1,8 @@
+1) Pull latest code on Git Extensions
+2) Run WampServer, go to PHPMyAdmin (on localhost)
+3) Click "Import" tab, then select "Choose File"
+4) Navigate to folder on your computer containing code, click on "sql" folder, select most recent "dump_[date].sql" file
+5) Leave default options chosen, and click "Go"
+6) Screen should appear saying "Success", and you should now have "techfitdb_" on the left side on PHPMyAdmin
+
+*Make sure you create a user (username: admin, password: password) on your localhost's PHPMyAdmin (with all permissions allowed) in order to access local database
