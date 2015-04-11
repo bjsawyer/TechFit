@@ -17,7 +17,7 @@
 ?>
 
 <?
-	function login() {
+	function loginToUserOrProviderAccount() {
 		$loginEmail = $_REQUEST['loginEmail'];
 		$loginPassword = $_REQUEST['loginPassword'];
 		
@@ -48,28 +48,14 @@
 				$route = "userHome.php";
 				$routeId = "UserId";
 				
-				while ($row = $accountData) {
-					$_SESSION["account_record"] = $row;
-					if ($loginPassword == $row['Password']) {
-						header('Location: ' . $route);
-					}else {
-			            print("<center><h2>Wrong email or password!</h2></center>");
-			        }
-				}
+				checkPasswordAndRouteToPage($accountData, $route, $routeId);
 			}
 			elseif (count($providerArray) > 0 && count($userArray) <= 0) {
 				$accountData = $providerArray;
 				$route = "providerHome.php";
 				$routeId = "ProviderId";
 				
-				while ($row = $accountData) {
-					$_SESSION["account_record"] = $row;
-					if ($loginPassword == $row['Password']) {
-						header('Location: ' . $route);
-					}else {
-			            print("<center><h2>Wrong email or password!</h2></center>");
-			        }
-				}
+				checkPasswordAndRouteToPage($accountData, $route, $routeId);
 			}
 			else {
 				print("<center><h2>Wrong email or password!</h2></center>");
@@ -91,6 +77,17 @@
 			header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
 		}
 	}
+	
+	function checkPasswordAndRouteToPage($accountData, $route, $routeId) {
+		while ($row = $accountData) {
+			$_SESSION["account_record"] = $row;
+			if ($loginPassword == $row['Password']) {
+				header('Location: ' . $route);
+			}else {
+	            print("<center><h2>Wrong email or password!</h2></center>");
+	        }
+		}
+	}
 ?>
 <html>
 <head>
@@ -102,12 +99,11 @@
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
-						<?
-							if (isset($_REQUEST['loginSubmit'])) {
-								login();
-							}else {
-						?>
+<?
+	if (isset($_REQUEST['loginSubmit'])) {
+		loginToUserOrProviderAccount;
+	}else {
+?>
 <body>
 	<div class="site-wrapper">
         <div class="site-wrapper-inner">
@@ -123,26 +119,28 @@
 						<div class="panel-body">
 							<h4>Sign in here:</h4>
 							<form class="form-inline" method="POST" action="index.php">
-								<div class="row row-padding">
-									<div class="form-group">
-										<label class="sr-only" for="userExistingEmail">Email</label>
-										<input type="email" class="form-control" id="userExistingEmail" name="loginEmail" placeholder="Email">
+								<fieldset>
+									<div class="row row-padding">
+										<div class="form-group">
+											<label class="sr-only" for="userExistingEmail">Email</label>
+											<input type="email" class="form-control" id="userExistingEmail" name="loginEmail" placeholder="Email">
+										</div>
+										<div class="form-group">
+											<label class="sr-only" for="userExistingPassword">Password:</label>
+											<input type="password" class="form-control" id="userExistingPassword" name="loginPassword" placeholder="Password">
+										</div>
 									</div>
-									<div class="form-group">
-										<label class="sr-only" for="userExistingPassword">Password:</label>
-										<input type="password" class="form-control" id="userExistingPassword" name="loginPassword" placeholder="Password">
+									<div class="row row-padding">
+										<!--<div class="checkbox">
+											<label>
+												<input type="checkbox"> Keep me logged in
+											</label>
+										</div>-->
 									</div>
-								</div>
-								<div class="row row-padding">
-									<!--<div class="checkbox">
-										<label>
-											<input type="checkbox"> Keep me logged in
-										</label>
-									</div>-->
-								</div>
-								<div class="row">
-									<button type="submit" name="loginSubmit" class="btn btn-default">Log in</button>
-								</div>
+									<div class="row">
+										<button type="submit" name="loginSubmit" class="btn btn-default">Log in</button>
+									</div>
+								</fieldset>
 							</form>
 						</div>
 					</div>	
@@ -153,52 +151,56 @@
 						<div class="panel-body">
 							<h4>Create account here:</h4>
 							<form class="form-horizontal"  method="POST" action="index.php">
-								<div class="form-group">
-									<div class="row row-centered row-padding">
-										<label class="sr-only" for="userFirstName">First Name</label>
-										<div class="col-sm-6 col-centered">
-		                                    <input type="text" class="form-control" id="userFirstName" placeholder="First name">
-		                                    </div>
-		                                </div>
-		                                <div class="row row-centered row-padding">
-										<label class="sr-only" for="userLastName">Last Name</label>
-										<div class="col-sm-6 col-centered">
-											<input type="text" class="form-control" id="userLastName" placeholder="Last name">
+								<fieldset>
+									<div class="form-group">
+										<div class="row row-centered row-padding">
+											<label class="sr-only" for="userFirstName">First Name</label>
+											<div class="col-sm-6 col-centered">
+			                                    <input type="text" class="form-control" id="userFirstName" name="newFirstName" placeholder="First name">
+			                                    </div>
+			                                </div>
+			                                <div class="row row-centered row-padding">
+											<label class="sr-only" for="userLastName">Last Name</label>
+											<div class="col-sm-6 col-centered">
+												<input type="text" class="form-control" id="userLastName" name="newLastName" placeholder="Last name">
+											</div>
+										</div>
+										<div class="row row-centered row-padding">
+											<label class="sr-only" for="userNewEmail">Email</label>
+											<div class="col-sm-6 col-centered">
+			                                        <input type="email" class="form-control" id="userNewEmail" name="newEmail" placeholder="Email">
+			                                    </div>
+										</div>
+										<div class="row row-centered row-padding">
+											<label class="sr-only" for="userNewPassword">Password</label>
+											<div class="col-sm-6 col-centered">
+												<input type="password" class="form-control" id="userNewPassword" name="newPassword" placeholder="Password">
+											</div>
+										</div>
+										<div class="row row-centered">
+											<label class="sr-only"  for="type">Account type</label>
+											<div class="col-sm-6 col-centered">
+												<select class="form-control" id="accountType" name="newAccountType">
+													<option value="" selected disabled>Select your account type</option>
+													<option value="trainer">I am a trainer</option>
+													<option value="trainer">I am with a gym</option>
+													<option value="user">I am searching for a trainer or gym</option>
+												</select>
+											</div>
+										</div>
+										<div class="row row-padding">
+											<!--<div class="checkbox">
+												<label>
+													<input type="checkbox"> I agree to the Terms & Conditions
+												</label>
+											</div>-->
+										</div>
+										<div class="row">
+											<button type="submit" class="btn btn-default">Create</button>
+										</div>
 										</div>
 									</div>
-									<div class="row row-centered row-padding">
-										<label class="sr-only" for="userNewEmail">Email</label>
-										<div class="col-sm-6 col-centered">
-		                                        <input type="email" class="form-control" id="userNewEmail: placeholder="Email">
-		                                    </div>
-									</div>
-									<div class="row row-centered row-padding">
-										<label class="sr-only" for="userNewPassword">Password</label>
-										<div class="col-sm-6 col-centered">
-											<input type="password" class="form-control" id="userNewPassword" placeholder="Password">
-										</div>
-									</div>
-									<div class="row row-centered">
-										<label class="sr-only"  for="type">Account type</label>
-										<div class="col-sm-6 col-centered">
-											<select class="form-control" id="accountType">
-												<option value="trainer">I am a trainer or gym</option>
-												<option value="user">I am looking for a trainer or gym</option>
-											</select>
-										</div>
-									</div>
-									<div class="row row-padding">
-										<div class="checkbox">
-											<label>
-												<input type="checkbox"> I agree to the Terms & Conditions
-											</label>
-										</div>
-									</div>
-									<div class="row">
-										<button type="submit" class="btn btn-default">Create</button>
-									</div>
-									</div>
-								</div>
+								</fieldset>
 							</form>
 						</div>
 					</div>
@@ -210,10 +212,9 @@
 		</div>
     </div>
 </body>
-
-						<?
-							}
-						?>
+<?
+	}
+?>
 </html>
 
 <script>
