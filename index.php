@@ -85,8 +85,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+    <script src="jquery-ui-1.11.3.custom/external/jquery/jquery.js"></script>
+
     <!-- Bootstrap -->
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <?
@@ -98,106 +102,111 @@
 	<div class="site-wrapper">
         <div class="site-wrapper-inner">
             <div class="cover-container">
-            <!-- <?
-				include('templates/navMenu.php');
-			?> -->
-				<div class="inner cover">				
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h2 class="panel-title"><strong>Existing user?</strong></h2>
-						</div>
-						<div class="panel-body">
-							<h4>Sign in here:</h4>
-							<form class="form-inline" method="POST" action="index.php">
-								<fieldset>
-									<div class="row row-padding">
-										<div class="form-group">
-											<label class="sr-only" for="userExistingEmail">Email</label>
-											<input type="email" class="form-control" id="userExistingEmail" name="loginEmail" placeholder="Email">
-										</div>
-										<div class="form-group">
-											<label class="sr-only" for="userExistingPassword">Password:</label>
-											<input type="password" class="form-control" id="userExistingPassword" name="loginPassword" placeholder="Password">
-										</div>
+	            <?
+					include('templates/navMenu.php');
+				?>
+				<div class="inner cover">	
+					<div role="tabpanel">	
+						<ul class="nav nav-pills nav-justified">
+							<li role="presentation" id="loginTabs" class="active"><a href="#login" role="tab"><b>Login!</b></a></li>
+							<li role="presentation" id="loginTabs"><a href="#createAccount" role="tab"><b>Join!</b></a></li>
+						</ul>
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane in active" id="login">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<h4>Sign in here:</h4>
+										<form class="form-inline" method="POST" action="index.php">
+											<fieldset>
+												<div class="row row-padding">
+													<div class="form-group">
+														<label class="sr-only" for="userExistingEmail">Email</label>
+														<input type="email" class="form-control" id="userExistingEmail" name="loginEmail" placeholder="Email">
+													</div>
+													<div class="form-group">
+														<label class="sr-only" for="userExistingPassword">Password:</label>
+														<input type="password" class="form-control" id="userExistingPassword" name="loginPassword" placeholder="Password">
+													</div>
+												</div>
+												<div class="row row-padding">
+													<!--<div class="checkbox">
+														<label>
+															<input type="checkbox"> Keep me logged in
+														</label>
+													</div>-->
+												</div>
+												<div class="row">
+													<button type="submit" name="loginSubmit" class="btn btn-default">Log in</button>
+												</div>
+											</fieldset>
+										</form>
 									</div>
-									<div class="row row-padding">
-										<!--<div class="checkbox">
-											<label>
-												<input type="checkbox"> Keep me logged in
-											</label>
-										</div>-->
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="createAccount">
+								<div class="panel panel-default">
+									<div class="panel-body">
+										<h4>Create account here:</h4>
+										<form class="form-horizontal"  method="POST" action="index.php">
+											<fieldset>
+												<div class="form-group">
+													<div class="row row-centered row-padding">
+														<label class="sr-only" for="userFirstName">First Name</label>
+														<div class="col-sm-6 col-centered">
+						                                    <input type="text" class="form-control" id="userFirstName" name="newFirstName" placeholder="First name">
+						                                    </div>
+						                                </div>
+						                                <div class="row row-centered row-padding">
+														<label class="sr-only" for="userLastName">Last Name</label>
+														<div class="col-sm-6 col-centered">
+															<input type="text" class="form-control" id="userLastName" name="newLastName" placeholder="Last name">
+														</div>
+													</div>
+													<div class="row row-centered row-padding">
+														<label class="sr-only" for="userNewEmail">Email</label>
+														<div class="col-sm-6 col-centered">
+						                                        <input type="email" class="form-control" id="userNewEmail" name="newEmail" placeholder="Email">
+						                                    </div>
+													</div>
+													<div class="row row-centered row-padding">
+														<label class="sr-only" for="userNewPassword">Password</label>
+														<div class="col-sm-6 col-centered">
+															<input type="password" class="form-control" id="userNewPassword" name="newPassword" placeholder="Password">
+														</div>
+													</div>
+													<div class="row row-centered">
+														<label class="sr-only"  for="type">Account type</label>
+														<div class="col-sm-6 col-centered">
+															<select class="form-control" id="accountType" name="newAccountType">
+																<option value="" selected disabled>Select your account type</option>
+																<option value="trainer">I am a trainer</option>
+																<option value="trainer">I am with a gym</option>
+																<option value="user">I am searching for a trainer or gym</option>
+															</select>
+														</div>
+													</div>
+													<div class="row row-padding">
+														<div class="checkbox">
+															<label>
+																<input type="checkbox"> I agree to the Terms & Conditions
+															</label>
+														</div>
+													</div>
+													<div class="row">
+														<button type="submit" class="btn btn-default">Create</button>
+													</div>
+												</div>
+											</fieldset>
+										</form>
 									</div>
-									<div class="row">
-										<button type="submit" name="loginSubmit" class="btn btn-default">Log in</button>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-					</div>	
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h2 class="panel-title"><strong>New user?</strong></h2>
-						</div>
-						<div class="panel-body">
-							<h4>Create account here:</h4>
-							<form class="form-horizontal"  method="POST" action="index.php">
-								<fieldset>
-									<div class="form-group">
-										<div class="row row-centered row-padding">
-											<label class="sr-only" for="userFirstName">First Name</label>
-											<div class="col-sm-6 col-centered">
-			                                    <input type="text" class="form-control" id="userFirstName" name="newFirstName" placeholder="First name">
-			                                    </div>
-			                                </div>
-			                                <div class="row row-centered row-padding">
-											<label class="sr-only" for="userLastName">Last Name</label>
-											<div class="col-sm-6 col-centered">
-												<input type="text" class="form-control" id="userLastName" name="newLastName" placeholder="Last name">
-											</div>
-										</div>
-										<div class="row row-centered row-padding">
-											<label class="sr-only" for="userNewEmail">Email</label>
-											<div class="col-sm-6 col-centered">
-			                                        <input type="email" class="form-control" id="userNewEmail" name="newEmail" placeholder="Email">
-			                                    </div>
-										</div>
-										<div class="row row-centered row-padding">
-											<label class="sr-only" for="userNewPassword">Password</label>
-											<div class="col-sm-6 col-centered">
-												<input type="password" class="form-control" id="userNewPassword" name="newPassword" placeholder="Password">
-											</div>
-										</div>
-										<div class="row row-centered">
-											<label class="sr-only"  for="type">Account type</label>
-											<div class="col-sm-6 col-centered">
-												<select class="form-control" id="accountType" name="newAccountType">
-													<option value="" selected disabled>Select your account type</option>
-													<option value="trainer">I am a trainer</option>
-													<option value="trainer">I am with a gym</option>
-													<option value="user">I am searching for a trainer or gym</option>
-												</select>
-											</div>
-										</div>
-										<div class="row row-padding">
-											<div class="checkbox">
-												<label>
-													<input type="checkbox"> I agree to the Terms & Conditions
-												</label>
-											</div>
-										</div>
-										<div class="row">
-											<button type="submit" class="btn btn-default">Create</button>
-										</div>
-										</div>
-									</div>
-								</fieldset>
-							</form>
+								</div>
+							</div>
 						</div>
 					</div>
-					<?
-						include('templates/footer.php');
-					?>
 				</div>
+				<?
+					include('templates/footer.php');
+				?>
 			</div>
 		</div>
     </div>
@@ -208,8 +217,14 @@
 </html>
 
 <script>
-    $('.nav nav-pills li').click(function(){
-        $('.nav nav-pills li').removeClass('active');
-        $(this).addClass('active');
-    });
+	$(document).ready(function(){    
+	    $('#loginTabs a').click(function (e) {
+			e.preventDefault()
+			$(this).tab('show')
+		});
+		
+		$('#myTab a[href="#login"]').tab('show');
+		
+		$('#myTab a[href="#createAccount"]').tab('show');
+	});
 </script>
