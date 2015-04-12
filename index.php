@@ -19,7 +19,6 @@
 <?
 	function loginToUserOrProviderAccount() {
 		$loginEmail = $_REQUEST['loginEmail'];
-		$loginPassword = $_REQUEST['loginPassword'];
 		
 		try {
 		    $db = $GLOBALS['db'];
@@ -45,30 +44,21 @@
 			// checks if login is a user or provider account
 			if (count($userArray) > 0 && count($providerArray) <= 0) {
 				$accountData = $userArray;
-				$route = "userHome.php";
-				$routeId = "UserId";
+				$route = "userHome.php?id=";
+				$routeId = 'UserId';
 				
 				checkPasswordAndRouteToPage($accountData, $route, $routeId);
 			}
 			elseif (count($providerArray) > 0 && count($userArray) <= 0) {
 				$accountData = $providerArray;
-				$route = "providerHome.php";
-				$routeId = "ProviderId";
+				$route = "providerHome.php?id=";
+				$routeId = 'ProviderId';
 				
 				checkPasswordAndRouteToPage($accountData, $route, $routeId);
 			}
 			else {
 				print("<center><h2>Wrong email or password!</h2></center>");
 			}
-			
-			//while ($row = mysqli_fetch_array($rsUser)) {
-			//	$_SESSION["account_record"] = $row;
-			//	if ($loginPassword == $row['Password']) {
-			//		header('Location: userHome.php');
-			//	}else {
-		    //        print("<center><h2>Wrong email or password!</h2></center>");
-		    //    }
-			//}
 			
 			mysqli_close($db);
 			unset($db);  
@@ -79,14 +69,14 @@
 	}
 	
 	function checkPasswordAndRouteToPage($accountData, $route, $routeId) {
-		while ($row = $accountData) {
-			$_SESSION["account_record"] = $row;
-			if ($loginPassword == $row['Password']) {
-				header('Location: ' . $route);
-			}else {
-	            print("<center><h2>Wrong email or password!</h2></center>");
-	        }
-		}
+		$loginPassword = $_REQUEST['loginPassword'];
+		$_SESSION["account_record"] = $accountData[0];
+		
+		if ($loginPassword == $accountData['Password']) {
+			header('Location: ' . $route . $accountData[$routeId]);
+		}else {
+            print("<center><h2>Wrong email or password!</h2></center>");
+        }
 	}
 ?>
 <html>
@@ -101,7 +91,7 @@
 </head>
 <?
 	if (isset($_REQUEST['loginSubmit'])) {
-		loginToUserOrProviderAccount;
+		loginToUserOrProviderAccount();
 	}else {
 ?>
 <body>
@@ -189,11 +179,11 @@
 											</div>
 										</div>
 										<div class="row row-padding">
-											<!--<div class="checkbox">
+											<div class="checkbox">
 												<label>
 													<input type="checkbox"> I agree to the Terms & Conditions
 												</label>
-											</div>-->
+											</div>
 										</div>
 										<div class="row">
 											<button type="submit" class="btn btn-default">Create</button>
