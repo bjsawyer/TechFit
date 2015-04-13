@@ -23,8 +23,10 @@
 					?>
 					<div class="inner cover">
 						<div class="panel panel-default">
-							<div class="panel-body">
+							<div class="panel-heading">
 								<h4>Create account here:</h4>
+							</div>
+							<div class="panel-body">
 								<form class="form-horizontal"  method="POST" action="index.php">
 									<fieldset>
 										<div class="form-group">

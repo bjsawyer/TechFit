@@ -23,8 +23,8 @@
 					?>
 					<div class="inner cover">
 						<div class="jumbotron" id="login-jumbotron">
-							<h1>Welcome to TechFit!</h1>
-							<p>Discover the quickest and easiest way to get active with <b>TechFit</b>, the future of fitness!</p>
+							<h1>Welcome to <b>TechFit!</b></h1>
+							<p>Discover the quickest and easiest way to get active with TechFit, the future of fitness!</p>
 							<p><a class="btn btn-primary btn-lg" href="createAccount.php" role="button">Sign up</a></p>
 						</div>
 					</div>

@@ -25,7 +25,7 @@
 	float: right;
 }
 .custom-page-width{
-	width: 95%;
+	width: 85%;
 }
 .sidebar{
 	position: absolute;
@@ -37,10 +37,13 @@
 	background-color: white;
 }
 .ad-panel{
-	width: 75%;
+	width: 65%;
 	margin: 0 auto;
 	text-align: left;
 	box-shadow: 1px 1px 2px #200000;
+}
+#panel-heading-ad{
+	background-color: #f5f5f5;
 }
 #sidebar-left{
 	left: 0px;
@@ -67,6 +70,15 @@
 	box-shadow: 1px 1px 2px #200000;
 	text-align: center;
 	background-color: white;
+}
+#accountNameNav{
+	color: #337ab7;
+	font-weight: bold;	
+}
+#accountNameNav:hover{
+	color: #7eb1dc;
+	font-weight: bold;
+	text-decoration: underline;
 }
   
 /* Links */

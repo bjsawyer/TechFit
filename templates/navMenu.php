@@ -40,16 +40,18 @@
 			if (count($userArray) > 0 && count($providerArray) <= 0) {
 				$_SESSION['account_record'] = $userArray;
 				$route = "userHome.php?id=";
-				$routeId = 'UserId';
+				$routeId = $_SESSION['account_record']['UserId'];
+				$_SESSION['account_route'] = $route . $routeId;
 				
-				checkPasswordAndRouteToPage($_SESSION['account_record'], $route, $routeId);
+				checkPasswordAndRouteToPage($_SESSION['account_record'], $_SESSION['account_route']);
 			}
 			elseif (count($providerArray) > 0 && count($userArray) <= 0) {
 				$_SESSION["account_record"] = $providerArray;
 				$route = "providerHome.php?id=";
-				$routeId = 'ProviderId';
+				$routeId = $_SESSION['account_record']['ProviderId'];
+				$_SESSION['account_route'] = $route . $routeId;
 				
-				checkPasswordAndRouteToPage($_SESSION['account_record'], $route, $routeId);
+				checkPasswordAndRouteToPage($_SESSION['account_record'], $_SESSION['account_route']);
 			}
 			else {
 				print("<center><h2>Wrong email or password!</h2></center>");
@@ -64,11 +66,11 @@
 	}
 	
 	// checks password and routes to home page if correct
-	function checkPasswordAndRouteToPage($accountData, $route, $routeId) {
+	function checkPasswordAndRouteToPage($accountData, $accountRoute) {
 		$loginPassword = $_REQUEST['loginPassword'];
 		
 		if ($loginPassword == $accountData['Password']) {
-			header('Location: ' . $route . $accountData[$routeId]);
+			header('Location: ' . $accountRoute);
 		}else {
             print("<center><h2>Wrong email or password!</h2></center>");
         }
@@ -112,7 +114,7 @@
 			                $accountFirstName = $_SESSION['account_record']["FirstName"];			                
 			                $accountLastName = $_SESSION['account_record']["LastName"];
 			        ?>  
-			            <p class="navbar-text navbar-right">Signed in as: <a href='#' class="navbar-link"><b><? print $accountFirstName . " " . $accountLastName ?></b></a></p>
+			            <p class="navbar-text navbar-right">Signed in as: <a href='<? print $_SESSION['account_route'] ?>' class="navbar-link" id="accountNameNav"><? print $accountFirstName . " " . $accountLastName ?></a></p>
 			        <?
 			            };
 			        ?>
