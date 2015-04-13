@@ -25,13 +25,12 @@
 	float: right;
 }
 .custom-page-width{
-	width: 66%;
+	width: 95%;
 }
 .sidebar{
 	position: absolute;
 	top: 81px;
-	height: 100%;
-	width: 27%;
+	width: 28%;
 	padding: 30px 10px;
 }
 .navbar-background-color{
@@ -41,6 +40,7 @@
 	width: 75%;
 	margin: 0 auto;
 	text-align: left;
+	box-shadow: 1px 1px 2px #200000;
 }
 #sidebar-left{
 	left: 0px;
@@ -64,7 +64,9 @@
 #login-jumbotron{
 	padding:48px 60px;
 	border-radius: 6px;
-	text-align: left;
+	box-shadow: 1px 1px 2px #200000;
+	text-align: center;
+	background-color: white;
 }
   
 /* Links */
@@ -80,7 +82,6 @@ a:hover {
   color: #fff;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #ff6600;
-  border: 1px solid #fff;
 }
 .btn-default:hover {
   background-color: #ff8939;

@@ -4,9 +4,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
+    <script src="jquery-ui-1.11.3.custom/external/jquery/jquery.js"></script>
+
     <!-- Bootstrap -->
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
 <body>
