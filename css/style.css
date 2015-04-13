@@ -24,11 +24,47 @@
 .well-listings-icons {
 	float: right;
 }
+.custom-page-width{
+	width: 66%;
+}
+.sidebar{
+	position: absolute;
+	top: 81px;
+	height: 100%;
+	width: 27%;
+	padding: 30px 10px;
+}
+.navbar-background-color{
+	background-color: white;
+}
+.ad-panel{
+	width: 75%;
+	margin: 0 auto;
+	text-align: left;
+}
+#sidebar-left{
+	left: 0px;
+}
+#sidebar-right{
+	right: 0px;
+}
 #nav-pills-format {
-	float:right;
+	float: right;
+	margin-left: 15px;
 }
 #search-bar {
 	padding-top: 80px;
+}
+#login-tabs-justified-ul{
+	display:table;
+}
+#login-tabs-justified-li{
+	width:50%;
+}
+#login-jumbotron{
+	padding:48px 60px;
+	border-radius: 6px;
+	text-align: left;
 }
   
 /* Links */

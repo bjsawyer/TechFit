@@ -91,7 +91,7 @@
     <link href="bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 	
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <?
 	if (isset($_REQUEST['loginSubmit'])) {
@@ -103,13 +103,20 @@
         <div class="site-wrapper-inner">
             <div class="cover-container">
 	            <?
-					include('templates/navMenu.php');
+					include('templates/navMenuLogin.php');
+					include('templates/sidebarLeft.php');
+					include('templates/sidebarRight.php');
 				?>
-				<div class="inner cover">	
+				<div class="inner cover">
+					<div class="jumbotron" id="login-jumbotron">
+						<h1>Welcome to TechFit!</h1>
+						<p>Discover the quickest and easiest way to get active with <b>TechFit</b>, the future of fitness!</p>
+						<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+					</div>
 					<div role="tabpanel">	
-						<ul class="nav nav-pills nav-justified">
-							<li role="presentation" id="loginTabs" class="active"><a href="#login" role="tab"><b>Login!</b></a></li>
-							<li role="presentation" id="loginTabs"><a href="#createAccount" role="tab"><b>Join!</b></a></li>
+						<ul class="nav nav-pills nav-justified" id="login-tabs-justified-ul">
+							<li role="presentation" id="login-tabs-justified-li" class="active"><a href="#login" role="tab"><b>LOGIN</b></a></li>
+							<li role="presentation" id="login-tabs-justified-li"><a href="#createAccount" role="tab"><b>CREATE ACCOUNT</b></a></li>
 						</ul>
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane in active" id="login">
@@ -218,13 +225,9 @@
 
 <script>
 	$(document).ready(function(){    
-	    $('#loginTabs a').click(function (e) {
+	    $('#login-tabs-justified-ul a').click(function (e) {
 			e.preventDefault()
 			$(this).tab('show')
 		});
-		
-		$('#myTab a[href="#login"]').tab('show');
-		
-		$('#myTab a[href="#createAccount"]').tab('show');
 	});
 </script>
