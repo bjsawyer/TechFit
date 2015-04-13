@@ -25,7 +25,7 @@
 	float: right;
 }
 .custom-page-width{
-	width: 85%;
+	width: 95%;
 }
 .sidebar{
 	position: absolute;
@@ -79,6 +79,9 @@
 	color: #7eb1dc;
 	font-weight: bold;
 	text-decoration: underline;
+}
+#logoutButtonNav{
+	margin-left: 15px;
 }
   
 /* Links */

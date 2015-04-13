@@ -90,11 +90,6 @@
 			        <a class="navbar-brand" href="#">TechFit</a>
 			    </div>
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-left" id="nav-pills-format">
-		                <li <?=echoActiveClassIfRequestMatches($_SESSION['account_route'])?>><a href="<? print $_SESSION['account_route'] ?>" name="userHome"><span class="glyphicon glyphicon-home"></span></a></li>
-				        <li <?=echoActiveClassIfRequestMatches("listings")?>><a href="listings.php"><span name="Listings" class="glyphicon glyphicon-th-list"></span></a></li>
-				        <li <?=echoActiveClassIfRequestMatches("search")?>><a href="search.php"><span name="Search" class="glyphicon glyphicon-search"></span></a></li>
-                    </ul>
                     <?
 						// checks if "login" button has been pressed
 						if (isset($_REQUEST['loginSubmit'])) {
@@ -102,22 +97,20 @@
 						}else {
 	                        if(empty($_SESSION['account_record'])) {
                     ?>
-			                    <form class="navbar-form navbar-right" role="login">
-							        <div class="form-group">
-							          <input type="email" class="form-control" id="userExistingEmail" name="loginEmail" placeholder="Email">
-							          <input type="password" class="form-control" id="userExistingPassword" name="loginPassword" placeholder="Password">
-							        </div>
-							        <button type="submit" name="loginSubmit" class="btn btn-default">Log in</button>
-						        </form>
+                    <form class="navbar-form navbar-right" role="login">
+				        <div class="form-group">
+				          <input type="email" class="form-control" id="userExistingEmail" name="loginEmail" placeholder="Email">
+				          <input type="password" class="form-control" id="userExistingPassword" name="loginPassword" placeholder="Password">
+				        </div>
+				        <button type="submit" name="loginSubmit" class="btn btn-default">Log in</button>
+			        </form>
 			        <?
-				            }else {
-				                $accountFirstName = $_SESSION['account_record']["FirstName"];			                
-				                $accountLastName = $_SESSION['account_record']["LastName"];
-			        ?>
-					            <a class="btn btn-default navbar-btn navbar-right" id="logoutButtonNav" href="index.php" role="button">Log out</a>
-					            <p class="navbar-text navbar-right">Signed in as: <a href="<? print $_SESSION['account_route'] ?>" class="navbar-link" id="accountNameNav"><? print $accountFirstName . " " . $accountLastName ?></a></p>
+			            }else {
+			                $accountFirstName = $_SESSION['account_record']["FirstName"];			                
+			                $accountLastName = $_SESSION['account_record']["LastName"];
+			        ?>  
+			            <p class="navbar-text navbar-right">Signed in as: <a href="<? print $_SESSION['account_route'] ?>" class="navbar-link" id="accountNameNav"><? print $accountFirstName . " " . $accountLastName ?></a></p>
 			        <?
-			                };
 			            };
 			        ?>
                 </div>
@@ -126,20 +119,5 @@
     </div>
 </div>
 <?
-	// determines active nav button
-	function echoActiveClassIfRequestMatches($requestUri)
-	{
-	    $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
-	
-	    if ($current_file_name == $requestUri) {
-	        echo 'class="active"';
-		}
-	}
+	};
 ?>
-<script>
-    $("#logoutButtonNav").click(function() {
-        $.ajax({
-            url: 'templates/logout.php'
-        });
-    });
-</script>

@@ -1,3 +1,20 @@
+<?
+	// connects to database
+	require_once("connect_to_DB.php");
+	connectDB();
+?>
+<?
+	// session variable setup
+	if (!isset($_SESSION)) {
+		session_start();
+	}
+	ob_start();
+?>
+<?
+	if (!empty($_SESSION['account_record'])) {
+		header('Location: ' . $_SESSION['account_route']);
+	}else {
+?>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -17,7 +34,7 @@
 	        <div class="site-wrapper-inner">
 	            <div class="cover-container">
 		            <?
-						include('templates/navMenu.php');
+						include('templates/navMenuIndex.php');
 						include('templates/sidebarLeft.php');
 						include('templates/sidebarRight.php');
 					?>
@@ -36,7 +53,9 @@
 	    </div>
 	</body>
 </html>
-
+<?
+	};
+?>
 <script>
 	$(document).ready(function(){    
 	    $('#login-tabs-justified-ul a').click(function (e) {
