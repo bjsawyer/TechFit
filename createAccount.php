@@ -17,7 +17,7 @@
 	        <div class="site-wrapper-inner">
 	            <div class="cover-container">
 		            <?
-						include('templates/navMenu.php');
+						include('templates/navMenuIndex.php');
 						include('templates/sidebarLeft.php');
 						include('templates/sidebarRight.php');
 					?>
