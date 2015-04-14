@@ -66,12 +66,12 @@
 				checkPasswordAndRouteToPage($_SESSION["account_record"], $_SESSION["account_route"]);
 				
 			}else {
-				?>
-					<div class="show alert alert-danger alert-dismissible fade in" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<strong>Error:</strong> Incorrect email or password, please try  signing in again.
-					</div>
-				<?
+			?>
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Error:</strong> Incorrect email or password, please try  signing in again.
+				</div>
+			<?
 			}
 			
 			mysqli_close($db);
@@ -89,12 +89,12 @@
 		if ($loginPassword == $accountData["Password"]) {
 			header('Location: ' . $accountRoute);
 		}else {
-			?>
-	            <div class="show alert alert-danger alert-dismissible fade in" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<strong>Error:</strong> Incorrect email or password, please try  signing in again.
-				</div>
-	        <?
+		?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>Error:</strong> Incorrect email or password, please try  signing in again.
+			</div>
+        <?
         }
 	}
 ?>

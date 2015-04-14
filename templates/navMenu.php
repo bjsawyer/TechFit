@@ -66,12 +66,12 @@
 				checkPasswordAndRouteToPage($_SESSION["account_record"], $_SESSION["account_route"]);
 				
 			}else {
-			?>
-				<div class="show alert alert-danger alert-dismissible fade in" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<strong>Error:</strong> Incorrect email or password, please try  signing in again.
-				</div>
-			<?
+				?>
+		            <div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<strong>Error:</strong> Incorrect email or password, please try  signing in again.
+					</div>
+                <?
 			}
 			
 			mysqli_close($db);
@@ -89,13 +89,13 @@
 		if ($loginPassword == $accountData["Password"]) {
 			header('Location: ' . $accountRoute);
 		}else {
-            ?>
-				<div class="show alert alert-danger alert-dismissible fade in" role="alert">
-					<button type="button" class="close" href="navMenu.php" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<strong>Error:</strong> Incorrect email or password, please try  signing in again.
-				</div>
-			<?
-        }
+				?>
+		            <div class="alert alert-danger alert-dismissible" role="alert">
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<strong>Error:</strong> Incorrect email or password, please try  signing in again.
+					</div>
+                <?
+			}
 	}
 ?>
 <div class="masthead clearfix">
@@ -113,7 +113,17 @@
 			    </div>
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-left" id="nav-pills-format">
+                        <?
+                            if (!empty($_SESSION["account_route"])) {
+                        ?>
 		                <li <?=echoActiveClassIfRequestMatches($_SESSION["account_route"])?>><a href="<? print $_SESSION["account_route"] ?>" name="userHome"><span class="glyphicon glyphicon-home"></span></a></li>
+				        <?
+				            }else {
+				        ?>
+				        <li <?=echoActiveClassIfRequestMatches("index")?>><a href="index.php" name="index"><span class="glyphicon glyphicon-home"></span></a></li>
+				        <?
+				            }
+				        ?>
 				        <li <?=echoActiveClassIfRequestMatches("listings")?>><a href="listings.php"><span name="Listings" class="glyphicon glyphicon-th-list"></span></a></li>
 				        <li <?=echoActiveClassIfRequestMatches("search")?>><a href="search.php"><span name="Search" class="glyphicon glyphicon-search"></span></a></li>
                     </ul>
@@ -141,7 +151,7 @@
 					                $accountLastName = $_SESSION["account_record"]['ContactLastName'];
 					            }
 			        ?>
-					            <a class="btn btn-default navbar-btn navbar-right" id="logoutButtonNav" href="index.php" role="button">Log out</a>
+					            <a class="btn btn-default navbar-btn navbar-right" id="logoutButtonNav" role="button">Log out</a>
 					            <p class="navbar-text navbar-right">Signed in as: <a href="<? print $_SESSION["account_route"] ?>" class="navbar-link" id="accountNameNav"><? print $accountFirstName . " " . $accountLastName ?></a></p>
 			        <?
 			                }
@@ -168,5 +178,6 @@
         $.ajax({
             url: 'templates/logout.php'
         });
+        window.location.href = "index.php";
     });
 </script>
