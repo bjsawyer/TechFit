@@ -1,14 +1,14 @@
 <?
-	// connects to database
-	require_once("connect_to_DB.php");
-	connectDB();
-?>
-<?
 	// session variable setup
 	if (!isset($_SESSION)) {
 		session_start();
 	}
 	ob_start();
+?>
+<?
+	// connects to database
+	require_once("connect_to_DB.php");
+	connectDB();
 ?>
 <?
 	if (!empty($_SESSION['account_record'])) {
@@ -56,11 +56,3 @@
 <?
 	};
 ?>
-<script>
-	$(document).ready(function(){    
-	    $('#login-tabs-justified-ul a').click(function (e) {
-			e.preventDefault()
-			$(this).tab('show')
-		});
-	});
-</script>

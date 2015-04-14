@@ -1,9 +1,4 @@
 <?
-	// connects to database
-	require_once("connect_to_DB.php");
-	connectDB();
-?>
-<?
 	// session variable setup
 	if (!isset($_SESSION)) {
 		session_start();
@@ -11,50 +6,72 @@
 	ob_start();
 ?>
 <?
+	// connects to database
+	require_once("connect_to_DB.php");
+	connectDB();
+?>
+<?
 	// verifies login information
 	function loginToUserOrProviderAccount() {
-		$loginEmail = $_REQUEST['loginEmail'];
+		$loginEmail = $_REQUEST["loginEmail"];
 		
 		try {
-		    $db = $GLOBALS['db'];
+		    $db = $GLOBALS["db"];
 		    
 		    $loginUserSql = "select * from User where Email = '{$loginEmail}'";
 		    $loginProviderSql = "select * from Provider where Email = '{$loginEmail}'";
 		    
 			$rsUser = mysqli_query($db, $loginUserSql);
-			$rsProvider = mysqli_query($db, $loginProviderSql);
+			$rsProviderLogin = mysqli_query($db, $loginProviderSql);
 			
 			// checks if query worked
-			if (!$rsUser && !$rsProvider) {
+			if (!$rsUser && !$rsProviderLogin) {
 				throw new Exception(mysqli_error($db));
 			}
 			
 		    // resets the record set
 		    mysqli_data_seek($rsUser, 0);
-		    mysqli_data_seek($rsProvider, 0);
+		    mysqli_data_seek($rsProviderLogin, 0);
 			
 			$userArray = mysqli_fetch_array($rsUser);
-			$providerArray = mysqli_fetch_array($rsProvider);
+			$providerLoginArray = mysqli_fetch_array($rsProviderLogin);
 			
 			// checks if login is a user or provider account
-			if (count($userArray) > 0 && count($providerArray) <= 0) {
-				$_SESSION['account_record'] = $userArray;
+			if (count($userArray) > 0 && count($providerLoginArray) <= 0) {
+				$_SESSION["account_record"] = $userArray;
+				$_SESSION["account_type"] = "User";
 				$route = "userHome.php?id=";
-				$routeId = $_SESSION['account_record']['UserId'];
-				$_SESSION['account_route'] = $route . $routeId;
+				$routeId = $_SESSION["account_record"]['UserId'];
+				$_SESSION["account_route"] = $route . $routeId;
 				
-				checkPasswordAndRouteToPage($_SESSION['account_record'], $_SESSION['account_route']);
-			}
-			elseif (count($providerArray) > 0 && count($userArray) <= 0) {
+				checkPasswordAndRouteToPage($_SESSION["account_record"], $_SESSION["account_route"]);
+				
+			}elseif (count($providerLoginArray) > 0 && count($userArray) <= 0) {
+				// checks if trainer, gym, or advertiser
+				$providerType = $providerLoginArray['ProviderType'];
+				$providerTypeSql = "select * from Provider inner join {$providerType} on Provider.ProviderId = {$providerType}.ProviderId where Provider.Email = '{$loginEmail}'";
+				$rsProvider = mysqli_query($db, $providerTypeSql);
+				if (!$rsProvider) {
+					throw new Exception(mysqli_error($db));
+				}
+				mysqli_data_seek($rsProvider, 0);
+				$providerArray = mysqli_fetch_array($rsProvider);
+				
 				$_SESSION["account_record"] = $providerArray;
+				$_SESSION["account_type"] = $_SESSION["account_record"]['ProviderType'];
 				$route = "providerHome.php?id=";
-				$routeId = $_SESSION['account_record']['ProviderId'];
-				$_SESSION['account_route'] = $route . $routeId;
+				$routeId = $_SESSION["account_record"]['ProviderId'];
+				$_SESSION["account_route"] = $route . $routeId;
 				
-				checkPasswordAndRouteToPage($_SESSION['account_record'], $_SESSION['account_route']);
-			}
-			else {
-				print("<center><h2>Wrong email or password!</h2></center>");
+				checkPasswordAndRouteToPage($_SESSION["account_record"], $_SESSION["account_route"]);
+				
+			}else {
+			?>
+				<div class="show alert alert-danger alert-dismissible fade in" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Error:</strong> Incorrect email or password, please try  signing in again.
+				</div>
+			<?
 			}
 			
 			mysqli_close($db);
@@ -67,12 +84,17 @@
 	
 	// checks password and routes to home page if correct
 	function checkPasswordAndRouteToPage($accountData, $accountRoute) {
-		$loginPassword = $_REQUEST['loginPassword'];
+		$loginPassword = $_REQUEST["loginPassword"];
 		
-		if ($loginPassword == $accountData['Password']) {
+		if ($loginPassword == $accountData["Password"]) {
 			header('Location: ' . $accountRoute);
 		}else {
-            print("<center><h2>Wrong email or password!</h2></center>");
+            ?>
+				<div class="show alert alert-danger alert-dismissible fade in" role="alert">
+					<button type="button" class="close" href="navMenu.php" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Error:</strong> Incorrect email or password, please try  signing in again.
+				</div>
+			<?
         }
 	}
 ?>
@@ -91,16 +113,16 @@
 			    </div>
 			    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-left" id="nav-pills-format">
-		                <li <?=echoActiveClassIfRequestMatches($_SESSION['account_route'])?>><a href="<? print $_SESSION['account_route'] ?>" name="userHome"><span class="glyphicon glyphicon-home"></span></a></li>
+		                <li <?=echoActiveClassIfRequestMatches($_SESSION["account_route"])?>><a href="<? print $_SESSION["account_route"] ?>" name="userHome"><span class="glyphicon glyphicon-home"></span></a></li>
 				        <li <?=echoActiveClassIfRequestMatches("listings")?>><a href="listings.php"><span name="Listings" class="glyphicon glyphicon-th-list"></span></a></li>
 				        <li <?=echoActiveClassIfRequestMatches("search")?>><a href="search.php"><span name="Search" class="glyphicon glyphicon-search"></span></a></li>
                     </ul>
                     <?
 						// checks if "login" button has been pressed
-						if (isset($_REQUEST['loginSubmit'])) {
+						if (isset($_REQUEST["loginSubmit"])) {
 							loginToUserOrProviderAccount();
 						}else {
-	                        if(empty($_SESSION['account_record'])) {
+	                        if (empty($_SESSION["account_record"])) {
                     ?>
 			                    <form class="navbar-form navbar-right" role="login">
 							        <div class="form-group">
@@ -111,14 +133,19 @@
 						        </form>
 			        <?
 				            }else {
-				                $accountFirstName = $_SESSION['account_record']["FirstName"];			                
-				                $accountLastName = $_SESSION['account_record']["LastName"];
+				                if ($_SESSION["account_type"] == "User" OR $_SESSION["account_type"] == "Trainer") {
+					                $accountFirstName = $_SESSION["account_record"]["FirstName"];             
+					                $accountLastName = $_SESSION["account_record"]["LastName"];
+								}elseif ($_SESSION["account_type"] == "Gym" OR $_SESSION["account_type"] == "Advertiser") {
+					                $accountFirstName = $_SESSION["account_record"]['ContactFirstName'];			                
+					                $accountLastName = $_SESSION["account_record"]['ContactLastName'];
+					            }
 			        ?>
 					            <a class="btn btn-default navbar-btn navbar-right" id="logoutButtonNav" href="index.php" role="button">Log out</a>
-					            <p class="navbar-text navbar-right">Signed in as: <a href="<? print $_SESSION['account_route'] ?>" class="navbar-link" id="accountNameNav"><? print $accountFirstName . " " . $accountLastName ?></a></p>
+					            <p class="navbar-text navbar-right">Signed in as: <a href="<? print $_SESSION["account_route"] ?>" class="navbar-link" id="accountNameNav"><? print $accountFirstName . " " . $accountLastName ?></a></p>
 			        <?
-			                };
-			            };
+			                }
+			            }
 			        ?>
                 </div>
             </div>
@@ -129,7 +156,7 @@
 	// determines active nav button
 	function echoActiveClassIfRequestMatches($requestUri)
 	{
-	    $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+	    $current_file_name = basename($_SERVER["REQUEST_URI"], ".php");
 	
 	    if ($current_file_name == $requestUri) {
 	        echo 'class="active"';
