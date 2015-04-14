@@ -31,36 +31,56 @@
 									<fieldset>
 										<div class="form-group">
 											<div class="row row-centered row-padding">
-												<label class="sr-only" for="userFirstName">First Name</label>
 												<div class="col-sm-6 col-centered">
-				                                    <input type="text" class="form-control" id="userFirstName" name="newFirstName" placeholder="First name">
-				                                    </div>
+				                                    <input type="text" class="form-control" id="newFirstName" name="newFirstName" placeholder="First name">
 				                                </div>
-				                                <div class="row row-centered row-padding">
-												<label class="sr-only" for="userLastName">Last Name</label>
+				                            </div>
+				                            <div class="row row-centered row-padding">
 												<div class="col-sm-6 col-centered">
-													<input type="text" class="form-control" id="userLastName" name="newLastName" placeholder="Last name">
+													<input type="text" class="form-control" id="newLastName" name="newLastName" placeholder="Last name">
 												</div>
 											</div>
 											<div class="row row-centered row-padding">
-												<label class="sr-only" for="userNewEmail">Email</label>
 												<div class="col-sm-6 col-centered">
-				                                        <input type="email" class="form-control" id="userNewEmail" name="newEmail" placeholder="Email">
-				                                    </div>
+				                                        <input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="Email">
+				                                </div>
 											</div>
 											<div class="row row-centered row-padding">
-												<label class="sr-only" for="userNewPassword">Password</label>
 												<div class="col-sm-6 col-centered">
-													<input type="password" class="form-control" id="userNewPassword" name="newPassword" placeholder="Password">
+													<input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Password">
+												</div>
+											</div>
+											<div class="row row-centered row-padding">
+												<div class="col-sm-6 col-centered">
+													<input type="text" class="form-control" id="newAddress" name="newAddress" placeholder="Address">
+												</div>
+											</div>
+											<div class="row row-centered row-padding">
+												<div class="col-sm-6 col-centered">
+													<input type="text" class="form-control" id="newCity" name="newCity" placeholder="City">
+												</div>
+											</div>
+											<div class="row row-centered row-padding">
+												<div class="col-sm-6 col-centered">
+													<select class="form-control" id="newState" name="newState"></select>
+												</div>
+											</div>
+											<div class="row row-centered row-padding">
+												<div class="col-sm-6 col-centered">
+													<input type="text" class="form-control" id="newAddress" name="newZipCode" placeholder="Zip Code">
+												</div>
+											</div>
+											<div class="row row-centered row-padding">
+												<div class="col-sm-6 col-centered">
+													<input type="text" class="form-control" id="newPhoneNumber" name="newPhoneNumber" placeholder="Phone">
 												</div>
 											</div>
 											<div class="row row-centered">
-												<label class="sr-only"  for="type">Account type</label>
 												<div class="col-sm-6 col-centered">
-													<select class="form-control" id="accountType" name="newAccountType">
-														<option value="" selected disabled>Select your account type</option>
+													<select class="form-control" id="newAccountType" name="newAccountType">
+														<option value="" selected disabled>Type of account</option>
 														<option value="trainer">I am a trainer</option>
-														<option value="trainer">I am with a gym</option>
+														<option value="gym">I am with a gym</option>
 														<option value="user">I am searching for a trainer or gym</option>
 													</select>
 												</div>
@@ -97,4 +117,20 @@
 			$(this).tab('show')
 		});
 	});
+	
+    var $select = $('#newState');
+ 
+    //request the JSON data and parse into the select element
+    $.getJSON('us_states.json', function(data){
+ 
+	    //clear the current content of the select
+	    $select.html('');
+	 
+	    $select.find('option').remove();
+	    $('<option selected disabled>').val("").text("State").appendTo($select);                          
+		$.each(data, function(key, value) {              
+		    $('<option>').val(key).text(value).appendTo($select);
+		});
+		console.log($select.html());
+    });
 </script>
