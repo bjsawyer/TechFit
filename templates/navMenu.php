@@ -66,12 +66,15 @@
 				checkPasswordAndRouteToPage($_SESSION["account_record"], $_SESSION["account_route"]);
 				
 			}else {
-				?>
-		            <div class="alert alert-danger alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<strong>Error:</strong> Incorrect email or password, please try  signing in again.
-					</div>
-                <?
+				$_SESSION["account_record"] = [];
+				header('Location: index.php?loginFailed');
+				exit;
+			?>
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Error:</strong> Incorrect email or password, please try  signing in again.
+				</div>
+			<?
 			}
 			
 			mysqli_close($db);
@@ -79,6 +82,7 @@
 		
 		}catch(Exception $e) {
 			header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
+			exit;
 		}
 	}
 	
@@ -88,13 +92,17 @@
 		
 		if ($loginPassword == $accountData["Password"]) {
 			header('Location: ' . $accountRoute);
+			exit;
 		}else {
-				?>
-		            <div class="alert alert-danger alert-dismissible" role="alert">
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<strong>Error:</strong> Incorrect email or password, please try  signing in again.
-					</div>
-                <?
+			$_SESSION["account_record"] = [];
+			header('Location: index.php?loginFailed');
+			exit;
+		?>
+			<div class="alert alert-danger alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<strong>Error:</strong> Incorrect email or password, please try  signing in again.
+			</div>
+		<?
 			}
 	}
 ?>
@@ -116,16 +124,16 @@
                         <?
                             if (!empty($_SESSION["account_route"])) {
                         ?>
-		                <li <?=echoActiveClassIfRequestMatches($_SESSION["account_route"])?>><a href="<? print $_SESSION["account_route"] ?>" name="userHome"><span class="glyphicon glyphicon-home"></span></a></li>
+		                        <li <?=echoActiveClassIfRequestMatches($_SESSION["account_route"])?>><a href="<? print $_SESSION["account_route"] ?>" name="userHome"><span class="glyphicon glyphicon-home"></span></a></li>
 				        <?
 				            }else {
 				        ?>
-				        <li <?=echoActiveClassIfRequestMatches("index")?>><a href="index.php" name="index"><span class="glyphicon glyphicon-home"></span></a></li>
+				                <li <?=echoActiveClassIfRequestMatches("index")?>><a href="index.php" name="index"><span class="glyphicon glyphicon-home"></span></a></li>
 				        <?
 				            }
 				        ?>
-				        <li <?=echoActiveClassIfRequestMatches("listings")?>><a href="listings.php"><span name="Listings" class="glyphicon glyphicon-th-list"></span></a></li>
-				        <li <?=echoActiveClassIfRequestMatches("search")?>><a href="search.php"><span name="Search" class="glyphicon glyphicon-search"></span></a></li>
+						        <li <?=echoActiveClassIfRequestMatches("listings")?>><a href="listings.php"><span name="Listings" class="glyphicon glyphicon-th-list"></span></a></li>
+						        <li <?=echoActiveClassIfRequestMatches("search")?>><a href="search.php"><span name="Search" class="glyphicon glyphicon-search"></span></a></li>
                     </ul>
                     <?
 						// checks if "login" button has been pressed

@@ -66,6 +66,9 @@
 				checkPasswordAndRouteToPage($_SESSION["account_record"], $_SESSION["account_route"]);
 				
 			}else {
+				$_SESSION["account_record"] = [];
+				header('Location: index.php?loginFailed');
+				exit;
 			?>
 				<div class="alert alert-danger alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -79,6 +82,7 @@
 		
 		}catch(Exception $e) {
 			header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
+			exit;
 		}
 	}
 	
@@ -88,14 +92,18 @@
 		
 		if ($loginPassword == $accountData["Password"]) {
 			header('Location: ' . $accountRoute);
+			exit;
 		}else {
+			$_SESSION["account_record"] = [];
+			header('Location: index.php?loginFailed');
+			exit;
 		?>
-            <div class="alert alert-danger alert-dismissible" role="alert">
+			<div class="alert alert-danger alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<strong>Error:</strong> Incorrect email or password, please try  signing in again.
 			</div>
-        <?
-        }
+		<?
+		}
 	}
 ?>
 <div class="masthead clearfix">
