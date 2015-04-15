@@ -1,3 +1,15 @@
+<?
+	// session variable setup
+	if (!isset($_SESSION)) {
+		session_start();
+	}
+	ob_start();
+?>
+<?
+	// connects to database
+	require_once("connect_to_DB.php");
+	connectDB();
+?>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -12,7 +24,6 @@
 	
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
-
 <body>
 	<div class="site-wrapper">
         <div class="site-wrapper-inner-listings">
@@ -26,72 +37,94 @@
 							<div class="panel-heading">
 								<h2 class="panel-title"><strong>Available Gyms & Trainers</strong></h2>
 							</div>
+							<?
+								try {
+									// pulls all trainers from database
+									$trainersSql = "select * from Provider inner join Trainer on Provider.ProviderId = Trainer.ProviderId order by MembershipLevel";
+									$rsTrainers = mysqli_query($db, $trainersSql);
+									if (!$rsTrainers) {
+										throw new Exception(mysqli_error($db));
+									}
+									mysqli_data_seek($rsTrainers, 0);
+									
+									// pulls all gyms from database
+									$gymsSql = "select * from Provider inner join Gym on Provider.ProviderId = Gym.ProviderId order by MembershipLevel";
+									$rsGyms = mysqli_query($db, $gymsSql);
+									if (!$rsGyms) {
+										throw new Exception(mysqli_error($db));
+									}
+									mysqli_data_seek($rsGyms, 0);
+									
+									mysqli_close($db);
+									unset($db);  
+									
+								}catch(Exception $e) {
+									header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
+									exit;
+								}
+							?>						
+							<?
+								// sets up and displays data for trainer listing
+								function renderTrainerListing($row) {
+									$trainerName = $row['FirstName'] . " " . $row['LastName'];
+									$trainerAddress = $row['Address'];
+									$trainerCity = $row['City'];
+									$trainerState = $row['State'];
+									$trainerZipCode = $row['ZipCode'];
+									$trainerPhone = $row['Phone'];
+							?>
+									<div class="well">
+										<span class="well-listings-icons">
+											<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-4-user.png"></img></span>
+										</span>
+										<span class="well-listings-text">
+											<h4><? print $trainerName ?></h4>
+											<address>
+												  <? print $trainerAddress ?><br>
+												  <? print $trainerCity ?>, <? print $trainerState ?> <? print $trainerZipCode?><br>
+												  Phone: <? print $trainerPhone ?>
+											</address>
+										</span>
+									</div>
+							<?
+								}
+							?>
+							<?
+								// sets up and displays data for gym listing
+								function renderGymListing($row) {
+									$gymName = $row['Name'];
+									$gymAddress = $row['Address'];
+									$gymCity = $row['City'];
+									$gymState = $row['State'];
+									$gymZipCode = $row['ZipCode'];
+									$gymPhone = $row['Phone'];
+							?>
+									<div class="well">
+										<span class="well-listings-icons">
+											<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-357-dumbbell.png"></img></span>
+										</span>
+										<span class="well-listings-text">
+											<h4><? print $gymName ?></h4>
+											<address>
+												  <? print $gymAddress ?><br>
+												  <? print $gymCity ?>, <? print $gymState ?> <? print $gymZipCode?><br>
+												  Phone: <? print $gymPhone ?>
+											</address>
+										</span>
+									</div>
+							<?
+								}
+							?>
 							<div class="panel-body">
-								<div class="well">
-									<span class="well-listings-icons">
-										<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-357-dumbbell.png"></img></span>
-									</span>
-									<span class="well-listings-text">
-										<h4>Gym Sample Listing 1</h4>
-										<address>
-											  795 Folsom Ave, Suite 600<br>
-											  San Francisco, CA 94107<br>
-											  Phone: (123) 456-7890
-										</address>
-									</span>
-								</div>
-								<div class="well">
-									<span class="well-listings-icons">
-										<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-4-user.png"></img></span>
-									</span>
-									<span class="well-listings-text">
-										<h4>Trainer Sample Listing 2</h4>
-										<address>
-											  795 Folsom Ave, Suite 600<br>
-											  San Francisco, CA 94107<br>
-											  Phone: (123) 456-7890
-										</address>
-									</span>
-								</div>
-								<div class="well">
-									<span class="well-listings-icons">
-										<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-4-user.png"></img></span>
-									</span>
-									<span class="well-listings-text">
-										<h4>Trainer Sample Listing 2</h4>
-										<address>
-											  795 Folsom Ave, Suite 600<br>
-											  San Francisco, CA 94107<br>
-											  Phone: (123) 456-7890
-										</address>
-									</span>
-								</div>
-								<div class="well">
-									<span class="well-listings-icons">
-										<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-4-user.png"></img></span>
-									</span>
-									<span class="well-listings-text">
-										<h4>Trainer Sample Listing 2</h4>
-										<address>
-											  795 Folsom Ave, Suite 600<br>
-											  San Francisco, CA 94107<br>
-											  Phone: (123) 456-7890
-										</address>
-									</span>
-								</div>
-								<div class="well">
-									<span class="well-listings-icons">
-										<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-4-user.png"></img></span>
-									</span>
-									<span class="well-listings-text">
-										<h4>Trainer Sample Listing 2</h4>
-										<address>
-											  795 Folsom Ave, Suite 600<br>
-											  San Francisco, CA 94107<br>
-											  Phone: (123) 456-7890
-										</address>
-									</span>
-								</div>
+								<?
+									 while($row = mysqli_fetch_array($rsTrainers, MYSQLI_ASSOC)) {
+									    renderTrainerListing($row);
+									 }
+									 
+									 while($row = mysqli_fetch_array($rsGyms, MYSQLI_ASSOC)) {
+									    renderGymListing($row);
+									 }
+								?>
 								<nav>
 								    <ul class="pagination">
 								        <li class="disabled">
