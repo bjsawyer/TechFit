@@ -40,23 +40,39 @@
 							<?
 								try {
 									// pulls all trainers from database
-									$trainersSql = "select * from Provider inner join Trainer on Provider.ProviderId = Trainer.ProviderId order by MembershipLevel";
-									$rsTrainers = mysqli_query($db, $trainersSql);
-									if (!$rsTrainers) {
+									$trainersSql1 = "select * from Provider inner join Trainer on Provider.ProviderId = Trainer.ProviderId where MembershipLevel='Platinum'";
+									$trainersSql2 = "select * from Provider inner join Trainer on Provider.ProviderId = Trainer.ProviderId where MembershipLevel='Gold'";
+									$trainersSql3 = "select * from Provider inner join Trainer on Provider.ProviderId = Trainer.ProviderId where MembershipLevel='Silver'";
+									
+									$rsTrainers1 = mysqli_query($db, $trainersSql1);
+									$rsTrainers2 = mysqli_query($db, $trainersSql2);
+									$rsTrainers3 = mysqli_query($db, $trainersSql3);
+									
+									if (!$rsTrainers1 && !$rsTrainers2 && $rsTrainers3) {
 										throw new Exception(mysqli_error($db));
 									}
-									mysqli_data_seek($rsTrainers, 0);
+									mysqli_data_seek($rsTrainers1, 0);
+									mysqli_data_seek($rsTrainers2, 0);
+									mysqli_data_seek($rsTrainers3, 0);
 									
 									// pulls all gyms from database
-									$gymsSql = "select * from Provider inner join Gym on Provider.ProviderId = Gym.ProviderId order by MembershipLevel";
-									$rsGyms = mysqli_query($db, $gymsSql);
-									if (!$rsGyms) {
+									$gymsSql1 = "select * from Provider inner join Gym on Provider.ProviderId = Gym.ProviderId where MembershipLevel='Platinum'";
+									$gymsSql2 = "select * from Provider inner join Gym on Provider.ProviderId = Gym.ProviderId where MembershipLevel='Gold'";
+									$gymsSql3 = "select * from Provider inner join Gym on Provider.ProviderId = Gym.ProviderId where MembershipLevel='Silver'";
+									
+									$rsGyms1 = mysqli_query($db, $gymsSql1);
+									$rsGyms2 = mysqli_query($db, $gymsSql2);
+									$rsGyms3 = mysqli_query($db, $gymsSql3);
+									
+									if (!$rsGyms1 && !$rsGyms2 && $rsGyms3) {
 										throw new Exception(mysqli_error($db));
 									}
-									mysqli_data_seek($rsGyms, 0);
+									mysqli_data_seek($rsGyms1, 0);
+									mysqli_data_seek($rsGyms2, 0);
+									mysqli_data_seek($rsGyms3, 0);
 									
 									mysqli_close($db);
-									unset($db);  
+									unset($db);
 									
 								}catch(Exception $e) {
 									header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
@@ -64,7 +80,7 @@
 								}
 							?>						
 							<?
-								// sets up and displays data for trainer listing
+								// sets up data for trainer listing
 								function renderTrainerListing($row) {
 									$trainerName = $row['FirstName'] . " " . $row['LastName'];
 									$trainerAddress = $row['Address'];
@@ -90,7 +106,7 @@
 								}
 							?>
 							<?
-								// sets up and displays data for gym listing
+								// sets up data for gym listing
 								function renderGymListing($row) {
 									$gymName = $row['Name'];
 									$gymAddress = $row['Address'];
@@ -116,14 +132,36 @@
 								}
 							?>
 							<div class="panel-body">
-								<?
-									 while($row = mysqli_fetch_array($rsTrainers, MYSQLI_ASSOC)) {
-									    renderTrainerListing($row);
-									 }
+								<? 
+									// displays platinum trainers
+									while($row = mysqli_fetch_array($rsTrainers1, MYSQLI_ASSOC)) {
+										renderTrainerListing($row);
+									}
+									
+									// displays platinum gyms
+									while($row = mysqli_fetch_array($rsGyms1, MYSQLI_ASSOC)) {
+										renderGymListing($row);
+									}
+									
+									// displays gold trainers
+									while($row = mysqli_fetch_array($rsTrainers2, MYSQLI_ASSOC)) {
+										renderTrainerListing($row);
+									}
+									
+									// displays gold gyms
+									while($row = mysqli_fetch_array($rsGyms2, MYSQLI_ASSOC)) {
+										renderGymListing($row);
+									}
+									
+									// displays silver trainers
+									while($row = mysqli_fetch_array($rsTrainers3, MYSQLI_ASSOC)) {
+										renderTrainerListing($row);
+									}
 									 
-									 while($row = mysqli_fetch_array($rsGyms, MYSQLI_ASSOC)) {
-									    renderGymListing($row);
-									 }
+									// displays silver gyms
+									while($row = mysqli_fetch_array($rsGyms3, MYSQLI_ASSOC)) {
+										renderGymListing($row);
+									}
 								?>
 								<nav>
 								    <ul class="pagination">
