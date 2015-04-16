@@ -133,7 +133,7 @@
 				            }
 				        ?>
 						        <li <?=echoActiveClassIfRequestMatches("listings")?>><a href="listings.php"><span name="Listings" class="glyphicon glyphicon-th-list"></span></a></li>
-						        <li <?=echoActiveClassIfRequestMatches("search")?>><a href="search.php"><span name="Search" class="glyphicon glyphicon-search"></span></a></li>
+						        <li <?=echoActiveClassIfRequestMatches("search" || "searchResults")?>><a href="search.php"><span name="Search" class="glyphicon glyphicon-search"></span></a></li>
                     </ul>
                     <?
 						// checks if "login" button has been pressed
