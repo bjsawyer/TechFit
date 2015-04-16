@@ -131,8 +131,28 @@
 							<?
 								}
 							?>
-							<div class="panel-body">
-								<? 
+							
+							<div class="panel-body">	
+								<div class="panel panel-info" id="filter-panel">
+									<div class="panel-heading">
+										<h3 class="panel-title">Filter</h3>
+									</div>
+									<div class="panel-body">
+									    <div class="checkbox">
+											<label>
+												<input type="checkbox" id="showTrainers" value="show">
+												Trainers
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" id="showGyms" value="show">
+												Gyms
+											</label>
+										</div>
+									</div>
+								</div>
+								<?
 									// displays platinum trainers
 									while($row = mysqli_fetch_array($rsTrainers1, MYSQLI_ASSOC)) {
 										renderTrainerListing($row);
@@ -189,3 +209,16 @@
     </div>
 </body>
 </html>
+<script>
+	var trainersShown = document.getElementById("showTrainers").value;
+	var gymsShown = document.getElementById("showGyms").value;
+	$('#showTrainers').change(function() {
+		if ((trainersShown == "show" && gymsShown == "show") || (trainersShown != "show" && gymsShown != "show") {
+			
+		}else if (trainersShown == "show") {
+		
+		}else if (gymsShown == "show") {
+			
+		}
+	});
+</script>

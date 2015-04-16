@@ -92,6 +92,9 @@ right: 0;
 #logoutButtonNav{
 	margin-left: 15px;
 }
+#filter-panel{
+	text-align: left;
+}
   
 /* Links */
 a,
