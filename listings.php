@@ -170,67 +170,56 @@
 									<div class="panel-body">
 									    <div class="checkbox">
 											<label>
-												<input type="checkbox" id="showTrainers">
+												<input type="checkbox" class="filter-checkboxes" id="showTrainers">
 												Trainers
 											</label>
 										</div>
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" id="showGyms">
+												<input type="checkbox" class="filter-checkboxes" id="showGyms">
 												Gyms
 											</label>
 										</div>
 									</div>
 								</div>
-								<div class="hidden" id="listings-all">
+								<div class="listings-results" id="listings-all">
 									<?
 										$allArray = [];
 										foreach($listings as $row => $value) {
 											foreach($value as $col => $value2) {
-												$arrIndex = $row;
-												$allArray[] = $listings[$arrIndex];
+												if ($col == "ProviderType" && $value2 == "Trainer") {
+													renderTrainerListing($listings[$row]);
+												}elseif ($col == "ProviderType" && $value2 == "Gym") {
+													renderGymListing($listings[$row]);
+												}
 											}
-										}							
-										
-										foreach($allArray as $row => $value) {
-											renderTrainerListing($allArray[$row]);
 										}
 									?>
 								</div>
-								<div class="hidden" id="listings-trainers">
+								<div class="listings-results" id="listings-trainers">
 									<?
 										// filters to show only trainers
 										$trainersOnlyArray = [];
 										foreach($listings as $row => $value) {
 											foreach($value as $col => $value2) {
 												if ($col == "ProviderType" && $value2 == "Trainer") {
-													$arrIndex = $row;
-													$trainersOnlyArray[] = $listings[$arrIndex];
+													renderTrainerListing($listings[$row]);
 												}
 											}
-										}	
-											
-										foreach($trainersOnlyArray as $row => $value) {
-											renderTrainerListing($trainersOnlyArray[$row]);
 										}
 									?>
 								</div>
-								<div class="hidden" id="listings-gyms">
+								<div class="listings-results" id="listings-gyms">
 									<?
 										// filters to show only gyms
 										$gymsOnlyArray = [];
 										foreach($listings as $row => $value) {
 											foreach($value as $col => $value2) {
 												if ($col == "ProviderType" && $value2 == "Gym") {
-													$arrIndex = $row;
-													$gymsOnlyArray[] = $listings[$arrIndex];
+													renderGymListing($listings[$row]);
 												}
 											}
-										}	
-											
-										foreach($gymsOnlyArray as $row => $value) {
-											renderGymListing($gymsOnlyArray[$row]);
-										}	
+										}
 									?>
 								</div>
 								<nav>
@@ -261,21 +250,30 @@
 </html>
 
 <script>
-	$('#showTrainers').change(function(){
-        if (this.checked) {
-            $('#listings-trainers').removeClass("hidden").addClass("show");
-        }
-        else {
-            $('#listings-trainers').removeClass("show").addClass("hidden");
-        }
+	var numChecked = $('.filter-checkboxes:checked').length;
+	var numTotal = $('.filter-checkboxes').length;
+	$(document).ready(function() {
+		$('.listings-results').addClass("hidden").removeClass("show");
+		$('#listings-all').removeClass("hidden");
+		$('#listings-all').addClass("show");
 	});
 	
-	$('#showGyms').change(function(){
-        if (this.checked) {
-            $('#listings-gyms').removeClass("hidden").addClass("show");
-        }
-        else {
-            $('#listings-gyms').removeClass("show").addClass("hidden");
+	$("input[type='checkbox'].filter-checkboxes").change(function(){
+		numChecked = $('.filter-checkboxes:checked').length;
+		numTotal = $('.filter-checkboxes').length;
+        if (numChecked == numTotal || numChecked == 0) {
+            $('.listings-results').addClass("hidden").removeClass("show");
+			$('#listings-all').removeClass("hidden");
+			$('#listings-all').addClass("show");
+        }else {
+            $('.listings-results').addClass("hidden").removeClass("show");
+            if ($('#showTrainers').is(':checked')) {
+                $('.listings-results').addClass("hidden").removeClass("show");
+				$('#listings-trainers').addClass("show").removeClass("hidden");
+            }else if ($('#showGyms').is(':checked')) {
+                $('.listings-results').addClass("hidden").removeClass("show");
+				$('#listings-gyms').addClass("show").removeClass("hidden");
+            }
         }
 	});
 </script>
