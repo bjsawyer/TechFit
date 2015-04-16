@@ -44,32 +44,64 @@
 									$trainersSql2 = "select * from Provider inner join Trainer on Provider.ProviderId = Trainer.ProviderId where MembershipLevel='Gold'";
 									$trainersSql3 = "select * from Provider inner join Trainer on Provider.ProviderId = Trainer.ProviderId where MembershipLevel='Silver'";
 									
-									$rsTrainers1 = mysqli_query($db, $trainersSql1);
-									$rsTrainers2 = mysqli_query($db, $trainersSql2);
-									$rsTrainers3 = mysqli_query($db, $trainersSql3);
+									$_SESSION['$rsTrainers1'] = mysqli_query($db, $trainersSql1);
+									$_SESSION['$rsTrainers2'] = mysqli_query($db, $trainersSql2);
+									$_SESSION['$rsTrainers3'] = mysqli_query($db, $trainersSql3);
 									
-									if (!$rsTrainers1 && !$rsTrainers2 && $rsTrainers3) {
+									if (!$_SESSION['$rsTrainers1'] && !$_SESSION['$rsTrainers2'] && $_SESSION['$rsTrainers3']) {
 										throw new Exception(mysqli_error($db));
 									}
-									mysqli_data_seek($rsTrainers1, 0);
-									mysqli_data_seek($rsTrainers2, 0);
-									mysqli_data_seek($rsTrainers3, 0);
+									mysqli_data_seek($_SESSION['$rsTrainers1'], 0);
+									mysqli_data_seek($_SESSION['$rsTrainers2'], 0);
+									mysqli_data_seek($_SESSION['$rsTrainers3'], 0);
 									
 									// pulls all gyms from database
 									$gymsSql1 = "select * from Provider inner join Gym on Provider.ProviderId = Gym.ProviderId where MembershipLevel='Platinum'";
 									$gymsSql2 = "select * from Provider inner join Gym on Provider.ProviderId = Gym.ProviderId where MembershipLevel='Gold'";
 									$gymsSql3 = "select * from Provider inner join Gym on Provider.ProviderId = Gym.ProviderId where MembershipLevel='Silver'";
 									
-									$rsGyms1 = mysqli_query($db, $gymsSql1);
-									$rsGyms2 = mysqli_query($db, $gymsSql2);
-									$rsGyms3 = mysqli_query($db, $gymsSql3);
+									$_SESSION['$rsGyms1'] = mysqli_query($db, $gymsSql1);
+									$_SESSION['$rsGyms2'] = mysqli_query($db, $gymsSql2);
+									$_SESSION['$rsGyms3'] = mysqli_query($db, $gymsSql3);
 									
-									if (!$rsGyms1 && !$rsGyms2 && $rsGyms3) {
+									if (!$_SESSION['$rsGyms1'] && !$_SESSION['$rsGyms2'] && $_SESSION['$rsGyms3']) {
 										throw new Exception(mysqli_error($db));
 									}
-									mysqli_data_seek($rsGyms1, 0);
-									mysqli_data_seek($rsGyms2, 0);
-									mysqli_data_seek($rsGyms3, 0);
+									mysqli_data_seek($_SESSION['$rsGyms1'], 0);
+									mysqli_data_seek($_SESSION['$rsGyms2'], 0);
+									mysqli_data_seek($_SESSION['$rsGyms3'], 0);
+									
+									$listings = array();
+									
+									// platinum trainers
+									while($row = mysqli_fetch_array($_SESSION['$rsTrainers1'], MYSQLI_BOTH)) {
+										$listings[] = $row;
+									}
+									
+									// platinum gyms
+									while($row = mysqli_fetch_array($_SESSION['$rsGyms1'], MYSQLI_BOTH)) {
+										$listings[] = $row;
+									}
+									
+									// gold trainers
+									while($row = mysqli_fetch_array($_SESSION['$rsTrainers2'], MYSQLI_BOTH)) {
+										$listings[] = $row;
+									}
+									
+									// gold gyms
+									while($row = mysqli_fetch_array($_SESSION['$rsGyms2'], MYSQLI_BOTH)) {
+										$listings[] = $row;
+									}
+									
+									// silver trainers
+									while($row = mysqli_fetch_array($_SESSION['$rsTrainers3'], MYSQLI_BOTH)) {
+										$listings[] = $row;
+									}
+									 
+									// silver gyms
+									while($row = mysqli_fetch_array($_SESSION['$rsGyms3'], MYSQLI_BOTH)) {
+										$listings[] = $row;
+									}
 									
 									mysqli_close($db);
 									unset($db);
@@ -78,8 +110,7 @@
 									header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
 									exit;
 								}
-							?>						
-							<?
+								
 								// sets up data for trainer listing
 								function renderTrainerListing($row) {
 									$trainerName = $row['FirstName'] . " " . $row['LastName'];
@@ -104,8 +135,7 @@
 									</div>
 							<?
 								}
-							?>
-							<?
+								
 								// sets up data for gym listing
 								function renderGymListing($row) {
 									$gymName = $row['Name'];
@@ -140,49 +170,69 @@
 									<div class="panel-body">
 									    <div class="checkbox">
 											<label>
-												<input type="checkbox" id="showTrainers" value="show">
+												<input type="checkbox" id="showTrainers">
 												Trainers
 											</label>
 										</div>
 										<div class="checkbox">
 											<label>
-												<input type="checkbox" id="showGyms" value="show">
+												<input type="checkbox" id="showGyms">
 												Gyms
 											</label>
 										</div>
 									</div>
 								</div>
-								<?
-									// displays platinum trainers
-									while($row = mysqli_fetch_array($rsTrainers1, MYSQLI_ASSOC)) {
-										renderTrainerListing($row);
-									}
-									
-									// displays platinum gyms
-									while($row = mysqli_fetch_array($rsGyms1, MYSQLI_ASSOC)) {
-										renderGymListing($row);
-									}
-									
-									// displays gold trainers
-									while($row = mysqli_fetch_array($rsTrainers2, MYSQLI_ASSOC)) {
-										renderTrainerListing($row);
-									}
-									
-									// displays gold gyms
-									while($row = mysqli_fetch_array($rsGyms2, MYSQLI_ASSOC)) {
-										renderGymListing($row);
-									}
-									
-									// displays silver trainers
-									while($row = mysqli_fetch_array($rsTrainers3, MYSQLI_ASSOC)) {
-										renderTrainerListing($row);
-									}
-									 
-									// displays silver gyms
-									while($row = mysqli_fetch_array($rsGyms3, MYSQLI_ASSOC)) {
-										renderGymListing($row);
-									}
-								?>
+								<div class="hidden" id="listings-all">
+									<?
+										$allArray = [];
+										foreach($listings as $row => $value) {
+											foreach($value as $col => $value2) {
+												$arrIndex = $row;
+												$allArray[] = $listings[$arrIndex];
+											}
+										}							
+										
+										foreach($allArray as $row => $value) {
+											renderTrainerListing($allArray[$row]);
+										}
+									?>
+								</div>
+								<div class="hidden" id="listings-trainers">
+									<?
+										// filters to show only trainers
+										$trainersOnlyArray = [];
+										foreach($listings as $row => $value) {
+											foreach($value as $col => $value2) {
+												if ($col == "ProviderType" && $value2 == "Trainer") {
+													$arrIndex = $row;
+													$trainersOnlyArray[] = $listings[$arrIndex];
+												}
+											}
+										}	
+											
+										foreach($trainersOnlyArray as $row => $value) {
+											renderTrainerListing($trainersOnlyArray[$row]);
+										}
+									?>
+								</div>
+								<div class="hidden" id="listings-gyms">
+									<?
+										// filters to show only gyms
+										$gymsOnlyArray = [];
+										foreach($listings as $row => $value) {
+											foreach($value as $col => $value2) {
+												if ($col == "ProviderType" && $value2 == "Gym") {
+													$arrIndex = $row;
+													$gymsOnlyArray[] = $listings[$arrIndex];
+												}
+											}
+										}	
+											
+										foreach($gymsOnlyArray as $row => $value) {
+											renderGymListing($gymsOnlyArray[$row]);
+										}	
+									?>
+								</div>
 								<nav>
 								    <ul class="pagination">
 								        <li class="disabled">
@@ -209,16 +259,23 @@
     </div>
 </body>
 </html>
+
 <script>
-	var trainersShown = document.getElementById("showTrainers").value;
-	var gymsShown = document.getElementById("showGyms").value;
-	$('#showTrainers').change(function() {
-		if ((trainersShown == "show" && gymsShown == "show") || (trainersShown != "show" && gymsShown != "show") {
-			
-		}else if (trainersShown == "show") {
-		
-		}else if (gymsShown == "show") {
-			
-		}
+	$('#showTrainers').change(function(){
+        if (this.checked) {
+            $('#listings-trainers').removeClass("hidden").addClass("show");
+        }
+        else {
+            $('#listings-trainers').removeClass("show").addClass("hidden");
+        }
+	});
+	
+	$('#showGyms').change(function(){
+        if (this.checked) {
+            $('#listings-gyms').removeClass("hidden").addClass("show");
+        }
+        else {
+            $('#listings-gyms').removeClass("show").addClass("hidden");
+        }
 	});
 </script>
