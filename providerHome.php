@@ -27,18 +27,12 @@
 							<h1>Welcome to TechFit, <user's name></h1>
 						</div>
 					</div>
-					<?
-						include('templates/footer.php');
-					?>
 				</div>
+				<?
+					include('templates/footer.php');
+				?>
 			</div>
 		</div>
     </div>
-    <script>
-        $('.nav nav-pills li').click(function(){
-            $('.nav nav-pills li').removeClass('active');
-            $(this).addClass('active');
-        });
-    </script>
 </body>
 </html>

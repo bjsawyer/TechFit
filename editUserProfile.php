@@ -23,14 +23,7 @@
 			<script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 			
 			<link rel="stylesheet" type="text/css" href="css/style.css">
-		</head>	
-		<?
-			// checks if "edit" button has been pressed
-			if (isset($_REQUEST["editProfile"])) {
-				header('Location: editUserProfile.php?' . $_SESSION["account_record"]['UserId']);
-				exit;
-			}else {
-		?>
+		</head>
 		<body>
 			<div class="site-wrapper">
 		        <div class="site-wrapper-inner">
@@ -57,11 +50,9 @@
 									?>
 									<div class="well">
 										<span class="well-listings-icons">
-											<form>
-												<button type="submit" name="editProfile" class="btn btn-default btn-edit">
-													<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-31-pencil.png"></img></span>
-												</button>
-											</form>
+											<button type="button" name="editProfile" class="btn btn-default btn-edit">
+												<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-31-pencil.png"></img></span>
+											</button>
 										</span>
 										<span class="well-listings-text">
 											<h4><b><? print $name ?></b> <small><? print $email ?></small></h4>
@@ -87,6 +78,3 @@
 		    </div>
 		</body>
 	</html>
-<?
-	}
-?>

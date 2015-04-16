@@ -7,6 +7,11 @@
 .row-padding {
 	padding-bottom: 5px;
 }
+.text-left {
+	text-align: left;
+	padding-left: 25px;
+	padding-right: 25px;
+}
 .row-centered {
     text-align:center;
 }
@@ -49,7 +54,20 @@
 	margin-left: auto;
 	margin-right: auto;
 	left: 0;
-right: 0;
+	right: 0;
+}
+.profile-spacing{
+	padding-top: 5px;
+}
+.btn-edit{
+	background-color: #c6c6c6 !important;
+	padding: 5px 8px;
+	border: 1px solid #b6b6b6;
+}
+.btn-edit:hover{
+	background-color: #dcd7d8 !important;
+	padding: 5px 8px;
+	border: 1px solid #b6b6b6;
 }
 #panel-heading-ad{
 	background-color: #f5f5f5;

@@ -34,8 +34,8 @@
 				<div class="inner cover">
 					<div>
 						<div class="panel panel-default">
-							<div class="panel-heading">
-								<h2 class="panel-title"><strong>Available Gyms & Trainers</strong></h2>
+							<div class="page-header text-left">
+								<h1>Listings <small>View available trainers & gyms </small></h1>
 							</div>
 							<?
 								try {
@@ -239,7 +239,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<?
 					include('templates/footer.php');
 				?>
