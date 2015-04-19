@@ -23,7 +23,14 @@
 			<script src="bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 			
 			<link rel="stylesheet" type="text/css" href="css/style.css">
-		</head>
+		</head>	
+		<?
+			// checks if "edit" button has been pressed
+			if (isset($_REQUEST["editProfile"])) {
+				header('Location: userProfileEdit.php?id=' . $_SESSION["account_record"]['UserId']);
+				exit;
+			}else {
+		?>
 		<body>
 			<div class="site-wrapper">
 		        <div class="site-wrapper-inner">
@@ -34,7 +41,7 @@
 						<div class="inner cover">
 							<div class="panel panel-default text-left">
 								<div>
-									<div class="page-header">
+									<div class="page-header text-center">
 										<h1>Profile <small>View & edit your profile </small></h1>
 									</div>
 									<?
@@ -45,14 +52,15 @@
 									$zipCode = $_SESSION["account_record"]['ZipCode'];
 									$phone = $_SESSION["account_record"]['Phone'];
 									$email = $_SESSION["account_record"]['Email'];
-									$gender = $_SESSION["account_record"]['Gender'];
 									$searchingFor = $_SESSION["account_record"]['SearchingFor'];
 									?>
 									<div class="well">
 										<span class="well-listings-icons">
-											<button type="button" name="editProfile" class="btn btn-default btn-edit">
-												<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-31-pencil.png"></img></span>
-											</button>
+											<form>
+												<button type="submit" name="editProfile" class="btn btn-primary btn-edit">
+													<span class="glyphicon glyphicon-pencil"></span>
+												</button>
+											</form>
 										</span>
 										<span class="well-listings-text">
 											<h4><b><? print $name ?></b> <small><? print $email ?></small></h4>
@@ -62,7 +70,6 @@
 												<li class="profile-spacing"><b>State: </b><small><? print $state ?></small><br></li>
 												<li class="profile-spacing"><b>Zip Code: </b><small><? print $zipCode?></small><br></li>
 												<li class="profile-spacing"><b>Phone: </b><small><? print $phone ?></small></li>
-												<li class="profile-spacing"><b>Gender: </b><small><? print $gender ?></small><br></li>
 												<li class="profile-spacing"><b>Searching For: </b><small><? print $searchingFor ?></small></li>
 											</ul>
 										</span>
@@ -78,3 +85,6 @@
 		    </div>
 		</body>
 	</html>
+<?
+	}
+?>

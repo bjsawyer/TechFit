@@ -34,7 +34,7 @@
 				<div class="inner cover">
 					<div>
 						<div class="panel panel-default">
-							<div class="page-header text-left">
+							<div class="page-header text-center">
 								<h1>Listings <small>View available trainers & gyms </small></h1>
 							</div>
 							<?

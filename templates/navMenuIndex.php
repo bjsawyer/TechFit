@@ -40,7 +40,7 @@
 			if (count($userArray) > 0 && count($providerLoginArray) <= 0) {
 				$_SESSION["account_record"] = $userArray;
 				$_SESSION["account_type"] = "User";
-				$route = "userHome.php?id=";
+				$route = "userProfile.php?id=";
 				$routeId = $_SESSION["account_record"]['UserId'];
 				$_SESSION["account_route"] = $route . $routeId;
 				
@@ -59,7 +59,7 @@
 				
 				$_SESSION["account_record"] = $providerArray;
 				$_SESSION["account_type"] = $_SESSION["account_record"]['ProviderType'];
-				$route = "providerHome.php?id=";
+				$route = "providerProfile.php?id=";
 				$routeId = $_SESSION["account_record"]['ProviderId'];
 				$_SESSION["account_route"] = $route . $routeId;
 				
