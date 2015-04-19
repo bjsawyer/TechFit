@@ -41,64 +41,82 @@
 									
 										$id = $_SESSION["account_record"]['UserId'];
 										
-										if (!isset($_REQUEST["newFirstName"])) {
+										if ($_REQUEST["newFirstName"] != "") {
 											$firstName = $_REQUEST["newFirstName"];
+											$_SESSION["account_record"]['FirstName'] = $firstName;
+											$_SESSION["account_record"][1] = $firstName;
 										}else {
-											$firstName = $_SESSION["account_record"]['Email'];
+											$firstName = $_SESSION["account_record"]['FirstName'];
 										}
 										
-										print $_REQUEST["newLastName"];
-										
-										if (!isset($_REQUEST["newLastName"])) {
+										if ($_REQUEST["newLastName"] != "") {
 											$lastName = $_REQUEST["newLastName"];
+											$_SESSION["account_record"]['LastName'] = $lastName;
+											$_SESSION["account_record"][2] = $lastName;
 										}else {
 											$lastName = $_SESSION["account_record"]['LastName'];
 										}
 										
-										if (!isset($_REQUEST["newEmail"])) {
+										if ($_REQUEST["newEmail"] != "") {
 											$email = $_REQUEST["newEmail"];
+											$_SESSION["account_record"]['Email'] = $email;
+											$_SESSION["account_record"][3] = $email;
 										}else {
 											$email = $_SESSION["account_record"]['Email'];
 										}
 										
-										if (!isset($_REQUEST["newPassword"])) {
+										if ($_REQUEST["newPassword"] != "") {
 											$password = $_REQUEST["newPassword"];
+											$_SESSION["account_record"]['Password'] = $password;
+											$_SESSION["account_record"][4] = $password;
 										}else {
 											$password = $_SESSION["account_record"]['Password'];
 										}
 										
-										if (!isset($_REQUEST["newAddress"])) {
+										if ($_REQUEST["newAddress"] != "") {
 											$address = $_REQUEST["newAddress"];
+											$_SESSION["account_record"]['Address'] = $address;
+											$_SESSION["account_record"][5] = $address;
 										}else {
 											$address = $_SESSION["account_record"]['Address'];
 										}
 										
-										if (!isset($_REQUEST["newCity"])) {
+										if ($_REQUEST["newCity"] != "") {
 											$city = $_REQUEST["newCity"];
+											$_SESSION["account_record"]['City'] = $city;
+											$_SESSION["account_record"][6] = $city;
 										}else {
 											$city = $_SESSION["account_record"]['City'];
 										}
 										
-										if (!isset($_REQUEST["newState"])) {
+										if ($_REQUEST["newState"] != "") {
 											$state = $_REQUEST["newState"];
+											$_SESSION["account_record"]['State'] = $state;
+											$_SESSION["account_record"][7] = $state;
 										}else {
 											$state = $_SESSION["account_record"]['State'];
 										}
 										
-										if (!isset($_REQUEST["newZip"])) {
+										if ($_REQUEST["newZip"] != "") {
 											$zip = $_REQUEST["newZip"];
+											$_SESSION["account_record"]['ZipCode'] = $zip;
+											$_SESSION["account_record"][8] = $zip;
 										}else {
 											$zip = $_SESSION["account_record"]['ZipCode'];
 										}
 										
-										if (!isset($_REQUEST["newPhone"])) {
+										if ($_REQUEST["newPhone"] != "") {
 											$phone = $_REQUEST["newPhone"];
+											$_SESSION["account_record"]['Phone'] = $phone;
+											$_SESSION["account_record"][9] = $phone;
 										}else {
 											$phone = $_SESSION["account_record"]['Phone'];
 										}
 										
-										if (!isset($_REQUEST["newSearchingFor"])) {
+										if ($_REQUEST["newSearchingFor"] != "") {
 											$searchingFor = $_REQUEST["newSearchingFor"];
+											$_SESSION["account_record"]['SearchingFor'] = $searchingFor;
+											$_SESSION["account_record"][10] = $searchingFor;
 										}else {
 											$searchingFor = $_SESSION["account_record"]['SearchingFor'];
 										}
@@ -106,7 +124,7 @@
 										try {
 											// updates existing record with new information
 											$updateSql = "update User
-														  set Email='{$firstName}',LastName='{$lastName}',Email='{$email}',Password='{$password}',Address='{$address}',City='{$city}',State='{$state}',ZipCode='{$zip}',Phone='{$phone}',SearchingFor='{$searchingFor}'
+														  set FirstName='{$firstName}',LastName='{$lastName}',Email='{$email}',Password='{$password}',Address='{$address}',City='{$city}',State='{$state}',ZipCode='{$zip}',Phone='{$phone}',SearchingFor='{$searchingFor}'
 														  where UserId='{$id}'";											
 											$rsUpdate = mysqli_query($db, $updateSql);
 											
@@ -119,18 +137,19 @@
 											exit;
 										}
 										
-										header('Location: index.php');
-										exit;
 										
+										header('Location: index.php');
+										
+										print implode(" ", $_SESSION["account_record"]);
 									}else {
 								?>
 								<div class="well form-well">
-									<form class="form-horizontal"  method="POST" action="userProfileEdit.php">
+									<form class="form-horizontal"  method="POST" action="">
 										<fieldset>
 											<div class="form-group">
 												<div class="row row-centered row-padding">
 													<div class="col-sm-6 col-centered">
-					                                    <input type="text" class="form-control" id="newEmail" name="newEmail" placeholder="First name">
+					                                    <input type="text" class="form-control" id="newFirstName" name="newFirstName" placeholder="First name">
 					                                </div>
 					                            </div>
 					                            <div class="row row-centered row-padding">
@@ -165,20 +184,20 @@
 												</div>
 												<div class="row row-centered row-padding">
 													<div class="col-sm-6 col-centered">
-														<input type="text" class="form-control" id="newZip" name="newZipCode" placeholder="Zip">
+														<input type="text" class="form-control" id="newZip" name="newZip" placeholder="Zip">
 													</div>
 												</div>
 												<div class="row row-centered row-padding">
 													<div class="col-sm-6 col-centered">
-														<input type="text" class="form-control" id="newPhoneNumber" name="newPhoneNumber" placeholder="Phone">
+														<input type="text" class="form-control" id="newPhone" name="newPhone" placeholder="Phone">
 													</div>
 												</div>
 												<div class="row row-centered row-padding">
 													<div class="col-sm-6 col-centered">
 														<select class="form-control" id="newSearchingFor" name="newSearchingFor">
 															<option value="" selected disabled>Searching for</option>
-															<option value="trainer">Trainer</option>
-															<option value="gym">Gym</option>															
+															<option value="Trainer">Trainer</option>
+															<option value="Gym">Gym</option>															
 														</select>
 													</div>
 												</div>
