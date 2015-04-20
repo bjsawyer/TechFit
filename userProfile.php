@@ -28,7 +28,6 @@
 			// checks if "edit" button has been pressed
 			if (isset($_REQUEST["editProfile"])) {
 				header('Location: userProfileEdit.php?id=' . $_SESSION["account_record"]['UserId']);
-				exit;
 			}else {
 		?>
 		<body>

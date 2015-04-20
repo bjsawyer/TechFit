@@ -29,7 +29,7 @@
         <div class="site-wrapper-inner-listings">
             <div class="cover-container">
             <?
-				include('templates/navMenu.php');
+				include('templates/navMenuUser.php');
 			?>
 				<div class="inner cover">
 					<div>
@@ -222,7 +222,7 @@
 										}
 									?>
 								</div>
-								<nav>
+								<!--<nav>
 								    <ul class="pagination">
 								        <li class="disabled">
 								            <a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
@@ -234,7 +234,7 @@
 								            <a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
 								        </li>
 								    </ul>
-								</nav>
+								</nav>-->
 							</div>
 						</div>
 					</div>

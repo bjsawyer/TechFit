@@ -29,7 +29,7 @@
 		        <div class="site-wrapper-inner">
 		            <div class="cover-container">
 		            <?
-						include('templates/navMenu.php');
+						include('templates/navMenuUser.php');
 					?>
 						<div class="inner cover">
 							<div class="panel panel-default">
