@@ -60,7 +60,7 @@
 									// unique trainer fields
 									if ($_SESSION["account_type"] == "Trainer") {
 										$name = $_SESSION["account_record"]['FirstName'] . " " . $_SESSION["account_record"]['LastName'];
-										$specialties = $_SESSION["account_record"]['Specialties'];
+										$specialities = $_SESSION["account_record"]['Specialities'];
 										$daysAvailability = $_SESSION["account_record"]['DaysAvailability'];
 										$hoursAvailability = $_SESSION["account_record"]['HoursAvailability'];
 									?>
@@ -80,6 +80,12 @@
 												<li class="profile-spacing"><b>State: </b><small><? print $state ?></small><br></li>
 												<li class="profile-spacing"><b>Zip Code: </b><small><? print $zipCode?></small><br></li>
 												<li class="profile-spacing"><b>Phone: </b><small><? print $phone ?></small></li>
+												<li class="profile-spacing"><b>Membership Level: </b><small><? print $membershipLevel ?></small></li>
+												<li class="profile-spacing"><b>Specialities: </b><small><? print $specialities ?></small></li>
+												<li class="profile-spacing"><b>Classes Offered? </b><small><? print $classesOffered ?></small></li>
+												<li class="profile-spacing"><b>Rate (per hour): </b><small><? print $rate ?></small></li>
+												<li class="profile-spacing"><b>Days of Availability: </b><small><? print $daysAvailability ?></small></li>
+												<li class="profile-spacing"><b>Hour of Availability: </b><small><? print $hoursAvailability ?></small></li>
 											</ul>
 										</span>
 									</div>
@@ -104,11 +110,18 @@
 										<span class="well-listings-text">
 											<h4><b><? print $name ?></b> <small><? print $email ?></small></h4>
 											<ul class="list-unstyled">
+												<li class="profile-spacing"><b>Contact Name: </b><small><? print $contactFirstName . " " . $contactLastName ?></small><br></li>
 												<li class="profile-spacing"><b>Address: </b><small><? print $address ?></small><br></li>
 												<li class="profile-spacing"><b>City: </b><small><? print $city ?></small><br></li>
 												<li class="profile-spacing"><b>State: </b><small><? print $state ?></small><br></li>
 												<li class="profile-spacing"><b>Zip Code: </b><small><? print $zipCode?></small><br></li>
 												<li class="profile-spacing"><b>Phone: </b><small><? print $phone ?></small></li>
+												<li class="profile-spacing"><b>Membership Level: </b><small><? print $membershipLevel ?></small></li>
+												<li class="profile-spacing"><b>Amenities: </b><small><? print $amenities ?></small></li>
+												<li class="profile-spacing"><b>Classes Offered? </b><small><? print $classesOffered ?></small></li>
+												<li class="profile-spacing"><b>Rate (per month): </b><small><? print $rate ?></small></li>
+												<li class="profile-spacing"><b>Days of Operation: </b><small><? print $daysOperation ?></small></li>
+												<li class="profile-spacing"><b>Hour of Operation: </b><small><? print $hoursOperation ?></small></li>
 											</ul>
 										</span>
 									</div>
