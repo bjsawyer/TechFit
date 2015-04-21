@@ -82,7 +82,7 @@
 												<li class="profile-spacing"><b>Phone: </b><small><? print $phone ?></small></li>
 												<li class="profile-spacing"><b>Membership Level: </b><small><? print $membershipLevel ?></small></li>
 												<li class="profile-spacing"><b>Specialities: </b><small><? print $specialities ?></small></li>
-												<li class="profile-spacing"><b>Classes Offered? </b><small><? print $classesOffered ?></small></li>
+												<li class="profile-spacing"><b>Classes Offered: </b><small><? print $classesOffered ?></small></li>
 												<li class="profile-spacing"><b>Rate (per hour): </b><small><? print $rate ?></small></li>
 												<li class="profile-spacing"><b>Days of Availability: </b><small><? print $daysAvailability ?></small></li>
 												<li class="profile-spacing"><b>Hour of Availability: </b><small><? print $hoursAvailability ?></small></li>
@@ -118,7 +118,7 @@
 												<li class="profile-spacing"><b>Phone: </b><small><? print $phone ?></small></li>
 												<li class="profile-spacing"><b>Membership Level: </b><small><? print $membershipLevel ?></small></li>
 												<li class="profile-spacing"><b>Amenities: </b><small><? print $amenities ?></small></li>
-												<li class="profile-spacing"><b>Classes Offered? </b><small><? print $classesOffered ?></small></li>
+												<li class="profile-spacing"><b>Classes Offered: </b><small><? print $classesOffered ?></small></li>
 												<li class="profile-spacing"><b>Rate (per month): </b><small><? print $rate ?></small></li>
 												<li class="profile-spacing"><b>Days of Operation: </b><small><? print $daysOperation ?></small></li>
 												<li class="profile-spacing"><b>Hour of Operation: </b><small><? print $hoursOperation ?></small></li>

@@ -1,10 +1,12 @@
 <div class="sidebar" id="sidebar-right">
-	<div class="panel panel-default ad-panel">
-        <div class="panel-heading" id="panel-heading-ad">
-            <h3 class="panel-title">Ad Right</h3>
-        </div>
-        <div class="panel-body">
-            Placeholder text
+	<div class="ad-panel">
+        <div class="thumbnail">
+			<img src="images/theedge.jpg" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
+            <div class="caption">
+                <h3>The Edge</h3>
+				<p>Come live at The Edge, the newest and hottest off-campus living choice for Virginia Tech students!</p>
+                <p><a href="#" class="btn btn-default" role="button">Learn more</a></p>
+            </div>
         </div>
 	</div>
 </div>

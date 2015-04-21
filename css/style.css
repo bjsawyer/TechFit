@@ -72,6 +72,9 @@
 	margin-right: auto;
 	padding-bottom: 0px;
 }
+.ad-text{
+	
+}
 #panel-heading-ad{
 	background-color: #f5f5f5;
 }
@@ -118,6 +121,9 @@
 }
 #note{
 	padding-top: 5px;
+}
+#newAccountType{
+	margin-bottom: 15px;
 }
   
 /* Links */

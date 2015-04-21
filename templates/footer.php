@@ -4,8 +4,6 @@
 		<text> | </text>
 		<a href="#">Advertise</a>
 		<text> | </text>
-		<a href="#">Contact</a>
-		<text> | </text>
 		<a href="#">Support</a>
     </div>
 </div>
