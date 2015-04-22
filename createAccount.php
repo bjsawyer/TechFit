@@ -93,13 +93,10 @@
 									</div>
 									<?
 										include('helpers/createNewTrainer.php');
-										echo(renderTrainerForm());
 										
-										//include('helpers/createNewUser.php');
-										//echo(renderUserForm());
+										include('helpers/createNewUser.php');
 										
 										//include('helpers/createNewGym.php');
-										//echo(renderGymForm());
 									?>
 								</div>
 							</div>
@@ -116,14 +113,42 @@
 	</body>
 </html>
 <script>
-	$(document).ready(function(){    
+
+	function clearPage() {
+		$('#trainerForm').addClass("hidden").removeClass("show");
+		$('#gymForm').addClass("hidden").removeClass("show");
+		$('#userForm').addClass("hidden").removeClass("show");
+	}
+	
+	$(document).ready(function() {     
+	    
 	    $('#login-tabs-justified-ul a').click(function (e) {
-			e.preventDefault()
-			$(this).tab('show')
+			e.preventDefault();
+			$(this).tab('show');
 		});
 		
-		//$('#userForm').addClass("hide");
-	});
+		clearPage();
+	
+	})
+	
+	$('#newAccountType').on('change', function() {
+	
+            var accountType = ( this.value );
+            
+            if (accountType == "Trainer") {
+                  clearPage();
+			$('#trainerForm').addClass("show").removeClass("hidden");
+		} else if (accountType == "Gym") {
+			clearPage();
+			//$('#gymForm').addClass("show").removeClass("hidden");
+		} else if (accountType == "User") {
+			clearPage();
+			$('#userForm').addClass("show").removeClass("hidden");
+		} else {
+			clearPage();
+		}
+		
+	})
 	
     var $select = $('#newState');
  
@@ -139,5 +164,5 @@
 		    $('<option>').val(key).text(value).appendTo($select);
 		});
 		console.log($select.html());
-    });
+    })
 </script>
