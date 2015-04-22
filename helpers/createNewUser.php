@@ -1,5 +1,5 @@
 <? function renderUserForm() { ?>
-		<form id="userForm" class="form-horizontal"  method="POST" action="">
+		<form id="userForm" class="form-horizontal"  method="POST" action="createAccountSuccess.php">
 			<h4>Sign up as a <b>USER</b></h4>
 			<fieldset>
 				<div class="form-group">
