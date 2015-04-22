@@ -126,8 +126,6 @@
 			e.preventDefault();
 			$(this).tab('show');
 		});
-		
-		clearPage();
 	
 	});
 	

@@ -1,4 +1,4 @@
-<form id="userForm" class="form-horizontal"  method="POST" action="createAccountSuccess.php">
+<form id="userForm" class="form-horizontal hidden"  method="POST" action="createAccountSuccess.php">
 	<fieldset>
 		<div class="form-group">
 			<div class="row row-centered row-padding">

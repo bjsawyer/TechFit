@@ -1,4 +1,4 @@
-<form id="trainerForm" class="form-horizontal"  method="POST" action="index.php">
+<form id="trainerForm" class="form-horizontal hidden"  method="POST" action="index.php">
 	<fieldset>
 		<div class="form-group">
 			
