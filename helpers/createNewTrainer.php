@@ -65,9 +65,27 @@
 					
 					<div class="row row-centered row-padding">
 						<div class="col-sm-6 col-centered">
-                            <label for="newHoursOperation">Hours of operation:</label>
-                            <div>
-	                            <div class="input-group col-sm-5" style="float:left;">
+                              <label for="newDaysOperation">Days of operation:</label>
+                              <p for="newDaysOperation" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple days</i></small></p>
+                                <div>
+                                    <select multiple class="form-control" id="newDaysOperation">
+										<option>Sunday</option>
+										<option>Monday</option>
+										<option>Tuesday</option>
+										<option>Wednesday</option>
+										<option>Thursday</option>
+										<option>Friday</option>
+										<option>Saturday</option>
+									</select>            
+								</div>
+							</div>
+                        </div>
+					
+					<div class="row row-centered row-padding">
+						<div class="col-sm-6 col-centered">
+                                   <label for="newHoursOperation">Hours of operation:</label>
+	                              <div>
+		                              <div class="input-group col-sm-5" style="float:left;">
 									<input type="text" class="form-control" placeholder="Open" aria-describedby="basic-addon2">
 									<span class="input-group-addon" id="basic-addon2" style="padding:6px 7px;">AM</span>
 								</div>
@@ -79,9 +97,9 @@
 									<span class="input-group-addon" id="basic-addon2" style="padding:6px 7px;">PM</span>
 								</div>
 							</div>
-                        </div>
-                    </div>
-					
+	                         </div>
+                         </div>
+                 </div>
 					
 					<div class="row row-padding">
 					</div>

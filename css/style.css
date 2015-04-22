@@ -75,6 +75,9 @@
 .hours-width{
 	width: 40%;
 }
+#label-notbold{
+	font-weight: 0 !important;
+}
 #panel-heading-ad{
 	background-color: #f5f5f5;
 }

@@ -83,9 +83,9 @@
 										<div class="col-sm-6 col-centered">
 											<select class="form-control" id="newAccountType" name="newAccountType">
 												<option value="" selected disabled>Type of account</option>
-												<option value="Trainer">I am a trainer</option>
-												<option value="Gym">I am with a gym</option>
-												<option value="User">I am searching for a trainer or gym</option>
+												<option value="Trainer">Trainer</option>
+												<option value="Gym">Gym</option>
+												<option value="User">Trainer or gym seeker</option>
 											</select>
 										</div>
 									</div>
