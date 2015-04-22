@@ -1,3 +1,15 @@
+<?
+	// session variable setup
+	if (!isset($_SESSION)) {
+		session_start();
+	}
+	ob_start();
+?>
+<?
+	// connects to database
+	require_once("connect_to_DB.php");
+	connectDB();
+?>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -38,8 +50,8 @@
 							    $phone = $_REQUEST["newPhone"];
 							    $searchingFor = $_REQUEST["newSearchingFor"];
 							   
-							    $newUserSql = "insert into User (FirstName, LastName, Email, Password, Gender, Address, City, State, ZipCode, Phone, SearchingFor
-							                   values {$firstName}, {$lastName}, {$email}, {$password}, {$gender}, {$address}, {$city}, {$state}, {$zip}, {$phone}, {$searchingFor}";
+							    $newUserSql = "insert into User (FirstName, LastName, Email, Password, Gender, Address, City, State, ZipCode, Phone, SearchingFor)
+							                   values ('{$firstName}', '{$lastName}', '{$email}', '{$password}', '{$gender}', '{$address}', '{$city}', '{$state}', '{$zip}', '{$phone}', '{$searchingFor}')";
 							    
 								$rsNewUser = mysqli_query($db, $newUserSql);
 								

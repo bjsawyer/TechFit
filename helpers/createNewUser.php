@@ -1,5 +1,5 @@
 <? function renderUserForm() { ?>
-		<form id="userForm" class="form-horizontal"  method="POST" action="index.php">
+		<form id="userForm" class="form-horizontal"  method="POST" action="">
 			<h4>Sign up as a <b>USER</b></h4>
 			<fieldset>
 				<div class="form-group">
@@ -60,7 +60,7 @@
 					<div class="row row-padding">
 					</div>
 					<div class="row row-button">
-						<button type="newUserSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>   Create</button>
+						<button type="submit" name="newUserSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>   Create</button>
 					</div>
 				</div>
 			</fieldset>
