@@ -23,7 +23,37 @@
 					?>
 					<?
 						if (isset($_REQUEST["newUserSubmit"])) {
+							try {
+							    $db = $GLOBALS["db"];
+							    
+							    $firstName = $_REQUEST["newFirstName"];
+							    $lastName = $_REQUEST["newLastName"];
+							    $email = $_REQUEST["newEmail"];
+							    $password = $_REQUEST["newPassword"];
+							    $gender = $_REQUEST["newGender"];
+							    $address = $_REQUEST["newAddress"];
+							    $city = $_REQUEST["newCity"];
+							    $state = $_REQUEST["newState"];
+							    $zip = $_REQUEST["newZip"];
+							    $phone = $_REQUEST["newPhone"];
+							    $searchingFor = $_REQUEST["newSearchingFor"];
+							   
+							    $newUserSql = "insert into User (FirstName, LastName, Email, Password, Gender, Address, City, State, ZipCode, Phone, SearchingFor
+							                   values {$firstName}, {$lastName}, {$email}, {$password}, {$gender}, {$address}, {$city}, {$state}, {$zip}, {$phone}, {$searchingFor}";
+							    
+								$rsNewUser = mysqli_query($db, $newUserSql);
+								
+								// checks if query worked
+								if (!$rsNewUser) {
+									throw new Exception(mysqli_error($db));
+								}
+								
+								mysqli_close($db);
+								unset($db);  
 							
+							}catch(Exception $e) {
+								header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
+							}
 						}else if (isset($_REQUEST["newTrainerSubmit"])) {
 						
 						}else if (isset($_REQUEST["newGymSubmit"])) {

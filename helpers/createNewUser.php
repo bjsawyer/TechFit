@@ -45,7 +45,7 @@
 					</div>
 					<div class="row row-centered row-padding">
 						<div class="col-sm-6 col-centered">
-							<input type="text" class="form-control" id="newPhoneNumber" name="newPhoneNumber" placeholder="Phone">
+							<input type="text" class="form-control" id="newPhone" name="newPhone" placeholder="Phone">
 						</div>
 					</div>
 					<div class="row row-centered row-padding">

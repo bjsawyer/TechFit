@@ -82,7 +82,6 @@
 		
 		}catch(Exception $e) {
 			header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
-			exit;
 		}
 	}
 	
