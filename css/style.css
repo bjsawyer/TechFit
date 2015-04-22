@@ -22,7 +22,8 @@
     text-align:left;
     /* inline-block space fix */
     margin-right:-4px;
-}
+    margin-bottom:3px;
+ }
 .well-listings-text {
 	text-align: left;
 }
