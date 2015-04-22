@@ -1,20 +1,13 @@
-<form id="trainerForm" class="form-horizontal"  method="POST" action="index.php">
+<form id="gymForm" class="form-horizontal"  method="POST" action="index.php">
 	<fieldset>
 		<div class="form-group">
 			
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
-					<label for="newFirstName">First name</label>
-                         <input type="text" class="form-control" id="newFirstName" name="newFirstName" placeholder="First name">
+					<label for="newGymName">Gym name</label>
+                         <input type="text" class="form-control" id="newGymName" name="newGymName" placeholder="Gym name">
                     </div>
                </div>
-               
-               <div class="row row-centered row-padding">
-				<div class="col-sm-6 col-centered">
-					<label for="newLastName">Last name</label>
-					<input type="text" class="form-control" id="newLastName" name="newLastName" placeholder="Last name">
-				</div>
-			</div>
 			
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
@@ -74,25 +67,39 @@
 			
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
+					<label for="newContactFirstName">Contact first name</label>
+                         <input type="text" class="form-control" id="newContactFirstName" name="newContactFirstName" placeholder="Contact first name">
+                    </div>
+               </div>
+               
+               <div class="row row-centered row-padding">
+				<div class="col-sm-6 col-centered">
+					<label for="newContactLastName">Contact last name</label>
+					<input type="text" class="form-control" id="newContactLastName" name="newContactLastName" placeholder="Contact last name">
+				</div>
+			</div>
+			
+			<div class="row row-centered row-padding">
+				<div class="col-sm-6 col-centered">
 					<label for="newRate">Rate</label>
 					<div class="input-group col-sm-12">
 						<span class="input-group-addon" id="basic-addon2" style="padding:6px 12px;">$</span>
 						<input type="text" class="form-control" id="newRate" placeholder="Rate" aria-describedby="basic-addon2">
-						<span class="input-group-addon" id="basic-addon2" style="padding:6px 12px;">/hour</span>
+						<span class="input-group-addon" id="basic-addon2" style="padding:6px 12px;">/month</span>
 					</div>
 				</div>
 			</div>
 			
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
-					<label for="newSpecialities">Specialities</label>
-					<p for="newSpecialities" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple specialities</i></small></p>
+					<label for="newAmenities">Amenities</label>
+					<p for="newAmenities" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple amenities</i></small></p>
                           <div>
-                               <select multiple class="form-control" id="newSpecialities">
-							<option value="Balance">Balance</option>
-							<option value="Core">Core</option>
-							<option value="Endurance">Endurance</option>
-							<option value="Flexibility">Flexibility</option>
+                               <select multiple class="form-control" id="newAmenities">
+							<option value="Basketball Court">Basketball</option>
+							<option value="Pool">Pool</option>
+							<option value="Sauna">Sauna</option>
+							<option value="Tanning">Tanning</option>
 						</select>            
 					</div>
 				</div>
@@ -109,10 +116,10 @@
 			
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
-                    <label for="newDaysAvailability">Days of availability</label>
-                    <p for="newDaysAvailability" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple days</i></small></p>
+                    <label for="newDaysOperation">Days of operation</label>
+                    <p for="newDaysOperation" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple days</i></small></p>
                      <div>
-                          <select multiple class="form-control" id="newDaysAvailability">
+                          <select multiple class="form-control" id="newDaysOperation">
 						<option value="Sunday">Sunday</option>
 						<option value="Monday">Monday</option>
 						<option value="Tuesday">Tuesday</option>
@@ -126,17 +133,17 @@
 			
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
-                         <label for="newHoursAvailability">Hours of availability</label>
-                         <div id="newHoursAvailability">
+                         <label for="newHoursOperation">Hours of operation</label>
+                         <div id="newHoursOperation">
                               <div class="input-group col-sm-5" style="float:left;">
-							<input type="text" class="form-control" id="newAvailabilityFrom" placeholder="From" aria-describedby="basic-addon2">
+							<input type="text" class="form-control" id="newOperationOpen" placeholder="Open" aria-describedby="basic-addon2">
 							<span class="input-group-addon" id="basic-addon2" style="padding:6px 8px;">AM</span>
 						</div>
 						<div class="input-group col-sm-2 text-center" style="float:left;font-size: 22px;">
 							<p> - </p>
 						</div>
 						<div class="input-group col-sm-5" style="float:left;">
-							<input type="text" class="form-control" id="newAvailabilityTo" placeholder="To" aria-describedby="basic-addon2">
+							<input type="text" class="form-control" id="newOperationClose" placeholder="Close" aria-describedby="basic-addon2">
 							<span class="input-group-addon" id="basic-addon2" style="padding:6px 8px;">PM</span>
 						</div>
 					</div>

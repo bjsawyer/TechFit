@@ -94,9 +94,9 @@
 									<?
 										include('helpers/createNewTrainer.php');
 										
-										include('helpers/createNewUser.php');
+										include('helpers/createNewGym.php');
 										
-										//include('helpers/createNewGym.php');
+										include('helpers/createNewUser.php');
 									?>
 								</div>
 							</div>
@@ -141,7 +141,7 @@
 			$('#trainerForm').addClass("show").removeClass("hidden");
 		} else if (accountType == "Gym") {
 			clearPage();
-			//$('#gymForm').addClass("show").removeClass("hidden");
+			$('#gymForm').addClass("show").removeClass("hidden");
 		} else if (accountType == "User") {
 			clearPage();
 			$('#userForm').addClass("show").removeClass("hidden");
