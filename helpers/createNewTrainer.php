@@ -54,7 +54,7 @@
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
 					<label for="newState">State</label>
-					<select class="form-control" id="newState" name="newState"></select>
+					<select class="form-control newState"  name="newState"></select>
 				</div>
 			</div>
 			
