@@ -92,11 +92,11 @@
 									<div class="row row-padding">
 									</div>
 									<?
-										//include('helpers/createNewTrainer.php');
-										//echo(renderTrainerForm());
+										include('helpers/createNewTrainer.php');
+										echo(renderTrainerForm());
 										
-										include('helpers/createNewUser.php');
-										echo(renderUserForm());
+										//include('helpers/createNewUser.php');
+										//echo(renderUserForm());
 										
 										//include('helpers/createNewGym.php');
 										//echo(renderGymForm());

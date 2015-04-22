@@ -48,6 +48,27 @@
 							<input type="text" class="form-control" id="newPhoneNumber" name="newPhoneNumber" placeholder="Phone">
 						</div>
 					</div>
+					
+					<div class="row row-centered row-padding">
+						<div class="col-sm-6 col-centered">
+                            <label for="newHoursOperation">Hours of operation:</label>
+                            <div>
+	                            <div class="input-group col-sm-5" style="float:left;">
+									<input type="text" class="form-control" placeholder="Open" aria-describedby="basic-addon2">
+									<span class="input-group-addon" id="basic-addon2" style="padding:6px 7px;">AM</span>
+								</div>
+								<div class="input-group col-sm-2 text-center" style="float:left;font-size: 22px;">
+									<p> - </p>
+								</div>
+								<div class="input-group col-sm-5" style="float:left;">
+									<input type="text" class="form-control" placeholder="Close" aria-describedby="basic-addon2">
+									<span class="input-group-addon" id="basic-addon2" style="padding:6px 7px;">PM</span>
+								</div>
+							</div>
+                        </div>
+                    </div>
+					
+					
 					<div class="row row-padding">
 					</div>
 					<div class="row row-button">
