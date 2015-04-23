@@ -115,8 +115,11 @@
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
 					<label for="newClassesOffered">Classes offered</label>
-					<div class="input-group col-sm-12">
-						<input type="number" class="form-control" id="newClassesOffered" placeholder="Classes offered">
+					<div>
+						<select class="form-control" name="newClassesOffered" id="newClassesOffered">
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
 					</div>
 				</div>
 			</div>
