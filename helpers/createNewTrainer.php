@@ -100,6 +100,9 @@
 							<option value="Core">Core</option>
 							<option value="Endurance">Endurance</option>
 							<option value="Flexibility">Flexibility</option>
+							<option value="Rehabilitation">Rehabilitation</option>
+							<option value="Strength">Strength</option>
+							<option value="Water Aerobics">Water aerobics</option>
 						</select>            
 					</div>
 				</div>

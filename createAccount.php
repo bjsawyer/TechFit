@@ -89,6 +89,7 @@
 							      foreach ($_REQUEST["newSpecialities"] as $speciality) {
 									$specialities .= "$speciality,";
 							      };
+							      
 							      $classesOffered = $_REQUEST["newClassesOffered"];
 							      
 							      $daysAvailability = "";
@@ -98,7 +99,7 @@
 							      
 							      $availabilityFrom = $_REQUEST["newAvailabilityFrom"];
 							      $availabilityTo = $_REQUEST["newAvailabilityTo"];
-							      $hoursAvailability = $availabilityFrom . "AM-" . $availabilityTo . "PM";
+							      $hoursAvailability = print $availabilityFrom . "AM-" . print $availabilityTo . "PM";
 							      
 							      $newTrainerSql1 =
 							      "insert into Provider (Email, Password, Phone, Address, City, State, ZipCode)
@@ -126,7 +127,7 @@
 							      
 							      $newTrainerSql2 = 
 							      "insert into Trainer (ProviderId, FirstName, LastName, Gender, Rate, Specialities, ClassesOffered, DaysAvailability, HoursAvailability)
-								values ('{$providerId}','{$firstName}', '{$lastName}','{$gender}','{$rate}','" . trim($specialities, ',') . "','{$classesOffered}','" . trim($daysAvailability, ',') . "','{$hoursAvailability}')";
+								values ('{$providerId}','{$firstName}','{$lastName}','{$gender}','{$rate}','" . trim($specialities, ',') . "','{$classesOffered}','" . trim($daysAvailability, ',') . "','{$hoursAvailability}')";
 							                                    
 								$rsNewTrainer2 = mysqli_query($db, $newTrainerSql2);
 								
@@ -145,7 +146,81 @@
 							header('location: createAccountSuccess.php');
 						
 						}else if (isset($_REQUEST["newGymSubmit"])) {
-						
+							try {
+								$db = $GLOBALS["db"];
+							    
+							      $gymName = $_REQUEST["newGymName"];
+							      $email = $_REQUEST["newEmail"];
+							      $password = $_REQUEST["newPassword"];
+							      $address = $_REQUEST["newAddress"];
+							      $city = $_REQUEST["newCity"];
+							      $state = $_REQUEST["newState"];
+							      $zip = $_REQUEST["newZip"];
+							      $phone = $_REQUEST["newPhone"];
+							      $contactFirstName = $_REQUEST["newContactFirstName"];
+							      $contactLastName = $_REQUEST["newContactLastName"];
+							      $rate = $_REQUEST["newRate"];
+							      
+							      $amenities = "";
+							      foreach ($_REQUEST["newAmenities"] as $amenity) {
+									$amenities .= "$amenity,";
+							      };
+							      
+							      $classesOffered = $_REQUEST["newClassesOffered"];
+							      
+							      $daysOperation = "";
+							      foreach($_REQUEST['newDaysOperation'] as $day) {
+							            $daysOperation .= "$day,";
+							      };
+							      
+							      $operationOpen = $_REQUEST["newOperationOpen"];
+							      $operationClose = $_REQUEST["newOperationClose"];
+							      $hoursOperation = print $operationOpen . "AM-" . print $operationClose . "PM";
+							      
+							      $newGymSql1 =
+							      "insert into Provider (Email, Password, Phone, Address, City, State, ZipCode)
+							      values ('{$email}','{$password}','{$phone}','{$address}','{$city}','{$state}','{$zip}')";
+							      
+							      $rsNewGym1 = mysqli_query($db, $newGymSql1);
+								
+								// checks if query worked
+								if (!$rsNewGym1) {
+									throw new Exception(mysqli_error($db));
+								}
+							      
+							      $providerIdSql = "select ProviderId from Provider where email = '{$email}'";
+							      
+							      $rsProviderId = mysqli_query($db, $providerIdSql);
+								
+								// checks if query worked
+								if (!$rsProviderId) {
+									throw new Exception(mysqli_error($db));
+								}
+								
+								mysqli_data_seek($rsProviderId, 0);
+								
+								$providerId = mysqli_fetch_array($rsProviderId);
+							      
+							      $newGymSql2 = 
+							      "insert into Gym (ProviderId, Name, ContactFirstName, ContactLastName, Rate, Amenities, ClassesOffered, DaysOperation, HoursOperation)
+								values ('{$providerId}','{$gymName}','{$contactFirstName}','{$contactLastName}','{$rate}','" . trim($amenities, ',') . "','{$classesOffered}','" . trim($daysOperation, ',') . "','{$hoursOperation}')";
+							                                    
+								$rsNewGym2 = mysqli_query($db, $newGymSql2);
+								
+								// checks if query worked
+								if (!$rsNewGym2) {
+									throw new Exception(mysqli_error($db));
+								}
+								
+								mysqli_close($db);
+								unset($db);
+							
+							}catch(Exception $e) {
+								header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
+							}
+							
+							header('location: createAccountSuccess.php');
+							
 						}else {
 					?>
 					<div class="inner cover">

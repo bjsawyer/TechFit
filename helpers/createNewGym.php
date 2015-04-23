@@ -95,11 +95,12 @@
 					<label for="newAmenities">Amenities</label>
 					<p for="newAmenities" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple amenities</i></small></p>
                           <div>
-                               <select multiple class="form-control" id="newAmenities">
+                               <select multiple class="form-control" id="newAmenities" name="newAmenities[]">
 							<option value="Basketball Court">Basketball</option>
 							<option value="Pool">Pool</option>
 							<option value="Sauna">Sauna</option>
 							<option value="Tanning">Tanning</option>
+							<option value="Track">Track</option>
 						</select>            
 					</div>
 				</div>
@@ -119,7 +120,7 @@
                     <label for="newDaysOperation">Days of operation</label>
                     <p for="newDaysOperation" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple days</i></small></p>
                      <div>
-                          <select multiple class="form-control" id="newDaysOperation">
+                          <select multiple class="form-control" id="newDaysOperation" name="newDaysOperation[]">
 						<option value="Sunday">Sunday</option>
 						<option value="Monday">Monday</option>
 						<option value="Tuesday">Tuesday</option>
