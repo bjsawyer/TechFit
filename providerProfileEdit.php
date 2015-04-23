@@ -171,7 +171,7 @@
 											
 											$updateTrainerSql2 = 
 											"update Trainer
-											set FirstName='{$firstName}',LastName='{$lastName}',Gender='{$gender}',Rate='{$rate}',Specialities='{$specialities}',ClassesOffered='{$classesOffered}',DaysAvailability=''{$daysAvailability}',HoursAvailability='{$hoursAvailability}'
+											set FirstName='{$firstName}',LastName='{$lastName}',Gender='{$gender}',Rate='{$rate}',Specialities='{$specialities}',ClassesOffered='{$classesOffered}',DaysAvailability='{$daysAvailability}',HoursAvailability='{$hoursAvailability}'
 											where ProviderId='{$id}'";	
 											
 											$rsUpdateTrainer2 = mysqli_query($db, $updateTrainerSql2);
@@ -185,8 +185,154 @@
 										}
 										
 										header('Location: index.php');
-									}elseif () {
 										
+									}elseif (isset($_REQUEST["newGymSubmit"])) {
+										$id = $_SESSION["account_record"]['ProviderId'];
+										
+										if ($_REQUEST["newGymName"] != "") {
+											$gymName = $_REQUEST["newGymName"];
+											$_SESSION["account_record"]['Name'] = $gymName;
+										}else {
+											$gymName = $_SESSION["account_record"]['Name'];
+										}
+										
+										if ($_REQUEST["newEmail"] != "") {
+											$email = $_REQUEST["newEmail"];
+											$_SESSION["account_record"]['Email'] = $email;
+										}else {
+											$email = $_SESSION["account_record"]['Email'];
+										}
+										
+										if ($_REQUEST["newPassword"] != "") {
+											$password = $_REQUEST["newPassword"];
+											$_SESSION["account_record"]['Password'] = $password;
+										}else {
+											$password = $_SESSION["account_record"]['Password'];
+										}
+										
+										if ($_REQUEST["newAddress"] != "") {
+											$address = $_REQUEST["newAddress"];
+											$_SESSION["account_record"]['Address'] = $address;
+										}else {
+											$address = $_SESSION["account_record"]['Address'];
+										}
+										
+										if ($_REQUEST["newCity"] != "") {
+											$city = $_REQUEST["newCity"];
+											$_SESSION["account_record"]['City'] = $city;
+										}else {
+											$city = $_SESSION["account_record"]['City'];
+										}
+										
+										if ($_REQUEST["newState"] != "") {
+											$state = $_REQUEST["newState"];
+											$_SESSION["account_record"]['State'] = $state;
+										}else {
+											$state = $_SESSION["account_record"]['State'];
+										}
+										
+										if ($_REQUEST["newZip"] != "") {
+											$zip = $_REQUEST["newZip"];
+											$_SESSION["account_record"]['ZipCode'] = $zip;
+										}else {
+											$zip = $_SESSION["account_record"]['ZipCode'];
+										}
+										
+										if ($_REQUEST["newPhone"] != "") {
+											$phone = $_REQUEST["newPhone"];
+											$_SESSION["account_record"]['Phone'] = $phone;
+										}else {
+											$phone = $_SESSION["account_record"]['Phone'];
+										}
+										
+										if ($_REQUEST["newContactFirstName"] != "") {
+											$contactFirstName = $_REQUEST["newContactFirstName"];
+											$_SESSION["account_record"]['ContactFirstName'] = $contactFirstName;
+										}else {
+											$contactFirstName = $_SESSION["account_record"]['ContactFirstName'];
+										}
+										
+										if ($_REQUEST["newContactLastName"] != "") {
+											$contactLastName = $_REQUEST["newContactLastName"];
+											$_SESSION["account_record"]['ContactLastName'] = $contactLastName;
+										}else {
+											$contactLastName = $_SESSION["account_record"]['ContactLastName'];
+										}
+										
+										if ($_REQUEST["newRate"] != "") {
+											$rate = $_REQUEST["newRate"];
+											$_SESSION["account_record"]['Rate'] = $rate;
+										}else {
+											$rate = $_SESSION["account_record"]['Rate'];
+										}
+										
+										if ($_REQUEST["newAmenities"] != "") {
+											$amenitiesTemp = "";
+										      foreach ($_REQUEST["newAmenities"] as $amenity) {
+												$amenitiesTemp .= "$amenity,";
+										      }
+										      $amenities = trim($amenitiesTemp, ',');
+										      $_SESSION["account_record"]['Amenities'] = $amenities;
+										}else {
+											$amenities = $_SESSION["account_record"]['Amenities'];
+										}
+										
+										if ($_REQUEST["newClassesOffered"] != "") {
+											$classesOffered = $_REQUEST["newClassesOffered"];
+											$_SESSION["account_record"]['ClassesOffered'] = $classesOffered;
+										}else {
+											$classesOffered = $_SESSION["account_record"]['ClassesOffered'];
+										}
+										
+										if ($_REQUEST["newDaysOperation"] != "") {
+											$daysOperationTemp = "";
+										      foreach($_REQUEST['newDaysOperation'] as $day) {
+										            $daysOperationTemp .= "$day,";
+										      }
+										      $daysOperation = trim($daysOperationTemp, ',');
+										      $_SESSION["account_record"]['DaysOperation'] = $daysOperation;
+										}else {
+											$daysOperation = $_SESSION["account_record"]['DaysOperation'];
+										}
+										
+										if ($_REQUEST["newOperationFrom"] != "" && $_REQUEST["newOperationTo"] != "") {
+											$operationFrom = $_REQUEST["newOperationFrom"];
+							                        $operationTo = $_REQUEST["newOperationTo"];			
+											$hoursOperation = $operationFrom . "AM-" . $operationTo . "PM";
+											$_SESSION["account_record"]['HoursOperation'] = $hoursOperation;
+										}else {
+											$hoursOperation = $_SESSION["account_record"]['HoursOperation'];
+										}
+										
+										try {
+											// updates existing record with new information
+											$updateGymSql1 = 
+											"update Provider
+											set Email='{$email}',Password='{$password}',Address='{$address}',City='{$city}',State='{$state}',ZipCode='{$zip}',Phone='{$phone}'
+											where ProviderId='{$id}'";										
+																					
+											$rsUpdateGym1 = mysqli_query($db, $updateGymSql1);
+											
+											if (!$rsUpdateGym1) {
+												throw new Exception(mysqli_error($db));
+											}
+											
+											$updateGymSql2 = 
+											"update Gym
+											set Name='{$gymName}',ContactFirstName='{$contactFirstName}',ContactLastName='{$contactLastName}',Rate='{$rate}',Amenities='{$amenities}',ClassesOffered='{$classesOffered}',DaysOperation='{$daysOperation}',HoursOperation='{$hoursOperation}'
+											where ProviderId='{$id}'";	
+											
+											$rsUpdateTrainer2 = mysqli_query($db, $updateTrainerSql2);
+											
+											if (!$rsUpdateTrainer2) {
+												throw new Exception(mysqli_error($db));
+											}
+											
+										}catch (Exception $e) {
+											header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
+										}
+										
+										header('Location: index.php');
 									}else {
 								?>
 								<div class="well form-well">
