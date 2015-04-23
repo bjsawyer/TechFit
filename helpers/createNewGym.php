@@ -1,4 +1,4 @@
-<form id="gymForm" class="form-horizontal hidden"  method="POST" action="index.php">
+<form id="gymForm" class="form-horizontal hidden"  method="POST" action="">
 	<fieldset>
 		<div class="form-group">
 			
@@ -155,7 +155,7 @@
 		</div>
 		
 		<div class="row row-button">
-			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Create</button>
+			<button type="submit" name="newGymSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Create</button>
 		</div>
 	</fieldset>
 </form>

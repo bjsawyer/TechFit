@@ -1,4 +1,4 @@
-<form id="trainerForm" class="form-horizontal hidden"  method="POST" action="index.php">
+<form id="trainerForm" class="form-horizontal hidden"  method="POST" action="">
 	<fieldset>
 		<div class="form-group">
 			
@@ -13,6 +13,13 @@
 				<div class="col-sm-6 col-centered">
 					<label for="newLastName">Last name</label>
 					<input type="text" class="form-control" id="newLastName" name="newLastName" placeholder="Last name">
+				</div>
+			</div>
+			
+			 <div class="row row-centered row-padding">
+				<div class="col-sm-6 col-centered">
+					<label for="newGender">Gender</label>
+					<input type="text" class="form-control" id="newGender" name="newGender" placeholder="Gender">
 				</div>
 			</div>
 			
@@ -88,7 +95,7 @@
 					<label for="newSpecialities">Specialities</label>
 					<p for="newSpecialities" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple specialities</i></small></p>
                           <div>
-                               <select multiple class="form-control" id="newSpecialities">
+                               <select multiple class="form-control" name="newSpecialities[]" id="newSpecialities">
 							<option value="Balance">Balance</option>
 							<option value="Core">Core</option>
 							<option value="Endurance">Endurance</option>
@@ -112,7 +119,7 @@
                     <label for="newDaysAvailability">Days of availability</label>
                     <p for="newDaysAvailability" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple days</i></small></p>
                      <div>
-                          <select multiple class="form-control" id="newDaysAvailability">
+                          <select multiple class="form-control" id="newDaysAvailability" name="newDaysAvailability[]">
 						<option value="Sunday">Sunday</option>
 						<option value="Monday">Monday</option>
 						<option value="Tuesday">Tuesday</option>
@@ -148,7 +155,7 @@
 		</div>
 		
 		<div class="row row-button">
-			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Create</button>
+			<button type="submit" name="newTrainerSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Create</button>
 		</div>
 	</fieldset>
 </form>

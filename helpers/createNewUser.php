@@ -1,4 +1,4 @@
-<form id="userForm" class="form-horizontal hidden"  method="POST" action="createAccountSuccess.php">
+<form id="userForm" class="form-horizontal hidden"  method="POST" action="">
 	<fieldset>
 		<div class="form-group">
 			<div class="row row-centered row-padding">
@@ -12,6 +12,13 @@
 				<div class="col-sm-6 col-centered">
 					<label for="newLastName">Last name</label>
 					<input type="text" class="form-control" id="newLastName" name="newLastName" placeholder="Last name">
+				</div>
+			</div>
+			
+			 <div class="row row-centered row-padding">
+				<div class="col-sm-6 col-centered">
+					<label for="newGender">Gender</label>
+					<input type="text" class="form-control" id="newGender" name="newGender" placeholder="Gender">
 				</div>
 			</div>
 			

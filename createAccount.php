@@ -40,9 +40,9 @@
 							    
 							    $firstName = $_REQUEST["newFirstName"];
 							    $lastName = $_REQUEST["newLastName"];
+							    $gender = $_REQUEST["newGender"];
 							    $email = $_REQUEST["newEmail"];
 							    $password = $_REQUEST["newPassword"];
-							    $gender = $_REQUEST["newGender"];
 							    $address = $_REQUEST["newAddress"];
 							    $city = $_REQUEST["newCity"];
 							    $state = $_REQUEST["newState"];
@@ -61,12 +61,88 @@
 								}
 								
 								mysqli_close($db);
-								unset($db);  
+								 unset($db);
 							
 							}catch(Exception $e) {
 								header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
 							}
+							
+							header('location: createAccountSuccess.php');
+							
 						}else if (isset($_REQUEST["newTrainerSubmit"])) {
+							try {
+								$db = $GLOBALS["db"];
+							    
+							      $firstName = $_REQUEST["newFirstName"];
+							      $lastName = $_REQUEST["newLastName"];
+							      $gender = $_REQUEST["newGender"];
+							      $email = $_REQUEST["newEmail"];
+							      $password = $_REQUEST["newPassword"];
+							      $address = $_REQUEST["newAddress"];
+							      $city = $_REQUEST["newCity"];
+							      $state = $_REQUEST["newState"];
+							      $zip = $_REQUEST["newZip"];
+							      $phone = $_REQUEST["newPhone"];
+							      $rate = $_REQUEST["newRate"];
+							      
+							      $specialities = "";
+							      foreach ($_REQUEST["newSpecialities"] as $speciality) {
+									$specialities .= "$speciality,";
+							      };
+							      $classesOffered = $_REQUEST["newClassesOffered"];
+							      
+							      $daysAvailability = "";
+							      foreach($_REQUEST['newDaysAvailability'] as $day) {
+							            $daysAvailability .= "$day,";
+							      };
+							      
+							      $availabilityFrom = $_REQUEST["newAvailabilityFrom"];
+							      $availabilityTo = $_REQUEST["newAvailabilityTo"];
+							      $hoursAvailability = $availabilityFrom . "AM-" . $availabilityTo . "PM";
+							      
+							      $newTrainerSql1 =
+							      "insert into Provider (Email, Password, Phone, Address, City, State, ZipCode)
+							      values ('{$email}','{$password}','{$phone}','{$address}','{$city}','{$state}','{$zip}')";
+							      
+							      $rsNewTrainer1 = mysqli_query($db, $newTrainerSql1);
+								
+								// checks if query worked
+								if (!$rsNewTrainer1) {
+									throw new Exception(mysqli_error($db));
+								}
+							      
+							      $providerIdSql = "select ProviderId from Provider where email = '{$email}'";
+							      
+							      $rsProviderId = mysqli_query($db, $providerIdSql);
+								
+								// checks if query worked
+								if (!$rsProviderId) {
+									throw new Exception(mysqli_error($db));
+								}
+								
+								mysqli_data_seek($rsProviderId, 0);
+								
+								$providerId = mysqli_fetch_array($rsProviderId);
+							      
+							      $newTrainerSql2 = 
+							      "insert into Trainer (ProviderId, FirstName, LastName, Gender, Rate, Specialities, ClassesOffered, DaysAvailability, HoursAvailability)
+								values ('{$providerId}','{$firstName}', '{$lastName}','{$gender}','{$rate}','" . trim($specialities, ',') . "','{$classesOffered}','" . trim($daysAvailability, ',') . "','{$hoursAvailability}')";
+							                                    
+								$rsNewTrainer2 = mysqli_query($db, $newTrainerSql2);
+								
+								// checks if query worked
+								if (!$rsNewTrainer2) {
+									throw new Exception(mysqli_error($db));
+								}
+								
+								mysqli_close($db);
+								unset($db);
+							
+							}catch(Exception $e) {
+								header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
+							}
+							
+							header('location: createAccountSuccess.php');
 						
 						}else if (isset($_REQUEST["newGymSubmit"])) {
 						
