@@ -315,8 +315,6 @@
 		$.each(data, function(key, value) {              
 	            $('<option>').val(key).text(value).appendTo($select);
 		});
-		
-		console.log($select.html());
        });
 	
 </script>

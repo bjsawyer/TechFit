@@ -111,6 +111,7 @@
 					<label for="newClassesOffered">Classes offered</label>
 					<div>
 						<select class="form-control" id="newClassesOffered">
+							<option value="" selected disabled>Classes offered</option>
 							<option value="0">No</option>
 							<option value="1">Yes</option>
 						</select>

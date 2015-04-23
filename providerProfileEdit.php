@@ -119,10 +119,12 @@
 										}
 										
 										if ($_REQUEST["newSpecialities"] != "") {
-											$specialities = "";
+											$specialitiesTemp = "";
 										      foreach ($_REQUEST["newSpecialities"] as $speciality) {
-												$specialities .= "$speciality,";
+												$specialitiesTemp .= "$speciality,";
 										      }
+										      $specialities = trim($specialitiesTemp, ',');
+										      $_SESSION["account_record"]['Specialities'] = $specialities;
 										}else {
 											$specialities = $_SESSION["account_record"]['Specialities'];
 										}
@@ -135,10 +137,12 @@
 										}
 										
 										if ($_REQUEST["newDaysAvailability"] != "") {
-											$daysAvailability = "";
+											$daysAvailabilityTemp = "";
 										      foreach($_REQUEST['newDaysAvailability'] as $day) {
-										            $daysAvailability .= "$day,";
+										            $daysAvailabilityTemp .= "$day,";
 										      }
+										      $daysAvailability = trim($daysAvailabilityTemp, ',');
+										      $_SESSION["account_record"]['DaysAvailability'] = $daysAvailability;
 										}else {
 											$daysAvailability = $_SESSION["account_record"]['DaysAvailability'];
 										}
@@ -167,7 +171,7 @@
 											
 											$updateTrainerSql2 = 
 											"update Trainer
-											set FirstName='{$firstName}',LastName='{$lastName}',Gender='{$gender}',Rate='{$rate}',Specialities='" . trim($specialities, ',') . "',ClassesOffered='{$classesOffered}',DaysAvailability='" . trim($daysAvailability, ',') . "',HoursAvailability='{$hoursAvailability}'
+											set FirstName='{$firstName}',LastName='{$lastName}',Gender='{$gender}',Rate='{$rate}',Specialities='{$specialities}',ClassesOffered='{$classesOffered}',DaysAvailability=''{$daysAvailability}',HoursAvailability='{$hoursAvailability}'
 											where ProviderId='{$id}'";	
 											
 											$rsUpdateTrainer2 = mysqli_query($db, $updateTrainerSql2);
@@ -181,6 +185,7 @@
 										}
 										
 										header('Location: index.php');
+									}elseif () {
 										
 									}else {
 								?>
@@ -214,17 +219,19 @@
 	
 		var $select = $('#newState');
  
-	    //request the JSON data and parse into the select element
-	    $.getJSON('us_states.json', function(data){
-	 
-		    //clear the current content of the select
-		    $select.html('');
+	// populates state selects
+      var $select = $('.newState');
+ 
+	// request the JSON data and parse into the select element
+	$.getJSON('us_states.json', function(data){
 		 
-		    $select.find('option').remove();
-		    $('<option selected disabled>').val("").text("State").appendTo($select);                          
-			$.each(data, function(key, value) {              
-			    $('<option>').val(key).text(value).appendTo($select);
-			});
-			console.log($select.html());
-	    });
+		 //clear the current content of the select
+		$select.html('');
+		$select.find('option').remove();
+		$('<option selected disabled>').val("").text("State").appendTo($select);                          
+		
+		$.each(data, function(key, value) {              
+	            $('<option>').val(key).text(value).appendTo($select);
+		});
+       });
 	</script>
