@@ -99,7 +99,7 @@
 							      
 							      $availabilityFrom = $_REQUEST["newAvailabilityFrom"];
 							      $availabilityTo = $_REQUEST["newAvailabilityTo"];
-							      $hoursAvailability = print $availabilityFrom . "AM-" . print $availabilityTo . "PM";
+							      $hoursAvailability = $availabilityFrom . "AM-" . $availabilityTo . "PM";
 							      
 							      $newTrainerSql1 =
 							      "insert into Provider (Email, Password, Phone, Address, City, State, ZipCode)
@@ -173,9 +173,9 @@
 							            $daysOperation .= "$day,";
 							      };
 							      
-							      $operationOpen = $_REQUEST["newOperationOpen"];
-							      $operationClose = $_REQUEST["newOperationClose"];
-							      $hoursOperation = print $operationOpen . "AM-" . print $operationClose . "PM";
+							     $operationOpen = $_REQUEST["newOperationOpen"];
+							     $operationClose = $_REQUEST["newOperationClose"];
+							     $hoursOperation = $operationOpen . "AM-" . $operationClose . "PM";
 							      
 							      $newGymSql1 =
 							      "insert into Provider (Email, Password, Phone, Address, City, State, ZipCode)

@@ -84,7 +84,7 @@
 					<label for="newRate">Rate</label>
 					<div class="input-group col-sm-12">
 						<span class="input-group-addon" id="basic-addon2" style="padding:6px 12px;">$</span>
-						<input type="text" class="form-control" id="newRate" placeholder="Rate" aria-describedby="basic-addon2">
+						<input type="text" class="form-control" id="newRate" name="newRate" placeholder="Rate" aria-describedby="basic-addon2">
 						<span class="input-group-addon" id="basic-addon2" style="padding:6px 12px;">/month</span>
 					</div>
 				</div>
@@ -137,14 +137,14 @@
                          <label for="newHoursOperation">Hours of operation</label>
                          <div id="newHoursOperation">
                               <div class="input-group col-sm-5" style="float:left;">
-							<input type="text" class="form-control" id="newOperationOpen" placeholder="Open" aria-describedby="basic-addon2">
+							<input type="text" class="form-control" id="newOperationOpen" name="newOperationOpen" placeholder="Open" aria-describedby="basic-addon2">
 							<span class="input-group-addon" id="basic-addon2" style="padding:6px 8px;">AM</span>
 						</div>
 						<div class="input-group col-sm-2 text-center" style="float:left;font-size: 22px;">
 							<p> - </p>
 						</div>
 						<div class="input-group col-sm-5" style="float:left;">
-							<input type="text" class="form-control" id="newOperationClose" placeholder="Close" aria-describedby="basic-addon2">
+							<input type="text" class="form-control" id="newOperationClose" name="newOperationClose" placeholder="Close" aria-describedby="basic-addon2">
 							<span class="input-group-addon" id="basic-addon2" style="padding:6px 8px;">PM</span>
 						</div>
 					</div>

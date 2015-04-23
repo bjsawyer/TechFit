@@ -84,7 +84,7 @@
 					<label for="newRate">Rate</label>
 					<div class="input-group col-sm-12">
 						<span class="input-group-addon" id="basic-addon2" style="padding:6px 12px;">$</span>
-						<input type="text" class="form-control" id="newRate" placeholder="Rate" aria-describedby="basic-addon2">
+						<input type="text" class="form-control" id="newRate" name="newRate" placeholder="Rate" aria-describedby="basic-addon2">
 						<span class="input-group-addon" id="basic-addon2" style="padding:6px 12px;">/hour</span>
 					</div>
 				</div>
@@ -94,8 +94,8 @@
 				<div class="col-sm-6 col-centered">
 					<label for="newSpecialities">Specialities</label>
 					<p for="newSpecialities" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple specialities</i></small></p>
-                          <div>
-                               <select multiple class="form-control" name="newSpecialities[]" id="newSpecialities">
+	                         <div>
+	                               <select multiple class="form-control" name="newSpecialities[]" id="newSpecialities">
 							<option value="Balance">Balance</option>
 							<option value="Core">Core</option>
 							<option value="Endurance">Endurance</option>
@@ -119,34 +119,35 @@
 			
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
-                    <label for="newDaysAvailability">Days of availability</label>
-                    <p for="newDaysAvailability" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple days</i></small></p>
-                     <div>
-                          <select multiple class="form-control" id="newDaysAvailability" name="newDaysAvailability[]">
-						<option value="Sunday">Sunday</option>
-						<option value="Monday">Monday</option>
-						<option value="Tuesday">Tuesday</option>
-						<option value="Wednesday">Wednesday</option>
-						<option value="Thursday">Thursday</option>
-						<option value="Friday">Friday</option>
-						<option value="Saturday">Saturday</option>
-					</select>            
+                              <label for="newDaysAvailability">Days of availability</label>
+                              <p for="newDaysAvailability" id="label-notbold"><small><i>*Hold </i><kbd>Ctrl</kbd><i> to select multiple days</i></small></p>
+                              <div>
+	                          <select multiple class="form-control" id="newDaysAvailability" name="newDaysAvailability[]">
+							<option value="Sunday">Sunday</option>
+							<option value="Monday">Monday</option>
+							<option value="Tuesday">Tuesday</option>
+							<option value="Wednesday">Wednesday</option>
+							<option value="Thursday">Thursday</option>
+							<option value="Friday">Friday</option>
+							<option value="Saturday">Saturday</option>
+						</select>            
+					</div>
 				</div>
-              </div>
+			</div>
 			
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
                          <label for="newHoursAvailability">Hours of availability</label>
-                         <div id="newHoursAvailability">
-                              <div class="input-group col-sm-5" style="float:left;">
-							<input type="text" class="form-control" id="newAvailabilityFrom" placeholder="From" aria-describedby="basic-addon2">
+	                         <div id="newHoursAvailability">
+	                              <div class="input-group col-sm-5" style="float:left;">
+							<input type="text" class="form-control" id="newAvailabilityFrom"  name="newAvailabilityFrom" placeholder="From" aria-describedby="basic-addon2">
 							<span class="input-group-addon" id="basic-addon2" style="padding:6px 8px;">AM</span>
 						</div>
 						<div class="input-group col-sm-2 text-center" style="float:left;font-size: 22px;">
 							<p> - </p>
 						</div>
 						<div class="input-group col-sm-5" style="float:left;">
-							<input type="text" class="form-control" id="newAvailabilityTo" placeholder="To" aria-describedby="basic-addon2">
+							<input type="text" class="form-control" id="newAvailabilityTo" name="newAvailabilityTo" placeholder="To" aria-describedby="basic-addon2">
 							<span class="input-group-addon" id="basic-addon2" style="padding:6px 8px;">PM</span>
 						</div>
 					</div>
@@ -160,5 +161,6 @@
 		<div class="row row-button">
 			<button type="submit" name="newTrainerSubmit" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Create</button>
 		</div>
+		
 	</fieldset>
 </form>
