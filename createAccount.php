@@ -83,6 +83,7 @@
 							      $zip = $_REQUEST["newZip"];
 							      $phone = $_REQUEST["newPhone"];
 							      $rate = $_REQUEST["newRate"];
+							      $providerType = "Trainer";
 							      
 							      $specialities = "";
 							      foreach ($_REQUEST["newSpecialities"] as $speciality) {
@@ -101,8 +102,8 @@
 							      $hoursAvailability = $availabilityFrom . "AM-" . $availabilityTo . "PM";
 							      
 							      $newTrainerSql1 =
-							      "insert into Provider (Email, Password, Phone, Address, City, State, ZipCode)
-							      values ('{$email}','{$password}','{$phone}','{$address}','{$city}','{$state}','{$zip}')";
+							      "insert into Provider (Email, Password, Phone, Address, City, State, ZipCode, ProviderType)
+							      values ('{$email}','{$password}','{$phone}','{$address}','{$city}','{$state}','{$zip}','{$providerType}')";
 							      
 							      $rsNewTrainer1 = mysqli_query($db, $newTrainerSql1);
 								
@@ -159,6 +160,7 @@
 							      $contactFirstName = $_REQUEST["newContactFirstName"];
 							      $contactLastName = $_REQUEST["newContactLastName"];
 							      $rate = $_REQUEST["newRate"];
+							      $providerType = "Gym";
 							      
 							      $amenities = "";
 							      foreach ($_REQUEST["newAmenities"] as $amenity) {
@@ -177,8 +179,8 @@
 							     $hoursOperation = $operationOpen . "AM-" . $operationClose . "PM";
 							      
 							      $newGymSql1 =
-							      "insert into Provider (Email, Password, Phone, Address, City, State, ZipCode)
-							      values ('{$email}','{$password}','{$phone}','{$address}','{$city}','{$state}','{$zip}')";
+							      "insert into Provider (Email, Password, Phone, Address, City, State, ZipCode, ProviderType)
+							      values ('{$email}','{$password}','{$phone}','{$address}','{$city}','{$state}','{$zip}','{$providerType}')";
 							      
 							      $rsNewGym1 = mysqli_query($db, $newGymSql1);
 								
