@@ -37,7 +37,7 @@
 									<h1>Edit Profile <small>Make changes to your profile </small></h1>
 								</div>
 								<?
-									if (isset($_REQUEST["save"])) {
+									if (isset($_REQUEST["newUserSubmit"])) {
 									
 										$id = $_SESSION["account_record"]['UserId'];
 										
@@ -73,10 +73,18 @@
 											$password = $_SESSION["account_record"]['Password'];
 										}
 										
+										if ($_REQUEST["newGender"] != "") {
+											$gender = $_REQUEST["newGender"];
+											$_SESSION["account_record"]['Gender'] = $gender;
+											$_SESSION["account_record"][5] = $gender;
+										}else {
+											$gender = $_SESSION["account_record"]['Gender'];
+										}
+										
 										if ($_REQUEST["newAddress"] != "") {
 											$address = $_REQUEST["newAddress"];
 											$_SESSION["account_record"]['Address'] = $address;
-											$_SESSION["account_record"][5] = $address;
+											$_SESSION["account_record"][6] = $address;
 										}else {
 											$address = $_SESSION["account_record"]['Address'];
 										}
@@ -84,7 +92,7 @@
 										if ($_REQUEST["newCity"] != "") {
 											$city = $_REQUEST["newCity"];
 											$_SESSION["account_record"]['City'] = $city;
-											$_SESSION["account_record"][6] = $city;
+											$_SESSION["account_record"][7] = $city;
 										}else {
 											$city = $_SESSION["account_record"]['City'];
 										}
@@ -92,7 +100,7 @@
 										if ($_REQUEST["newState"] != "") {
 											$state = $_REQUEST["newState"];
 											$_SESSION["account_record"]['State'] = $state;
-											$_SESSION["account_record"][7] = $state;
+											$_SESSION["account_record"][8] = $state;
 										}else {
 											$state = $_SESSION["account_record"]['State'];
 										}
@@ -100,7 +108,7 @@
 										if ($_REQUEST["newZip"] != "") {
 											$zip = $_REQUEST["newZip"];
 											$_SESSION["account_record"]['ZipCode'] = $zip;
-											$_SESSION["account_record"][8] = $zip;
+											$_SESSION["account_record"][9] = $zip;
 										}else {
 											$zip = $_SESSION["account_record"]['ZipCode'];
 										}
@@ -108,7 +116,7 @@
 										if ($_REQUEST["newPhone"] != "") {
 											$phone = $_REQUEST["newPhone"];
 											$_SESSION["account_record"]['Phone'] = $phone;
-											$_SESSION["account_record"][9] = $phone;
+											$_SESSION["account_record"][10] = $phone;
 										}else {
 											$phone = $_SESSION["account_record"]['Phone'];
 										}
@@ -116,16 +124,17 @@
 										if ($_REQUEST["newSearchingFor"] != "") {
 											$searchingFor = $_REQUEST["newSearchingFor"];
 											$_SESSION["account_record"]['SearchingFor'] = $searchingFor;
-											$_SESSION["account_record"][10] = $searchingFor;
+											$_SESSION["account_record"][11] = $searchingFor;
 										}else {
 											$searchingFor = $_SESSION["account_record"]['SearchingFor'];
 										}
 										
 										try {
 											// updates existing record with new information
-											$updateSql = "update User
-														  set FirstName='{$firstName}',LastName='{$lastName}',Email='{$email}',Password='{$password}',Address='{$address}',City='{$city}',State='{$state}',ZipCode='{$zip}',Phone='{$phone}',SearchingFor='{$searchingFor}'
-														  where UserId='{$id}'";											
+											$updateSql = 
+											"update User
+											set FirstName='{$firstName}',LastName='{$lastName}',Email='{$email}',Password='{$password}',Gender='{$gender}',Address='{$address}',City='{$city}',State='{$state}',ZipCode='{$zip}',Phone='{$phone}',SearchingFor='{$searchingFor}'
+											where UserId='{$id}'";											
 											$rsUpdate = mysqli_query($db, $updateSql);
 											
 											if (!$rsUpdate) {
@@ -137,81 +146,13 @@
 											exit;
 										}
 										
-										
 										header('Location: index.php');
 										
 										print implode(" ", $_SESSION["account_record"]);
 									}else {
 								?>
 								<div class="well form-well">
-									<form class="form-horizontal"  method="POST" action="">
-										<fieldset>
-											<div class="form-group">
-												<div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-					                                    <input type="text" class="form-control" id="newFirstName" name="newFirstName" placeholder="First name">
-					                                </div>
-					                            </div>
-					                            <div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-														<input type="text" class="form-control" id="newLastName" name="newLastName" placeholder="Last name">
-													</div>
-												</div>
-												<div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-					                                        <input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="Email">
-					                                </div>
-												</div>
-												<div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-														<input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Password">
-													</div>
-												</div>
-												<div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-														<input type="text" class="form-control" id="newAddress" name="newAddress" placeholder="Address">
-													</div>
-												</div>
-												<div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-														<input type="text" class="form-control" id="newCity" name="newCity" placeholder="City">
-													</div>
-												</div>
-												<div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-														<select class="form-control" id="newState" name="newState"></select>
-													</div>
-												</div>
-												<div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-														<input type="text" class="form-control" id="newZip" name="newZip" placeholder="Zip">
-													</div>
-												</div>
-												<div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-														<input type="text" class="form-control" id="newPhone" name="newPhone" placeholder="Phone">
-													</div>
-												</div>
-												<div class="row row-centered row-padding">
-													<div class="col-sm-6 col-centered">
-														<select class="form-control" id="newSearchingFor" name="newSearchingFor">
-															<option value="" selected disabled>Searching for</option>
-															<option value="Trainer">Trainer</option>
-															<option value="Gym">Gym</option>															
-														</select>
-													</div>
-												</div>
-												<div class="row row-padding" id="note">
-													<i>* Only edit fields you wish to change</i>
-												</div>
-												<div class="row row-padding">
-												</div>
-												<div class="row row-button">
-													<button type="submit" name="save" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>   Save</button>
-												</div>
-											</div>
-										</fieldset>
-									</form>
+									<? include('helpers/newUserInformation.php'); ?>
 								</div>
 								<?
 									}
@@ -227,6 +168,10 @@
 		</body>
 	</html>
 	<script>
+		$(document).ready(function() {
+			$('#userForm').addClass("show").removeClass("hidden");
+		})
+	
 		var $select = $('#newState');
  
 	    //request the JSON data and parse into the select element

@@ -18,7 +18,11 @@
 			 <div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
 					<label for="newGender">Gender</label>
-					<input type="text" class="form-control" id="newGender" name="newGender" placeholder="Gender">
+					<select class="form-control" id="newGender" name="newGender">
+						<option value="" selected disabled>Gender</option>
+						<option value="Female">Female</option>
+						<option value="Male">Male</option>
+					</select>
 				</div>
 			</div>
 			

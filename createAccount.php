@@ -28,12 +28,11 @@
 		<div class="site-wrapper">
 	        <div class="site-wrapper-inner">
 	            <div class="cover-container">
-		            <?
+		                  <?
 						include('templates/navMenuIndex.php');
 						include('templates/sidebarLeft.php');
 						include('templates/sidebarRight.php');
-					?>
-					<?
+						
 						if (isset($_REQUEST["newUserSubmit"])) {
 							try {
 							    $db = $GLOBALS["db"];
@@ -243,11 +242,11 @@
 									<div class="row row-padding">
 									</div>
 									<?
-										include('helpers/createNewTrainer.php');
+										include('helpers/newTrainerInformation.php');
 										
-										include('helpers/createNewGym.php');
+										include('helpers/newGymInformation.php');
 										
-										include('helpers/createNewUser.php');
+										include('helpers/newUserInformation.php');
 									?>
 								</div>
 							</div>
