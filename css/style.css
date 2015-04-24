@@ -76,6 +76,12 @@
 .hours-width{
 	width: 40%;
 }
+.greenCheck{
+	color: limegreen;
+}
+.redCheck{
+	color: red;
+}
 #label-notbold{
 	font-weight: 0 !important;
 }

@@ -36,20 +36,20 @@
 				<h1>Upgrade today!</h1>
 				<p class="text-left">Select your preferred subscription type below:</p>
 				<div class="list-group">
-					<a href="#" class="list-group-item text-left">
-						<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok-circle"></span><b> PLATINUM</b></h4>
+					<a href="#" class="list-group-item text-left" id="optionPlatinum">
+						<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok-circle redCheck" id="checkPlatinum"></span><b> PLATINUM</b><small style="padding-left:7px">$25</small></h3>
 						<p class="list-group-item-text" style="font-size:16px">Our top-of-the-line subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
 					</a>
-					<a href="#" class="list-group-item text-left">
-						<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok-circle"></span><b> GOLD</b></h4>
+					<a href="#" class="list-group-item text-left" id="optionGold">
+						<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok-circle redCheck"  id="checkGold"></span><b> GOLD</b><small style="padding-left:8px">$15</small></h3>
 						<p class="list-group-item-text" style="font-size:16px">Our mid-level subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
 					</a>
-					<a href="#" class="list-group-item text-left">
-						<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok-circle"></span><b> SILVER</b></h4>
+					<a href="#" class="list-group-item text-left" id="optionSilver">
+						<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok-circle redCheck"  id="checkSilver"></span><b> SILVER</b><small style="padding-left:8px">$5</small></h3>
 						<p class="list-group-item-text" style="font-size:16px">Our top-of-the-line subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
 					</a>
 				</div>
-				<p style="padding-bottom:2px"><a class="btn btn-primary btn-lg" href="upgradeAccount.php" role="button"><span class="glyphicon glyphicon-flash"></span>   Upgrade</a></p>
+				<p style="padding-bottom:2px"><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>   Register</a></p>
 				<p style="font-size:12px;"><small><i>*Rankings based on three premium subscription types (Platinum, Gold, Silver)</i></small></p>
 			</div>
 		</div>
@@ -59,3 +59,22 @@
 	</div>
 </body>
 </html>
+<script>
+	$(document).ready(function() {
+		$('#optionPlatinum').click(function() {
+			$('#checkPlatinum').addClass("greenCheck").removeClass("redCheck");
+			$('#checkGold').addClass("redCheck").removeClass("greenCheck");
+			$('#checkSilver').addClass("redCheck").removeClass("greenCheck");
+		});
+		$('#optionGold').click(function() {
+			$('#checkPlatinum').addClass("redCheck").removeClass("greenCheck");
+			$('#checkGold').addClass("greenCheck").removeClass("redCheck");
+			$('#checkSilver').addClass("redCheck").removeClass("greenCheck");
+		});
+		$('#optionSilver').click(function() {
+			$('#checkPlatinum').addClass("redCheck").removeClass("greenCheck");
+			$('#checkGold').addClass("redCheck").removeClass("greenCheck");
+			$('#checkSilver').addClass("greenCheck").removeClass("redCheck");
+		});
+	});
+</script>
