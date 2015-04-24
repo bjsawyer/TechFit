@@ -29,15 +29,21 @@
 	        <div class="site-wrapper-inner">
 	            <div class="cover-container">
 		            <?
-						include('templates/navMenuIndex.php');
+						include('templates/navMenuProvider.php');
 						include('templates/sidebarLeft.php');
 						include('templates/sidebarRight.php');
 					?>
 						<div class="inner cover">
-							<div class="jumbotron" id="login-jumbotron">
+							<div class="jumbotron" id="login-jumbotron" style="padding-bottom:1px">
 								<h1>You are now signed up for <b>TechFit!</b></h1>
-								<p>Log in with your newly-created email and password and you are ready to go!</p>
-								<p><a class="btn btn-primary btn-lg" href="createAccount.php" role="button"><span class="glyphicon glyphicon-circle-arrow-up"></span>   Sign up</a></p>
+								<p class="text-left">Register as a premium member today and see your client interest <b>soar!</b> Premium accounts include:</p>
+								<ul class="list-group text-left" style="font-size:18px">
+									<li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> Higher ranking on Listings page*</li>
+									<li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> Profile picture uploads</li>
+									<li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> Space in profile for custom descriptions</li>
+								</ul>
+								<p style="padding-bottom:2px"><a class="btn btn-primary btn-lg" href="upgradeAccount.php" role="button"><span class="glyphicon glyphicon-flash"></span>   Upgrade</a></p>
+								<p style="font-size:12px;"><small><i>*Rankings based on three premium subscription types (Platinum, Gold, Silver)</i></small></p>
 							</div>
 						</div>
 					<?

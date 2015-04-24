@@ -35,21 +35,29 @@
 						
 						if (isset($_REQUEST["newUserSubmit"])) {
 							try {
-							    $db = $GLOBALS["db"];
+							      $db = $GLOBALS["db"];
 							    
-							    $firstName = $_REQUEST["newFirstName"];
-							    $lastName = $_REQUEST["newLastName"];
-							    $gender = $_REQUEST["newGender"];
-							    $email = $_REQUEST["newEmail"];
-							    $password = $_REQUEST["newPassword"];
-							    $address = $_REQUEST["newAddress"];
-							    $city = $_REQUEST["newCity"];
-							    $state = $_REQUEST["newState"];
-							    $zip = $_REQUEST["newZip"];
-							    $phone = $_REQUEST["newPhone"];
-							    $searchingFor = $_REQUEST["newSearchingFor"];
-							   
-							    $newUserSql = "insert into User (FirstName, LastName, Email, Password, Gender, Address, City, State, ZipCode, Phone, SearchingFor)
+							      $firstName = $_REQUEST["newFirstName"];
+							      $lastName = $_REQUEST["newLastName"];
+							      $gender = $_REQUEST["newGender"];
+							      
+							      $email = $_REQUEST["newEmail"];
+								$_SESSION["newEmailLogin"] = $email;
+								
+							      $password = $_REQUEST["newPassword"];
+								$_SESSION["newPasswordLogin"] = $password;
+							      
+							      $address = $_REQUEST["newAddress"];
+							      $city = $_REQUEST["newCity"];
+							      $state = $_REQUEST["newState"];
+							      $zip = $_REQUEST["newZip"];
+							      $phone = $_REQUEST["newPhone"];
+							      $searchingFor = $_REQUEST["newSearchingFor"];
+							      
+							      $userType = "User";
+								$_SESSION["new_account_type"] = $userType;
+							      
+							      $newUserSql = "insert into User (FirstName, LastName, Email, Password, Gender, Address, City, State, ZipCode, Phone, SearchingFor)
 							                   values ('{$firstName}', '{$lastName}', '{$email}', '{$password}', '{$gender}', '{$address}', '{$city}', '{$state}', '{$zip}', '{$phone}', '{$searchingFor}')";
 							    
 								$rsNewUser = mysqli_query($db, $newUserSql);
@@ -66,7 +74,7 @@
 								header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
 							}
 							
-							header('location: createAccountSuccess.php');
+							header('location: helpers/loginRedirect.php?' . $_SESSION["new_account_type"]);
 							
 						}else if (isset($_REQUEST["newTrainerSubmit"])) {
 							try {
@@ -75,15 +83,22 @@
 							      $firstName = $_REQUEST["newFirstName"];
 							      $lastName = $_REQUEST["newLastName"];
 							      $gender = $_REQUEST["newGender"];
-							      $email = $_REQUEST["newEmail"];
+							      
+							      $email = $_REQUEST["newEmail"];								
+								$_SESSION["newEmailLogin"] = $email;
+								
 							      $password = $_REQUEST["newPassword"];
+								$_SESSION["newPasswordLogin"] = $password;
+								
 							      $address = $_REQUEST["newAddress"];
 							      $city = $_REQUEST["newCity"];
 							      $state = $_REQUEST["newState"];
 							      $zip = $_REQUEST["newZip"];
 							      $phone = $_REQUEST["newPhone"];
 							      $rate = $_REQUEST["newRate"];
+							      
 							      $providerType = "Trainer";
+								$_SESSION["new_account_type"] = $providerType;
 							      
 							      $specialities = "";
 							      foreach ($_REQUEST["newSpecialities"] as $speciality) {
@@ -99,6 +114,7 @@
 							      
 							      $availabilityFrom = $_REQUEST["newAvailabilityFrom"];
 							      $availabilityTo = $_REQUEST["newAvailabilityTo"];
+							      
 							      $hoursAvailability = $availabilityFrom . "AM-" . $availabilityTo . "PM";
 							      
 							      $newTrainerSql1 =
@@ -123,7 +139,8 @@
 								
 								mysqli_data_seek($rsProviderId, 0);
 								
-								$providerId = mysqli_fetch_array($rsProviderId);
+								$providerIdArray = mysqli_fetch_array($rsProviderId);
+								$providerId = $providerIdArray['ProviderId'];
 							      
 							      $newTrainerSql2 = 
 							      "insert into Trainer (ProviderId, FirstName, LastName, Gender, Rate, Specialities, ClassesOffered, DaysAvailability, HoursAvailability)
@@ -143,15 +160,20 @@
 								header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
 							}
 							
-							header('location: createAccountSuccess.php');
+							header('location: helpers/loginRedirect.php?' . $_SESSION["new_account_type"]);
 						
 						}else if (isset($_REQUEST["newGymSubmit"])) {
 							try {
 								$db = $GLOBALS["db"];
 							    
 							      $gymName = $_REQUEST["newGymName"];
+							      
 							      $email = $_REQUEST["newEmail"];
+								$_SESSION["newEmailLogin"] = $email;
+								
 							      $password = $_REQUEST["newPassword"];
+								$_SESSION["newPasswordLogin"] = $password;
+							      
 							      $address = $_REQUEST["newAddress"];
 							      $city = $_REQUEST["newCity"];
 							      $state = $_REQUEST["newState"];
@@ -160,7 +182,9 @@
 							      $contactFirstName = $_REQUEST["newContactFirstName"];
 							      $contactLastName = $_REQUEST["newContactLastName"];
 							      $rate = $_REQUEST["newRate"];
+							      
 							      $providerType = "Gym";
+								$_SESSION["new_account_type"] = $providerType;
 							      
 							      $amenities = "";
 							      foreach ($_REQUEST["newAmenities"] as $amenity) {
@@ -200,7 +224,8 @@
 								
 								mysqli_data_seek($rsProviderId, 0);
 								
-								$providerId = mysqli_fetch_array($rsProviderId);
+								$providerIdArray = mysqli_fetch_array($rsProviderId);
+								$providerId = $providerIdArray['ProviderId'];
 							      
 							      $newGymSql2 = 
 							      "insert into Gym (ProviderId, Name, ContactFirstName, ContactLastName, Rate, Amenities, ClassesOffered, DaysOperation, HoursOperation)
@@ -220,7 +245,7 @@
 								header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
 							}
 							
-							header('location: createAccountSuccess.php');
+							header('location: helpers/loginRedirect.php?' . $_SESSION["new_account_type"]);
 							
 						}else {
 					?>
