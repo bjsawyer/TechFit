@@ -31,50 +31,70 @@
 		include('templates/sidebarLeft.php');
 		include('templates/sidebarRight.php');
 	?>
-		<div class="inner cover">
-			<div class="jumbotron" id="login-jumbotron" style="padding-bottom:1px">
-				<h1>Upgrade today!</h1>
-				<p class="text-left">Select your preferred subscription type below:</p>
-				<div class="list-group">
-					<a href="#" class="list-group-item text-left" id="optionPlatinum">
-						<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok-circle redCheck" id="checkPlatinum"></span><b> PLATINUM</b><small style="padding-left:7px">$25</small></h3>
-						<p class="list-group-item-text" style="font-size:16px">Our top-of-the-line subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
-					</a>
-					<a href="#" class="list-group-item text-left" id="optionGold">
-						<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok-circle redCheck"  id="checkGold"></span><b> GOLD</b><small style="padding-left:8px">$15</small></h3>
-						<p class="list-group-item-text" style="font-size:16px">Our mid-level subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
-					</a>
-					<a href="#" class="list-group-item text-left" id="optionSilver">
-						<h3 class="list-group-item-heading"><span class="glyphicon glyphicon-ok-circle redCheck"  id="checkSilver"></span><b> SILVER</b><small style="padding-left:8px">$5</small></h3>
-						<p class="list-group-item-text" style="font-size:16px">Our top-of-the-line subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
-					</a>
-				</div>
-				<p style="padding-bottom:2px"><a class="btn btn-primary btn-lg" href="#" role="button"><span class="glyphicon glyphicon-shopping-cart"></span>   Register</a></p>
-				<p style="font-size:12px;"><small><i>*Rankings based on three premium subscription types (Platinum, Gold, Silver)</i></small></p>
-			</div>
-		</div>
 	<?
+		if (isset($_REQUEST["optionPlatinum"])) {
+			addNewPlanToDatabase("Platinum");
+			header('location: payment.php');
+		}elseif (isset($_REQUEST["optionGold"])) {
+			addNewPlanToDatabase("Gold");
+			header('location: payment.php');
+		}elseif (isset($_REQUEST["optionSilver"])) {
+			addNewPlanToDatabase("Silver");
+			header('location: payment.php');
+		}else {
+	?>
+		<form id="register" method="POST" action="">
+			<div class="inner cover">
+				<div class="jumbotron" id="login-jumbotron" style="padding-bottom:1px">
+					<h1>Upgrade today!</h1>
+					<p class="text-left">Select your preferred subscription type below:</p>
+					<div class="list-group">
+					<? $icon = "glyphicon glyphicon-plus" ?>
+						<button class="list-group-item text-left" id="optionPlatinum" name="optionPlatinum" type="submit">
+							<h3 class="list-group-item-heading"><span class="<? print $icon ?>" style="color:#337ab7"></span><b> PLATINUM</b><small style="padding-left:7px">$25</small></h3>
+							<p class="list-group-item-text" style="font-size:16px">Our top-of-the-line subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
+						</button>
+						<button class="list-group-item text-left" id="optionGold" name="optionGold" type="submit">
+							<h3 class="list-group-item-heading"><span class="<? print $icon ?>"style="color:#337ab7"></span><b> GOLD</b><small style="padding-left:8px">$15</small></h3>
+							<p class="list-group-item-text" style="font-size:16px">Our mid-level subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
+						</button>
+						<button class="list-group-item text-left" id="optionSilver" name="optionSilver" type="submit">
+							<h3 class="list-group-item-heading"><span class="<? print $icon ?>" style="color:#337ab7"></span><b> SILVER</b><small style="padding-left:8px">$5</small></h3>
+							<p class="list-group-item-text" style="font-size:16px">Our top-of-the-line subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
+						</button>
+					</div>
+					<p style="font-size:12px;"><small><i>*Rankings based on three premium subscription types (Platinum, Gold, Silver)</i></small></p>
+				</div>
+			</div>
+			</form>
+	<?
+		}
 		include('templates/footer.php');
+	?>
+	<?
+		function addNewPlanToDatabase($planType) {
+			try {
+				$db = $GLOBALS["db"];
+				
+				$id = $_SESSION["account_record"]['ProviderId'];
+				
+				$updateSql =
+				"update {$_SESSION["new_account_type"]}
+				set MembershipLevel='{$planType}'
+				where ProviderId='{$id}'";
+				
+				$rsUpdate = mysqli_query($db, $updateSql);
+				
+				if (!$rsUpdate) {
+					throw new Exception(mysqli_error($db));
+				}
+				
+			}catch (Exception $e) {
+				header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
+				exit;
+			}
+		}
 	?>
 	</div>
 </body>
 </html>
-<script>
-	$(document).ready(function() {
-		$('#optionPlatinum').click(function() {
-			$('#checkPlatinum').addClass("greenCheck").removeClass("redCheck");
-			$('#checkGold').addClass("redCheck").removeClass("greenCheck");
-			$('#checkSilver').addClass("redCheck").removeClass("greenCheck");
-		});
-		$('#optionGold').click(function() {
-			$('#checkPlatinum').addClass("redCheck").removeClass("greenCheck");
-			$('#checkGold').addClass("greenCheck").removeClass("redCheck");
-			$('#checkSilver').addClass("redCheck").removeClass("greenCheck");
-		});
-		$('#optionSilver').click(function() {
-			$('#checkPlatinum').addClass("redCheck").removeClass("greenCheck");
-			$('#checkGold').addClass("redCheck").removeClass("greenCheck");
-			$('#checkSilver').addClass("greenCheck").removeClass("redCheck");
-		});
-	});
-</script>

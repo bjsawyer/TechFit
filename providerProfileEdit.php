@@ -9,6 +9,7 @@
 	// connects to database
 	require_once("connect_to_DB.php");
 	connectDB();
+	$db = $GLOBALS["db"];
 ?>
 	<html>
 		<head>
