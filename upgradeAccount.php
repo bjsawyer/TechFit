@@ -48,7 +48,7 @@
 				<div class="jumbotron" id="login-jumbotron" style="padding-bottom:1px">
 					<h1>Upgrade today!</h1>
 					<p class="text-left">Select your preferred subscription type below:</p>
-					<div class="list-group">
+					<div class="list-group" style="padding-bottom:50px">
 					<? $icon = "glyphicon glyphicon-plus" ?>
 						<button class="list-group-item text-left" id="optionPlatinum" name="optionPlatinum" type="submit">
 							<h3 class="list-group-item-heading"><span class="<? print $icon ?>" style="color:#337ab7"></span><b> PLATINUM</b><small style="padding-left:7px">$25</small></h3>

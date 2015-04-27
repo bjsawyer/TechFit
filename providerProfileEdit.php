@@ -323,7 +323,7 @@
 											set Name='{$gymName}',ContactFirstName='{$contactFirstName}',ContactLastName='{$contactLastName}',Rate='{$rate}',Amenities='{$amenities}',ClassesOffered='{$classesOffered}',DaysOperation='{$daysOperation}',HoursOperation='{$hoursOperation}'
 											where ProviderId='{$id}'";	
 											
-											$rsUpdateTrainer2 = mysqli_query($db, $updateTrainerSql2);
+											$rsUpdateTrainer2 = mysqli_query($db, $updateGymSql2);
 											
 											if (!$rsUpdateTrainer2) {
 												throw new Exception(mysqli_error($db));

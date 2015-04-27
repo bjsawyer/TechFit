@@ -10,7 +10,7 @@
 	require_once("connect_to_DB.php");
 	connectDB();
 ?>
-	<html>
+	<html>D
 		<head>
 			<meta charset="utf-8">
 		    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +44,12 @@
 										<h1>Profile <small>View & edit your profile </small></h1>
 									</div>
 									<?
+									
+									$_SESSION['temp_email'] = $_SESSION["account_record"]['Email'];
+									$_SESSION["account_record"] = "";
+									include('helpers/renderProfileData.php');
+									echo renderData();
+									
 									// fields shared by trainers and gyms
 									$address = $_SESSION["account_record"]['Address'];
 									$city = $_SESSION["account_record"]['City'];

@@ -42,7 +42,7 @@
 								<li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> Profile picture uploads</li>
 								<li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span> Space in profile for custom descriptions</li>
 							</ul>
-							<p style="padding-bottom:2px"><a class="btn btn-primary btn-lg" href="upgradeAccount.php" role="button"><span class="glyphicon glyphicon-flash"></span>   Upgrade</a></p>
+							<p style="padding-bottom:50px"><a class="btn btn-primary btn-lg" href="upgradeAccount.php" role="button"><span class="glyphicon glyphicon-flash"></span>   Upgrade</a></p>
 							<p style="font-size:12px;"><small><i>*Rankings based on three premium subscription types (Platinum, Gold, Silver)</i></small></p>
 						</div>
 					</div>
