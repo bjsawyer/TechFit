@@ -150,7 +150,7 @@
 												
 	                                                                        </div>
 											      <div class="media-body" style="vertical-align:middle">
-													<h4 style="margin-top:0px"><b><? print $trainerName ?></b> <small><? print $trainerEmail ?></small></h4>
+													<h4 style="top:0px"><b><? print $trainerName ?></b> <small><? print $trainerEmail ?></small></h4>
 												</div>
 												<ul class="list-unstyled" style="padding-top:10px;">
 													<li class="profile-spacing"><b>Profile Description: </b><small><?  ?></small></li>

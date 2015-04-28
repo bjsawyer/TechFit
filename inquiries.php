@@ -77,7 +77,7 @@
 									$userAddress = $row['Address'];
 									$userCity = $row['City'];
 									$userState = $row['State'];
-									$userZipCode = $row['ZipCode'];
+									$userZip = $row['ZipCode'];
 									$userPhone = $row['Phone'];
 									$userRequestDate = $row['RequestDate']
 							?>
@@ -90,13 +90,16 @@
 											</form>
 										</span>
 										<span class="well-listings-text">
-											<h4><? print $userName ?></h4>
-											<address>
-												<? print $userAddress ?><br>
-												<? print $userCity ?>, <? print $userState ?> <? print $userZipCode ?><br>
-												Phone: <? print $userPhone ?><br><br>
-												Request Date: <? print $userRequestDate ?>
-											</address>
+											<h4 style="margin-top:0px"><b><? print $userName ?></b> <small><? print $userEmail ?></small></h4>
+											<ul class="list-unstyled">
+												<li class="listing-spacing"><b>Address: </b><small><? print $userAddress ?></small><br></li>
+												<li class="listing-spacing"><b>City: </b><small><? print $userCity ?></small><br></li>
+												<li class="listing-spacing"><b>State: </b><small><? print $userState ?></small><br></li>
+												<li class="listing-spacing"><b>Zip Code: </b><small><? print $userZip?></small><br></li>
+												<li class="listing-spacing"><b>Phone: </b><small><? print $userPhone ?></small></li>
+												<br>
+												<li class="listing-spacing"><b>Request Date: </b><small><? print $userRequestDate ?></small></li>
+											</ul>
 										</span>
 									</div>
 							<?
