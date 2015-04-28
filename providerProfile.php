@@ -85,11 +85,17 @@
 										</span>
 										<span class="well-listings-text">
 											<div class="media">
+											
+											<? if($profilePictureUrl != "") { ?>
 											      <div class="media-left media-middle">
-													<img class="media-object profilePic" src="uploads/<? print $profilePictureUrl ?>" alt="...">
+													<img class="media-object profilePic" src="uploads/<? print $profilePictureUrl ?>">
+											<? }else { ?>
+												<div class="media-middle">
+											<? } ?>
+                                                                        
                                                                         </div>
 											      <div class="media-body" style="vertical-align:middle">
-													<h2><b><? print $name ?></b> <small><? print $email ?></small></h2>
+													<h2 style="margin-top:0px"><b><? print $name ?></b> <small><? print $email ?></small></h2>
 												</div>
 											<ul class="list-unstyled" style="padding-top:15px;">
 												<li class="profile-spacing"><b>Profile Description: </b><small><?  ?></small></li>
@@ -128,11 +134,17 @@
 										</span>
 										<span class="well-listings-text">
 											<div class="media">
+											     
+										     <? if($profilePictureUrl != "") { ?>
 											      <div class="media-left media-middle">
-													<img class="media-object profilePic" src="uploads/Gorilla Munch.png" alt="...">
+													<img class="media-object profilePic" src="uploads/<? print $profilePictureUrl ?>">
+											<? }else { ?>
+												<div class="media-middle">
+											<? } ?>
+											
                                                                         </div>
 											      <div class="media-body" style="vertical-align:middle">
-													<h2><b><? print $name ?></b> <small><? print $email ?></small></h2>
+													<h2 style="margin-top:0px"><b><? print $name ?></b> <small><? print $email ?></small></h2>
 												</div>
 												<ul class="list-unstyled" style="padding-top:15px;">
 													<li class="profile-spacing"><b>Profile Description: </b><small><?  ?></small></li>
