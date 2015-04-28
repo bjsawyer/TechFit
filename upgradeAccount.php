@@ -30,18 +30,21 @@
 		include('templates/navMenuProvider.php');
 		include('templates/sidebarLeft.php');
 		include('templates/sidebarRight.php');
+		
+		include('helpers/profileDescriptionAndPicture.php');
+		echo profilePictureAndDescriptionModal();
 	?>
 	<?
-		if (isset($_REQUEST["optionPlatinum"])) {
-			addNewPlanToDatabase("Platinum");
-			header('location: payment.php');
-		}elseif (isset($_REQUEST["optionGold"])) {
-			addNewPlanToDatabase("Gold");
-			header('location: payment.php');
-		}elseif (isset($_REQUEST["optionSilver"])) {
-			addNewPlanToDatabase("Silver");
-			header('location: payment.php');
-		}else {
+		//if (isset($_REQUEST["optionPlatinum"])) {
+		//	addNewPlanToDatabase("Platinum");
+		//	header('location: payment.php');
+		//}elseif (isset($_REQUEST["optionGold"])) {
+		//	addNewPlanToDatabase("Gold");
+		//	header('location: payment.php');
+		//}elseif (isset($_REQUEST["optionSilver"])) {
+		//	addNewPlanToDatabase("Silver");
+		//	header('location: payment.php');
+		//}else {
 	?>
 		<form id="register" method="POST" action="">
 			<div class="inner cover">
@@ -50,15 +53,15 @@
 					<p class="text-left">Select your preferred subscription type below:</p>
 					<div class="list-group" style="padding-bottom:50px">
 					<? $icon = "glyphicon glyphicon-plus" ?>
-						<button class="list-group-item text-left" id="optionPlatinum" name="optionPlatinum" type="submit">
+						<button class="list-group-item text-left" style="margin-bottom: 0px;" id="optionPlatinum" name="optionPlatinum" type="button">
 							<h3 class="list-group-item-heading"><span class="<? print $icon ?>" style="color:#337ab7"></span><b> PLATINUM</b><small style="padding-left:7px">$25</small></h3>
 							<p class="list-group-item-text" style="font-size:16px">Our top-of-the-line subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
 						</button>
-						<button class="list-group-item text-left" id="optionGold" name="optionGold" type="submit">
+						<button class="list-group-item text-left" style="margin-bottom: 0px;" id="optionGold" name="optionGold" type="button">
 							<h3 class="list-group-item-heading"><span class="<? print $icon ?>"style="color:#337ab7"></span><b> GOLD</b><small style="padding-left:8px">$15</small></h3>
 							<p class="list-group-item-text" style="font-size:16px">Our mid-level subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
 						</button>
-						<button class="list-group-item text-left" id="optionSilver" name="optionSilver" type="submit">
+						<button class="list-group-item text-left" style="margin-bottom: 0px;" id="optionSilver" name="optionSilver" type="button">
 							<h3 class="list-group-item-heading"><span class="<? print $icon ?>" style="color:#337ab7"></span><b> SILVER</b><small style="padding-left:8px">$5</small></h3>
 							<p class="list-group-item-text" style="font-size:16px">Our top-of-the-line subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
 						</button>
@@ -68,7 +71,7 @@
 			</div>
 			</form>
 	<?
-		}
+		//}
 		include('templates/footer.php');
 	?>
 	<?
@@ -98,3 +101,10 @@
 	</div>
 </body>
 </html>
+<script>
+	$(document).ready(function() {
+		$('.list-group').on('click', 'button', function() {
+			$('#profileModal').modal('show');
+		});
+	});
+</script>
