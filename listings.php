@@ -117,20 +117,45 @@
 									$trainerAddress = $row['Address'];
 									$trainerCity = $row['City'];
 									$trainerState = $row['State'];
-									$trainerZipCode = $row['ZipCode'];
+									$trainerZip = $row['ZipCode'];
 									$trainerPhone = $row['Phone'];
+									$trainerRate = $row['Rate'];
+									$trainerSpecialities = $row['Specialities'];
+									$trainerClassesOffered= $row['ClassesOffered'];
+									if ($trainerClassesOffered == 0) {
+										$trainerClassesOffered = "No";
+									}else {
+										$trainerClassesOffered = "Yes";
+									}
+									$trainerDaysAvailability = $row['DaysAvailability'];
+									$trainerHoursAvailability = $row['HoursAvailability'];
 							?>
 									<div class="well">
 										<span class="well-listings-icons">
 											<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-4-user.png"></img></span>
 										</span>
 										<span class="well-listings-text">
-											<h4><? print $trainerName ?></h4>
-											<address>
-												  <? print $trainerAddress ?><br>
-												  <? print $trainerCity ?>, <? print $trainerState ?> <? print $trainerZipCode?><br>
-												  Phone: <? print $trainerPhone ?>
-											</address>
+											<div class="media">
+												      <div class="media-left media-middle">
+														<img class="media-object profilePicListings" src="uploads/Gorilla Munch.png" alt="...">
+	                                                                        </div>
+												      <div class="media-body" style="vertical-align:middle">
+														<h4><? print $trainerName ?></h4>
+													</div>
+													<ul class="list-unstyled" style="padding-top:10px;">
+														<li class="profile-spacing"><b>Profile Description: </b><small><?  ?></small></li>
+														<br>
+														<li class="listing-spacing"><b>Address: </b><small><? print $trainerAddress ?></small><br></li>
+														<li class="listing-spacing"><b>City: </b><small><? print $trainerCity ?></small><br></li>
+														<li class="listing-spacing"><b>State: </b><small><? print $trainerState ?></small><br></li>
+														<li class="listing-spacing"><b>Zip Code: </b><small><? print $trainerZip?></small><br></li>
+														<li class="listing-spacing"><b>Phone: </b><small><? print $trainerPhone ?></small></li>
+														<li class="listing-spacing"><b>Rate (per hour): </b><small><? print $trainerRate ?></small></li>
+														<li class="listing-spacing"><b>Specialities: </b><small><? print $trainerSpecialities ?></small></li>
+														<li class="listing-spacing"><b>Classes Offered: </b><small><? print $trainerClassesOffered ?></small></li>
+														<li class="listing-spacing"><b>Days of Availability: </b><small><? print $trainerDaysAvailability ?></small></li>
+														<li class="listing-spacing"><b>Hour of Availability: </b><small><? print $trainerHoursAvailability ?></small></li>
+													</div>
 										</span>
 									</div>
 							<?
@@ -138,24 +163,48 @@
 								
 								// sets up data for gym listing
 								function renderGymListing($row) {
+									$gymContactFirstName = $row['ContactFirstName'];
+									$gymContactLastName = $row['ContactLastName'];
 									$gymName = $row['Name'];
 									$gymAddress = $row['Address'];
 									$gymCity = $row['City'];
 									$gymState = $row['State'];
-									$gymZipCode = $row['ZipCode'];
+									$gymZip = $row['ZipCode'];
 									$gymPhone = $row['Phone'];
+									$gymRate = $row['Rate'];
+									$gymAmenities = $row['Amenities'];
+									$gymClassesOffered = $row['ClassesOffered'];
+									$gymDaysOperation = $row['DaysOperation'];
+									$gymHoursOperation = $row['HoursOperation'];
 							?>
 									<div class="well">
 										<span class="well-listings-icons">
 											<span><img src="bootstrap-3.3.2-dist/glyphicons_free/glyphicons/png/glyphicons-357-dumbbell.png"></img></span>
 										</span>
 										<span class="well-listings-text">
-											<h4><? print $gymName ?></h4>
-											<address>
-												  <? print $gymAddress ?><br>
-												  <? print $gymCity ?>, <? print $gymState ?> <? print $gymZipCode?><br>
-												  Phone: <? print $gymPhone ?>
-											</address>
+											<div class="media">
+											      <div class="media-left media-middle">
+													<img class="media-object profilePicListings" src="uploads/Gorilla Munch.png" alt="...">
+                                                                        </div>
+											      <div class="media-body" style="vertical-align:middle">
+													<h4><? print $gymName ?></h4>
+												</div>
+												<ul class="list-unstyled" style="padding-top:10px;">
+													<li class="listing-spacing"><b>Profile Description: </b><small><?  ?></small></li>
+													<br>
+													<li class="listing-spacing"><b>Contact Name: </b><small><? print $gymContactFirstName . " " . $gymContactLastName ?></small><br></li>
+													<li class="listing-spacing"><b>Address: </b><small><? print $gymAddress ?></small><br></li>
+													<li class="listing-spacing"><b>City: </b><small><? print $gymCity ?></small><br></li>
+													<li class="listing-spacing"><b>State: </b><small><? print $gymState ?></small><br></li>
+													<li class="listing-spacing"><b>Zip Code: </b><small><? print $gymZip?></small><br></li>
+													<li class="listing-spacing"><b>Phone: </b><small><? print $gymPhone ?></small></li>
+													<li class="listing-spacing"><b>Rate (per month): </b><small><? print $gymRate ?></small></li>
+													<li class="listing-spacing"><b>Amenities: </b><small><? print $gymAmenities ?></small></li>
+													<li class="listing-spacing"><b>Classes Offered: </b><small><? print $gymClassesOffered ?></small></li>
+													<li class="listing-spacing"><b>Days of Operation: </b><small><? print $gymDaysOperation ?></small></li>
+													<li class="listing-spacing"><b>Hours of Operation: </b><small><? print $gymHoursOperation ?></small></li>
+												</ul>
+											</div>
 										</span>
 									</div>
 							<?

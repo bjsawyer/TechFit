@@ -68,7 +68,7 @@
 											</form>
 										</span>
 										<span class="well-listings-text">
-											<h4><b><? print $name ?></b> <small><? print $email ?></small></h4>
+											<h2><b><? print $name ?></b> <small><? print $email ?></small></h2>
 											<ul class="list-unstyled">
 												<li class="profile-spacing"><b>Address: </b><small><? print $address ?></small><br></li>
 												<li class="profile-spacing"><b>City: </b><small><? print $city ?></small><br></li>

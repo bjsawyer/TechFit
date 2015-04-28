@@ -59,6 +59,11 @@
 									$email = $_SESSION["account_record"]['Email'];
 									$membershipLevel = $_SESSION["account_record"]['MembershipLevel'];
 									$classesOffered = $_SESSION["account_record"]['ClassesOffered'];
+									if ($classesOffered == 0) {
+										$classesOffered = "No";
+									}else {
+										$classesOffered = "Yes";
+									}
 									$profilePictureUrl = $_SESSION["account_record"]['ProfilePictureUrl'];
 									$profileDescription = $_SESSION["account_record"]['ProfileDescription'];
 									$rate = $_SESSION["account_record"]['Rate'];
@@ -79,8 +84,14 @@
 											</form>
 										</span>
 										<span class="well-listings-text">
-											<h4><b><? print $name ?></b> <small><? print $email ?></small></h4>
-											<ul class="list-unstyled">
+											<div class="media">
+											      <div class="media-left media-middle">
+													<img class="media-object profilePic" src="uploads/<? print $profilePictureUrl ?>" alt="...">
+                                                                        </div>
+											      <div class="media-body" style="vertical-align:middle">
+													<h2><b><? print $name ?></b> <small><? print $email ?></small></h2>
+												</div>
+											<ul class="list-unstyled" style="padding-top:15px;">
 												<li class="profile-spacing"><b>Profile Description: </b><small><?  ?></small></li>
 												<br>
 												<li class="profile-spacing"><b>Address: </b><small><? print $address ?></small><br></li>
@@ -116,23 +127,30 @@
 											</form>
 										</span>
 										<span class="well-listings-text">
-											<h4><b><? print $name ?></b> <small><? print $email ?></small></h4>
-											<ul class="list-unstyled">
-												<li class="profile-spacing"><b>Profile Description: </b><small><?  ?></small></li>
-												<br>
-												<li class="profile-spacing"><b>Contact Name: </b><small><? print $contactFirstName . " " . $contactLastName ?></small><br></li>
-												<li class="profile-spacing"><b>Address: </b><small><? print $address ?></small><br></li>
-												<li class="profile-spacing"><b>City: </b><small><? print $city ?></small><br></li>
-												<li class="profile-spacing"><b>State: </b><small><? print $state ?></small><br></li>
-												<li class="profile-spacing"><b>Zip Code: </b><small><? print $zipCode?></small><br></li>
-												<li class="profile-spacing"><b>Phone: </b><small><? print $phone ?></small></li>
-												<li class="profile-spacing"><b>Rate (per month): </b><small><? print $rate ?></small></li>
-												<li class="profile-spacing"><b>Amenities: </b><small><? print $amenities ?></small></li>
-												<li class="profile-spacing"><b>Classes Offered: </b><small><? print $classesOffered ?></small></li>
-												<li class="profile-spacing"><b>Days of Operation: </b><small><? print $daysOperation ?></small></li>
-												<li class="profile-spacing"><b>Hours of Operation: </b><small><? print $hoursOperation ?></small></li>
-												<li class="profile-spacing"><b>Membership Level: </b><small><? print $membershipLevel ?></small></li>
-											</ul>
+											<div class="media">
+											      <div class="media-left media-middle">
+													<img class="media-object profilePic" src="uploads/Gorilla Munch.png" alt="...">
+                                                                        </div>
+											      <div class="media-body" style="vertical-align:middle">
+													<h2><b><? print $name ?></b> <small><? print $email ?></small></h2>
+												</div>
+												<ul class="list-unstyled" style="padding-top:15px;">
+													<li class="profile-spacing"><b>Profile Description: </b><small><?  ?></small></li>
+													<br>
+													<li class="profile-spacing"><b>Contact Name: </b><small><? print $contactFirstName . " " . $contactLastName ?></small><br></li>
+													<li class="profile-spacing"><b>Address: </b><small><? print $address ?></small><br></li>
+													<li class="profile-spacing"><b>City: </b><small><? print $city ?></small><br></li>
+													<li class="profile-spacing"><b>State: </b><small><? print $state ?></small><br></li>
+													<li class="profile-spacing"><b>Zip Code: </b><small><? print $zipCode?></small><br></li>
+													<li class="profile-spacing"><b>Phone: </b><small><? print $phone ?></small></li>
+													<li class="profile-spacing"><b>Rate (per month): </b><small><? print $rate ?></small></li>
+													<li class="profile-spacing"><b>Amenities: </b><small><? print $amenities ?></small></li>
+													<li class="profile-spacing"><b>Classes Offered: </b><small><? print $classesOffered ?></small></li>
+													<li class="profile-spacing"><b>Days of Operation: </b><small><? print $daysOperation ?></small></li>
+													<li class="profile-spacing"><b>Hours of Operation: </b><small><? print $hoursOperation ?></small></li>
+													<li class="profile-spacing"><b>Membership Level: </b><small><? print $membershipLevel ?></small></li>
+												</ul>
+											</div>
 										</span>
 									</div>
 								<?			
