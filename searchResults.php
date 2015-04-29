@@ -34,11 +34,11 @@
 			include('templates/sidebarRight.php');
 		?>
 		<?
+			$searchKeyword = "";
+			
 			if (isset($_REQUEST["searchKeyword"])) {
 				$searchKeyword = $_REQUEST["searchKeyword"];
-			} else {
-				$searchKeyword = "";
-			}
+			} 
 			
 			$searchKeywordSql = "%" . $searchKeyword . "%";
 		?>
@@ -50,55 +50,56 @@
 							</div>
 								<p class="text-left" style="padding-top:5px;margin-bottom:0; font-size:12px;color:gray">Showing results for: <i><b><? print $searchKeyword ?></b></i>. Click <a href="search.php" style="color:blue">here</a> to try a new search.</p>
 							<?
-								try {
-									// pulls all matching trainers from database
-									$trainersSql =
-									"select * from Provider
-									inner join Trainer on Provider.ProviderId = Trainer.ProviderId
-									where FirstName LIKE '{$searchKeywordSql}'
-									OR LastName LIKE '{$searchKeywordSql}'
-									OR Specialities LIKE '{$searchKeywordSql}'";
-									
-									$_SESSION['$rsTrainers'] = mysqli_query($db, $trainersSql);
-									
-									if (!$_SESSION['$rsTrainers']) {
-										throw new Exception(mysqli_error($db));
+								if ($searchKeyword != "") {
+									try {
+										// pulls all matching trainers from database
+										$trainersSql =
+										"select * from Provider
+										inner join Trainer on Provider.ProviderId = Trainer.ProviderId
+										where FirstName LIKE '{$searchKeywordSql}'
+										OR LastName LIKE '{$searchKeywordSql}'
+										OR Specialities LIKE '{$searchKeywordSql}'";
+										
+										$_SESSION['$rsTrainers'] = mysqli_query($db, $trainersSql);
+										
+										if (!$_SESSION['$rsTrainers']) {
+											throw new Exception(mysqli_error($db));
+										}
+										mysqli_data_seek($_SESSION['$rsTrainers'], 0);
+										
+										// pulls all matching gyms from database
+										$gymsSql =
+										"select * from Provider
+										inner join Gym on Provider.ProviderId = Gym.ProviderId
+										where Name LIKE '{$searchKeywordSql}'
+										OR Amenities LIKE '{$searchKeywordSql}'";
+										
+										$_SESSION['$rsGyms'] = mysqli_query($db, $gymsSql);
+										
+										if (!$_SESSION['$rsGyms']) {
+											throw new Exception(mysqli_error($db));
+										}
+										mysqli_data_seek($_SESSION['$rsGyms'], 0);
+										
+										$listings = array();
+										
+										// platinum trainers
+										while($row = mysqli_fetch_array($_SESSION['$rsTrainers'], MYSQLI_BOTH)) {
+											$listings[] = $row;
+										}
+										
+										// platinum gyms
+										while($row = mysqli_fetch_array($_SESSION['$rsGyms'], MYSQLI_BOTH)) {
+											$listings[] = $row;
+										}
+										
+										mysqli_close($db);
+										unset($db);
+										
+									}catch(Exception $e) {
+										header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
+										exit;
 									}
-									mysqli_data_seek($_SESSION['$rsTrainers'], 0);
-									
-									// pulls all matching gyms from database
-									$gymsSql =
-									"select * from Provider
-									inner join Gym on Provider.ProviderId = Gym.ProviderId
-									where Name LIKE '{$searchKeywordSql}'
-									OR Amenities LIKE '{$searchKeywordSql}'";
-									
-									$_SESSION['$rsGyms'] = mysqli_query($db, $gymsSql);
-									
-									if (!$_SESSION['$rsGyms']) {
-										throw new Exception(mysqli_error($db));
-									}
-									mysqli_data_seek($_SESSION['$rsGyms'], 0);
-									
-									$listings = array();
-									
-									// platinum trainers
-									while($row = mysqli_fetch_array($_SESSION['$rsTrainers'], MYSQLI_BOTH)) {
-										$listings[] = $row;
-									}
-									
-									// platinum gyms
-									while($row = mysqli_fetch_array($_SESSION['$rsGyms'], MYSQLI_BOTH)) {
-										$listings[] = $row;
-									}
-									
-									mysqli_close($db);
-									unset($db);
-									
-								}catch(Exception $e) {
-									header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
-									exit;
-								}
 								
 								// sets up data for trainer listing
 								function renderTrainerListing($row) {
@@ -244,6 +245,10 @@
 							</div>
 						</div>
 					</div>
+				<? }else {?>
+					<div class="row row-padding" style="padding-bottom:15px">
+					</div>
+				<? } ?>
 				</div>				
 				<?
 					include('templates/footer.php');
