@@ -29,6 +29,8 @@
 				throw new Exception(mysqli_error($db));
 			}
 			
+			header('location: ../inquirySuccess.php');
+			
 		}catch (Exception $e) {
 			header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
 			exit;
@@ -50,6 +52,8 @@
 			if (!$rsAdd) {
 				throw new Exception(mysqli_error($db));
 			}
+			
+			header('location: ../inquirySuccess.php');
 			
 		}catch (Exception $e) {
 			header('Location: errorPage.php?msg=' . $e->getMessage() . '&line=' . $e->getLine());
