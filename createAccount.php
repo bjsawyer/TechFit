@@ -257,14 +257,28 @@
 							<div class="panel-body">
 								<div class="well form-well">
 									<div class="row row-centered">
-										<div class="col-sm-6 col-centered">
+										<p class="text-left" style="font-size:11px">Select the account type you'd like to create:</p>
+										<div class="btn-group btn-group-justified" role="group" aria-label="accountType" style="padding:0 25 14">
+										      <div class="btn-group" role="group">
+										            <button type="button" class="btn btn-primary" id="buttonTrainer">Trainer</button>
+										      </div>
+										      <div class="btn-group" role="group">
+										            <button type="button" class="btn btn-primary" id="buttonGym">Gym</button>
+										      </div>
+										      <div class="btn-group" role="group">
+										            <button type="button" class="btn btn-primary" id="buttonSeeker">Seeker</button>
+										      </div>
+										</div>
+										
+										<!--<div class="col-sm-6 col-centered">
 											<select class="form-control" id="newAccountType" name="newAccountType">
 												<option value="" selected disabled>Type of account</option>
 												<option value="Trainer">Trainer</option>
 												<option value="Gym">Gym</option>
 												<option value="User">Trainer or gym seeker</option>
 											</select>
-										</div>
+										</div>-->
+										
 									</div>
 									<div class="row row-padding">
 									</div>
@@ -295,6 +309,10 @@
 		$('#trainerForm').addClass("hidden").removeClass("show");
 		$('#gymForm').addClass("hidden").removeClass("show");
 		$('#userForm').addClass("hidden").removeClass("show");
+		
+		$('#buttonTrainer').removeClass("active");
+		$('#buttonGym').removeClass("active");
+		$('#buttonSeeker').removeClass("active");
 	};
 	
 	$(document).ready(function() {     
@@ -306,24 +324,21 @@
 	
 	});
 	
-	$('#newAccountType').on('change', function() {
-	
-		// determines which form to display
-            var accountType = ( this.value );
-            
-            if (accountType == "Trainer") {
-                  clearPage();
-			$('#trainerForm').addClass("show").removeClass("hidden");
-		} else if (accountType == "Gym") {
-			clearPage();
-			$('#gymForm').addClass("show").removeClass("hidden");
-		} else if (accountType == "User") {
-			clearPage();
-			$('#userForm').addClass("show").removeClass("hidden");
-		} else {
-			clearPage();
-		}
-		
+	// renders proper form based on pressed button
+	$('#buttonTrainer').on('click', function() {
+            clearPage();
+		$('#trainerForm').addClass("show").removeClass("hidden");
+		$('#buttonTrainer').addClass("active");
+	});
+	$('#buttonGym').on('click', function() {
+		clearPage();
+		$('#gymForm').addClass("show").removeClass("hidden");
+		$('#buttonGym').addClass("active");
+	});
+	$('#buttonSeeker').on('click', function() {
+		clearPage();
+		$('#userForm').addClass("show").removeClass("hidden");	
+		$('#buttonSeeker').addClass("active");	
 	});
 	
 	// populates state selects

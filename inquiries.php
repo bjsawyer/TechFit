@@ -84,9 +84,9 @@
 									<div class="well">
 										<span class="well-listings-icons">
 											<form>
-												<button type="button" name="emailUser" class="btn btn-primary btn-edit" href="mailto:<? print $userEmail ?>">
+												<a type="button" name="emailUser" class="btn btn-primary btn-edit" href="mailto:<? print $userEmail ?>">
 													<span class="glyphicon glyphicon-envelope"></span>
-												</button>
+												</a>
 											</form>
 										</span>
 										<span class="well-listings-text">
