@@ -17,25 +17,43 @@
 	<div class="site-wrapper">
         <div class="site-wrapper-inner-top">
             <div class="cover-container">
-            <?
+                  <?
 				include('templates/navMenuUser.php');
-			?>
-				<div class="inner cover">
-					<div>
-						<form class="navbar-form" id="search-bar" role="search">
-                            <div class="form-group">
-                                <input type="text" class="form-control input-lg" placeholder="Search">
-                            </div>
-                            <button type="submit" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-search"></span></button>
-                        </form>
-					</div>
-				</div>
+				include('templates/sidebarLeft.php');
+				include('templates/sidebarRight.php');
 				
-					<?
-						include('templates/footer.php');
-					?>
+				if (isset($_REQUEST["searchSubmit"])) {
+					header('location: searchResults.php');
+				} else {
+			?>
+				<form method="POST" action="searchResults.php" name="searchForm" id="searchForm">
+					<div class="inner cover">
+						<div class="row" style="margin-top: 20%;">
+						      <div class="col-sm-6 col-sm-offset-3">
+						            <div class="input-group input-group-lg" data-toggle="tooltip" data-placement="top" role="tooltip" title="Search by trainer, gym, specialities, or amenities">
+						                  <input type="text" class="form-control" placeholder="Search listings" name="searchKeyword" id="searchKeyword">
+						                  <span class="input-group-btn">
+						                        <button type="submit"name="searchSubmit" id="searchSubmit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+						                  </span>
+						            </div><!-- /input-group -->
+						      </div><!-- /.col-lg-6 -->
+						</div>
+					</div>
+				</form>
+			<?
+				}
+				
+				include('templates/footer.php');
+			?>
 			</div>
 		</div>
     </div>
 </body>
 </html>
+<script>
+	$(function () {
+            $('[data-toggle="tooltip"]').tooltip(function() {
+                  container: 'body'
+            });
+	})
+</script>
