@@ -268,17 +268,7 @@
 										      <div class="btn-group" role="group">
 										            <button type="button" class="btn btn-primary" id="buttonSeeker">Seeker</button>
 										      </div>
-										</div>
-										
-										<!--<div class="col-sm-6 col-centered">
-											<select class="form-control" id="newAccountType" name="newAccountType">
-												<option value="" selected disabled>Type of account</option>
-												<option value="Trainer">Trainer</option>
-												<option value="Gym">Gym</option>
-												<option value="User">Trainer or gym seeker</option>
-											</select>
-										</div>-->
-										
+										</div>										
 									</div>
 									<div class="row row-padding">
 									</div>
