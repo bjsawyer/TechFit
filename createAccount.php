@@ -259,14 +259,21 @@
 									<div class="row row-centered">
 										<p class="text-left" style="font-size:11px">Select the account type you'd like to create:</p>
 										<div class="btn-group btn-group-justified" role="group" aria-label="accountType" style="padding:0 25 14">
+										      <? $buttonGlyph = "glyphicon glyphicon-menu-hamburger"; ?>
 										      <div class="btn-group" role="group">
-										            <button type="button" class="btn btn-primary" id="buttonTrainer">Trainer</button>
+										            <button type="button" class="btn btn-primary" id="buttonTrainer">
+										                  <span class="<? print $buttonGlyph ?>"></span> Trainer
+												</button>
 										      </div>
 										      <div class="btn-group" role="group">
-										            <button type="button" class="btn btn-primary" id="buttonGym">Gym</button>
+										            <button type="button" class="btn btn-primary" id="buttonGym">
+										                  <span class="<? print $buttonGlyph ?>"></span> Gym
+												</button>
 										      </div>
 										      <div class="btn-group" role="group">
-										            <button type="button" class="btn btn-primary" id="buttonSeeker">Seeker</button>
+										            <button type="button" class="btn btn-primary" id="buttonSeeker">
+										            <span class="<? print $buttonGlyph ?>"></span> Seeker
+										            </button>
 										      </div>
 										</div>										
 									</div>
