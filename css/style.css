@@ -104,6 +104,12 @@
 .required{
 	
 }
+.nav-tabs-about>li>a{
+	color:337ab7;
+}
+.nav-li-tab{
+	width: 33.333333%;
+}
 #label-notbold{
 	font-weight: 0 !important;
 }

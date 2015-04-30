@@ -1,9 +1,5 @@
 <div class="mastfoot">
 	<div class="inner">
-		<a href="#">About</a>
-		<text> | </text>
-		<a href="#">Advertise</a>
-		<text> | </text>
-		<a href="#">Support</a>
+		| <a href="about.php">About TechFit</a> |
     </div>
 </div>

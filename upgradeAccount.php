@@ -47,14 +47,14 @@
 							</button>
 							<button class="list-group-item text-left" style="margin-bottom: 0px;" id="optionGold" name="optionGold" type="button">
 								<h3 class="list-group-item-heading"><span class="<? print $icon ?>"style="color:#337ab7"></span><b> GOLD</b><small style="padding-left:8px">$15</small></h3>
-								<p class="list-group-item-text" style="font-size:16px">Our mid-level subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
+								<p class="list-group-item-text" style="font-size:16px">Our mid-level subscription, you will be placed ahead of silver subscribers as well as non-subscribers!</p>
 							</button>
 							<button class="list-group-item text-left" style="margin-bottom: 0px;" id="optionSilver" name="optionSilver" type="button">
 								<h3 class="list-group-item-heading"><span class="<? print $icon ?>" style="color:#337ab7"></span><b> SILVER</b><small style="padding-left:8px">$5</small></h3>
-								<p class="list-group-item-text" style="font-size:16px">Our top-of-the-line subscription, you will be placed at the top of the rankings pages and generate the most client traffic!</p>
+								<p class="list-group-item-text" style="font-size:16px">Our third-level plan, you will be placed ahead of and receive more traffic than non-subscribers!</p>
 							</button>
 						</div>
-						<p style="font-size:12px;"><small><i>*Rankings based on three premium subscription types (Platinum, Gold, Silver)</i></small></p>
+						<p style="font-size:12px;" class="text-left"><small><i>*Rankings based on three premium subscription types (Platinum, Gold, Silver)</i></small></p>
 					</div>
 				</div>
 			</form>
