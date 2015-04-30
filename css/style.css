@@ -95,6 +95,15 @@
 .listings-spacing{
 	padding-top: 2px;
 }
+.required-label:before{
+	content: "*";
+	color: red;
+	font-weight: bold;
+	font-size: 18px;
+}
+.required{
+	
+}
 #label-notbold{
 	font-weight: 0 !important;
 }
