@@ -171,7 +171,7 @@
 			$('#userForm').addClass("show").removeClass("hidden");
 		})
 	
-		var $select = $('#newState');
+		var $select = $('.newState');
  
 	    //request the JSON data and parse into the select element
 	    $.getJSON('us_states.json', function(data){

@@ -363,8 +363,6 @@
 			$('#trainerForm').addClass("show").removeClass("hidden");
 			$('#gymForm').addClass("show").removeClass("hidden");
 		})
-	
-		var $select = $('#newState');
  
 	// populates state selects
       var $select = $('.newState');
