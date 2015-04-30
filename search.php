@@ -28,7 +28,7 @@
 			?>
 				<form method="POST" action="searchResults.php" name="searchForm" id="searchForm">
 					<div class="inner cover">
-						<div class="row" style="margin-top: 20%;">
+						<div class="row" style="margin-top: 18%;">
 						      <div class="col-sm-6 col-sm-offset-3">
 						            <div class="input-group input-group-lg" data-toggle="tooltip" data-placement="top" role="tooltip" title="Search by trainer, gym, specialities, or amenities">
 						                  <input type="text" class="form-control" placeholder="Search listings" name="searchKeyword" id="searchKeyword">
