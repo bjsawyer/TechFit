@@ -24,7 +24,7 @@
 					<div class="inner cover">
 						<div class="jumbotron" id="login-jumbotron" style="padding-bottom:1px">
 							<h1>What is <b>TechFit</b>?</h1>
-							<div style="margin: 55 0 55">
+							<div class="well" style="margin: 55 0 55; background-color:#fff">
 								<ul id="tabs" class="nav nav-tabs nav-tabs-about" data-tabs="tabs">
 							            <li class="nav-li-tab active"><a href="#users" data-toggle="tab">Fitness Seekers</a></li>
 							            <li class="nav-li-tab"><a href="#providers" data-toggle="tab">Trainers and Gyms</a></li>
