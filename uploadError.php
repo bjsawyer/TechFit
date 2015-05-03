@@ -38,7 +38,7 @@
 						<p>
 							An error occurred while uploading your new profile picture.
 							<br>
-							Reason(s): <? print $errorUpload; ?>
+							Reason(s): <? print $_SESSION["errorUpload"]; ?>
 							<br>
 							Please <a href="javascript:history.back()"  style="color:blue">go back</a> and resubmit your plan registration.
 						</p>
