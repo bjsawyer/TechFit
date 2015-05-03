@@ -30,8 +30,6 @@
             <div class="cover-container">
             <?
 			include('templates/navMenuUser.php');
-			include('templates/sidebarLeft.php');
-			include('templates/sidebarRight.php');
 		?>
 		<?
 			$searchKeyword = "";

@@ -19,8 +19,6 @@
             <div class="cover-container">
                   <?
 				include('templates/navMenuUser.php');
-				include('templates/sidebarLeft.php');
-				include('templates/sidebarRight.php');
 				
 				if (isset($_REQUEST["searchSubmit"])) {
 					header('location: searchResults.php');
