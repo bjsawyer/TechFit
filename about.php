@@ -34,13 +34,15 @@
 							            <div class="tab-pane fade in active" id="users">
 							                   <h4 style="padding-bottom:5px"><b>Discover local fitness</b></h4>
 							                  <p style="font-size: 14px">
-							                        asdfasdfasdfasdf
+							                        TechFit brings together local trainer and gym listings, allowing you to to decide which suit you best. Filter by a variety
+							                        of different fields (including unique trainer specialities and gym amenities), and sign up at the click of a button. Join TechFit today!
 										</p>
 							            </div>
 							            <div class="tab-pane fade" id="providers">
 							                   <h4 style="padding-bottom:5px"><b>Attract new clients</b></h4>
 							                  <p style="font-size: 14px">
-							                        asfasdfasdfasdf
+							                        TechFit can help you bring in new customers and clients with little-to-no costs. Create a unique profile today and discover the
+							                        benefits of marketing within the TechFit marketplace. Join Techfit today!
 										</p>
 							            </div>
 							            <div class="tab-pane fade" id="advertisers">
@@ -50,7 +52,7 @@
 							                        Current opportunities include company spotlights in each page sidebar (see left or right for examples).
 							                        <br>
 							                        <br>
-							                        Automated advertising registration will be implemented in a future release.
+							                        *Automated advertising registration will be implemented in a future release.
 										</p>
 							            </div>
 								</div>
