@@ -78,7 +78,7 @@
 			<div class="row row-centered row-padding">
 				<div class="col-sm-6 col-centered">
 					<label for="newUserPhone" class="required-label">Phone</label>
-					<input type="text" class="form-control requiredUser" id="newUserPhoneNumber" name="newPhoneNumber" placeholder="Phone">
+					<input type="text" class="form-control requiredUser" id="newUserPhoneNumber" name="newPhone" placeholder="Phone">
 				</div>
 			</div>
 			
