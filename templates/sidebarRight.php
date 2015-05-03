@@ -5,7 +5,7 @@
             <div class="caption">
                 <h3>The Edge</h3>
 				<p>Come live at The Edge, the newest and hottest off-campus living choice for Virginia Tech students!</p>
-                <p><a href="#" class="btn btn-default" role="button">Learn more</a></p>
+                <p><a href="http://www.vtcampusedge.com/"target="_blank" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
 	</div>

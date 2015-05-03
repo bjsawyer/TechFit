@@ -48,7 +48,7 @@
 							            <div class="tab-pane fade" id="advertisers">
 							                  <h4 style="padding-bottom:5px"><b>Advertise with us</b></h4>
 							                  <p style="font-size: 14px">
-							                        To advertise with TechFit, please email <b>techfitVT@gmail.com</b>.
+							                        To advertise with TechFit, please email <b><a href="mailto:techfitvt@gmail.com" style="color:#337ab7">TechFitVT@gmail.com</a></b>.
 							                        Current opportunities include company spotlights in each page sidebar (see left or right for examples).
 							                        <br>
 							                        <br>

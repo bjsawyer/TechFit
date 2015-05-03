@@ -5,7 +5,7 @@
             <div class="caption">
                 <h3>Village at Blacksburg</h3>
 				<p>Come live at The Village at Blacksburg, one of the top living off-campus choices for Virginia Tech students!</p>
-                <p><a href="#" class="btn btn-default" role="button">Learn more</a></p>
+                <p><a href="http://live-thevillage.com/"target="_blank" class="btn btn-default" role="button">Learn more</a></p>
             </div>
         </div>
 	</div>
