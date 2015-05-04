@@ -98,7 +98,7 @@
 													<h2 style="margin-top:0px"><b><? print $name ?></b> <small><? print $email ?></small></h2>
 												</div>
 											<ul class="list-unstyled" style="padding-top:15px;">
-												<li class="profile-spacing"><b>Profile Description: </b><small><?  ?></small></li>
+												<li class="profile-spacing"><b>Profile Description: </b><br><small><? print $profileDescription ?></small></li>
 												<br>
 												<li class="profile-spacing"><b>Address: </b><small><? print $address ?></small><br></li>
 												<li class="profile-spacing"><b>City: </b><small><? print $city ?></small><br></li>

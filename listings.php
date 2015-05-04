@@ -131,6 +131,7 @@
 									$trainerDaysAvailability = $row['DaysAvailability'];
 									$trainerHoursAvailability = $row['HoursAvailability'];
 									$trainerProfilePic = $row['ProfilePictureUrl'];
+									$trainerProfileDesc = $row['ProfileDescription'];
 									$trainerEmail = $row['Email'];
 							?>
 									<div class="well">
@@ -153,7 +154,7 @@
 													<h4 style="top:0px"><b><? print $trainerName ?></b> <small><? print $trainerEmail ?></small></h4>
 												</div>
 												<ul class="list-unstyled" style="padding-top:10px;">
-													<li class="profile-spacing"><b>Profile Description: </b><small><?  ?></small></li>
+													<li class="profile-spacing"><b>Profile Description: </b><br><small><? print $trainerProfileDesc ?></small></li>
 													<br>
 													<li class="listing-spacing"><b>Address: </b><small><? print $trainerAddress ?></small><br></li>
 													<li class="listing-spacing"><b>City: </b><small><? print $trainerCity ?></small><br></li>
@@ -191,6 +192,7 @@
 									$gymDaysOperation = $row['DaysOperation'];
 									$gymHoursOperation = $row['HoursOperation'];
 									$gymProfilePic = $row['ProfilePictureUrl'];
+									$gymProfileDesc = $row['ProfileDescription'];
 									$gymEmail = $row['Email'];
 							?>
 									<div class="well">
@@ -213,7 +215,7 @@
 														<h4 style="margin-top:0px"><b><? print $gymName ?></b> <small><? print $gymEmail ?></small></h4>
 													</div>
 													<ul class="list-unstyled" style="padding-top:10px;">
-														<li class="listing-spacing"><b>Profile Description: </b><small><?  ?></small></li>
+														<li class="listing-spacing"><b>Profile Description: </b><br><small><? print $gymProfileDesc ?></small></li>
 														<br>
 														<li class="listing-spacing"><b>Contact Name: </b><small><? print $gymContactFirstName . " " . $gymContactLastName ?></small><br></li>
 														<li class="listing-spacing"><b>Address: </b><small><? print $gymAddress ?></small><br></li>
