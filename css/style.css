@@ -1,9 +1,18 @@
 /*
  * Globals
  */
+ @font-face { font-family: BigJohn; src: url('../font_BIGJOHN.otf'); }  
+ @font-face { font-family: SlimJoe; src: url('../font_SlimJoe.otf'); } 
  
- 
-/* addtional added by TECHFIT */
+  #h1-slimjoe {
+      font-family: SlimJoe, sans-serif;
+      font-weight: 900;
+ }
+ #h1-bigjohn {
+      font-family: BigJohn, sans-serif;
+      color: #ff6600;
+ }
+ /* addtional added by TECHFIT */
 .row-padding {
 	padding-bottom: 5px;
 }

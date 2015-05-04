@@ -41,7 +41,7 @@
 					?>
 					<div class="inner cover">
 						<div class="jumbotron" id="login-jumbotron">
-							<h1>Welcome to <b>TechFit!</b></h1>
+							<h1 style="padding-bottom: 15px;">Welcome to <text id="h1-slimjoe"><b>Tech</text><text id="h1-bigjohn">Fit</text></h1>
 							<p>Discover the quickest and easiest way to get active with TechFit, the future of fitness!</p>
 							<p><a class="btn btn-primary btn-lg" href="createAccount.php" role="button"><span class="glyphicon glyphicon-circle-arrow-up"></span>   Sign up</a></p>
 						</div>

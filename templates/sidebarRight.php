@@ -1,4 +1,4 @@
-<div class="sidebar" id="sidebar-right">
+<div class="sidebar hidden-xs hidden-sm" id="sidebar-right">
 	<div class="ad-panel">
         <div class="thumbnail">
 			<img src="images/theedge.jpg" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">

@@ -1,4 +1,4 @@
-<div class="sidebar" id="sidebar-left">
+<div class="sidebar hidden-xs hidden-sm" id="sidebar-left">
 	<div class="ad-panel">
         <div class="thumbnail">
 			<img src="images/villageatblacksburg.jpg" data-holder-rendered="true" style="height: 200px; width: 100%; display: block;">
