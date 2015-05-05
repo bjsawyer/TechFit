@@ -190,6 +190,11 @@
 									$gymRate = $row['Rate'];
 									$gymAmenities = $row['Amenities'];
 									$gymClassesOffered = $row['ClassesOffered'];
+									if ($gymClassesOffered == 0) {
+										$gymClassesOffered = "No";
+									}else {
+										$gymClassesOffered = "Yes";
+									}
 									$gymDaysOperation = $row['DaysOperation'];
 									$gymHoursOperation = $row['HoursOperation'];
 									$gymProfilePic = $row['ProfilePictureUrl'];
