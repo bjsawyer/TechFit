@@ -171,20 +171,4 @@
 		$(document).ready(function() {
 			$('#userForm').addClass("show").removeClass("hidden");
 		})
-	
-		var $select = $('.newState');
- 
-	    //request the JSON data and parse into the select element
-	    $.getJSON('us_states.json', function(data){
-	 
-		    //clear the current content of the select
-		    $select.html('');
-		 
-		    $select.find('option').remove();
-		    $('<option selected disabled>').val("").text("State").appendTo($select);                          
-			$.each(data, function(key, value) {              
-			    $('<option>').val(key).text(value).appendTo($select);
-			});
-			console.log($select.html());
-	    });
 	</script>
